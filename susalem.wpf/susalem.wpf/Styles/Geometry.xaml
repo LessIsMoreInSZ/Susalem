@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <PathGeometry x:Key="SkyWalkerLogo">
+        <PathGeometry.Figures>
+            M0,25
+            A10,10 150 0,1 10,20
+            A30,30 150 0,1 40,15
+            A40,40 150 0,1 100,17
+            A12,12 150 0,1 100,33
+            A60,60 150 0,1 10,30
+            A10,10 150 0,1 0,25
+        </PathGeometry.Figures>
+    </PathGeometry>
+</ResourceDictionary>

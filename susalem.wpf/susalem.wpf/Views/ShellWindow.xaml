@@ -1,0 +1,140 @@
+﻿<mah:MetroWindow
+    x:Class="susalem.wpf.Views.ShellWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:local="clr-namespace:susalem.wpf.Views"
+    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    Title="ShellWindow"
+    Width="1280"
+    Height="720"
+    mah:ControlsHelper.CornerRadius="5"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    Background="Transparent"
+    ResizeBorderThickness="0"
+    BorderThickness="0.5  "
+    ResizeMode="NoResize"
+    TitleBarHeight="0"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <Border
+        Background="Transparent"
+        ClipToBounds="True"
+        CornerRadius="20">
+        <Grid Background="WhiteSmoke">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="250" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <DockPanel
+                Margin="0,20"
+                Background="WhiteSmoke"
+                LastChildFill="False"
+                MouseMove="WindowMove">
+                <ListBox
+                    Background="Transparent"
+                    DockPanel.Dock="Top"
+                    ItemsSource="{Binding Menu}"
+                    SelectedItem="{Binding SelectedItem}">
+                    <ListBox.ItemContainerStyle>
+                        <Style BasedOn="{StaticResource MahApps.Styles.ListBoxItem}" TargetType="ListBoxItem">
+                            <Setter Property="Margin" Value="3" />
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="mah:ItemHelper.ActiveSelectionBackgroundBrush" Value="Transparent" />
+                            <Setter Property="mah:ItemHelper.SelectedBackgroundBrush" Value="Transparent" />
+                            <Setter Property="mah:ItemHelper.HoverBackgroundBrush" Value="Transparent" />
+                            <Setter Property="mah:ItemHelper.HoverSelectedBackgroundBrush" Value="Transparent" />
+                            <Setter Property="mah:ItemHelper.MouseLeftButtonPressedBackgroundBrush" Value="Transparent" />
+                            <Setter Property="mah:ItemHelper.ActiveSelectionForegroundBrush" Value="{StaticResource MahApps.Brushes.Accent}" />
+                            <Setter Property="mah:ItemHelper.SelectedForegroundBrush" Value="{StaticResource MahApps.Brushes.Accent}" />
+                            <Setter Property="mah:ItemHelper.HoverForegroundBrush" Value="{StaticResource MahApps.Brushes.Accent2}" />
+                            <Setter Property="mah:ItemHelper.HoverSelectedForegroundBrush" Value="{StaticResource MahApps.Brushes.Accent3}" />
+                            <Setter Property="mah:ItemHelper.MouseLeftButtonPressedForegroundBrush" Value="Black" />
+
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border>
+                                <Grid>
+                                    <icon:PackIconFontAwesome
+                                        Width="40"
+                                        Height="40"
+                                        Padding="3"
+                                        Kind="{Binding Icon}" />
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <mah:DropDownButton
+                    Width="40"
+                    Height="40"
+                    Margin="3"
+                    Padding="1"
+                    HorizontalAlignment="Center"
+                    ArrowVisibility="Collapsed"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    DockPanel.Dock="Bottom"
+                    Icon="{icon:FontAwesome Kind=CogSolid,
+                                            Width=30,
+                                            Height=30}"
+                    Orientation="Vertical" />
+                <Button
+                    Width="40"
+                    Height="40"
+                    Margin="3"
+                    Padding="0"
+                    HorizontalAlignment="Center"
+                    mah:ControlsHelper.FocusBorderThickness="0"
+                    Background="MediumPurple"
+                    BorderThickness="0"
+                    DockPanel.Dock="Bottom">
+                    <Button.Clip>
+                        <EllipseGeometry
+                            Center="20,20"
+                            RadiusX="20"
+                            RadiusY="20" />
+                    </Button.Clip>
+                    <Image Source="{Binding Avatar}" />
+                </Button>
+            </DockPanel>
+            <Border Grid.Column="1" Background="White">
+                <ContentControl x:Name="list" />
+            </Border>
+            <Border Grid.Column="2" Background="AliceBlue">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="32" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <DockPanel
+                        Background="AliceBlue"
+                        LastChildFill="False"
+                        MouseMove="WindowMove">
+                        <UniformGrid DockPanel.Dock="Right" Rows="1">
+                            <Button
+                                Name="min"
+                                Content="{icon:ForkAwesome Kind=WindowMinimize}"
+                                Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}" />
+                            <Button Name="max" Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
+                                <icon:ForkAwesome x:Name="ico" Kind="WindowMaximize" />
+                            </Button>
+                            <Button
+                                Name="close"
+                                Content="{icon:Material Kind=WindowClose}"
+                                Style="{StaticResource MahApps.Styles.Button.MetroWindow.Close.Dark.Win10}" />
+                        </UniformGrid>
+                    </DockPanel>
+                    <ContentControl x:Name="main" Grid.Row="1" />
+                </Grid>
+
+            </Border>
+        </Grid>
+    </Border>
+</mah:MetroWindow>
