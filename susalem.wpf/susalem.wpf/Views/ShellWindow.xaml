@@ -3,23 +3,30 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
     xmlns:local="clr-namespace:susalem.wpf.Views"
     xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
+    Name="shell"
     Title="ShellWindow"
     Width="1280"
     Height="720"
     mah:ControlsHelper.CornerRadius="5"
     prism:ViewModelLocator.AutoWireViewModel="True"
     Background="Transparent"
+    BorderThickness="0.5"
     ResizeBorderThickness="0"
-    BorderThickness="0.5  "
     ResizeMode="NoResize"
     TitleBarHeight="0"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}" CommandParameter="{Binding ElementName=shell}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Border
         Background="Transparent"
         ClipToBounds="True"
@@ -84,7 +91,9 @@
                     Icon="{icon:FontAwesome Kind=CogSolid,
                                             Width=30,
                                             Height=30}"
-                    Orientation="Vertical" />
+                    Orientation="Vertical"
+                    ToolTip="Setting" />
+
                 <Button
                     Width="40"
                     Height="40"
@@ -102,6 +111,33 @@
                             RadiusY="20" />
                     </Button.Clip>
                     <Image Source="{Binding Avatar}" />
+                </Button>
+                <Button
+                    Background="Transparent"
+                    Command="{Binding TravelCommand}"
+                    Content="{icon:VaadinIcons Kind=FlightTakeoff,
+                                               Width=30,
+                                               Height=30}"
+                    DockPanel.Dock="Bottom"
+                    Style="{StaticResource MahApps.Styles.Button.Flat}"
+                    ToolTip="开启你的上位机之旅...">
+                    <Button.Triggers>
+                        <EventTrigger RoutedEvent="Loaded">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimationUsingKeyFrames RepeatBehavior="Forever" Storyboard.TargetProperty="Foreground.Color">
+                                        <LinearColorKeyFrame KeyTime="0:0:1" Value="Red" />
+                                        <LinearColorKeyFrame KeyTime="0:0:2" Value="Orange" />
+                                        <LinearColorKeyFrame KeyTime="0:0:3" Value="Yellow" />
+                                        <LinearColorKeyFrame KeyTime="0:0:4" Value="Green" />
+                                        <LinearColorKeyFrame KeyTime="0:0:5" Value="Cyan" />
+                                        <LinearColorKeyFrame KeyTime="0:0:6" Value="Blue" />
+                                        <LinearColorKeyFrame KeyTime="0:0:7" Value="Purple" />
+                                    </ColorAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Button.Triggers>
                 </Button>
             </DockPanel>
             <Border Grid.Column="1" Background="White">
