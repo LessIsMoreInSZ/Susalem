@@ -14,58 +14,124 @@
     WindowState="Maximized"
     WindowStyle="None"
     mc:Ignorable="d">
+    <Window.Resources>
+        <Storyboard x:Key="delayThenDisappear">
+            <ObjectAnimationUsingKeyFrames BeginTime="5" Storyboard.TargetProperty="Visibility">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="Collapsed" />
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="delayThenFadeAway">
+            <DoubleAnimation
+                BeginTime="0:0:0.5"
+                Storyboard.TargetProperty="Opacity"
+                From="0"
+                To="1"
+                Duration="0:0:0.5" />
+        </Storyboard>
+    </Window.Resources>
     <Window.Triggers>
         <EventTrigger RoutedEvent="Loaded">
             <BeginStoryboard>
                 <Storyboard>
                     <ColorAnimation
+                        BeginTime="0:0:3"
                         Storyboard.TargetName="mask"
                         Storyboard.TargetProperty="Background.Color"
                         To="White"
-                        Duration="0:0:3" />
-                    <DoubleAnimation
-                        Storyboard.TargetName="mask"
-                        Storyboard.TargetProperty="Opacity"
-                        To="0"
                         Duration="0:0:3" />
                 </Storyboard>
             </BeginStoryboard>
         </EventTrigger>
     </Window.Triggers>
     <Grid>
+        <!--  上一页按钮  -->
+        <Button
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Click="Previous"
+            Content="Previous" />
 
-        <md:Transitioner SelectedIndex="0">
+        <!--  故事书控件  -->
+        <md:Transitioner
+            Name="tran"
+            AutoApplyTransitionOrigins="True"
+            SelectedIndex="0">
+            <md:Transitioner.Resources>
+                <Style BasedOn="{StaticResource MahApps.Styles.TextBlock}" TargetType="TextBlock">
+                    <Setter Property="HorizontalAlignment" Value="Center" />
+                    <Setter Property="VerticalAlignment" Value="Center" />
+                    <Setter Property="FontSize" Value="40" />
+                </Style>
+            </md:Transitioner.Resources>
             <md:TransitionerSlide>
                 <Grid>
-                    <TextBlock FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <TextBlock>
                         你是一个上位机的天选之子，从你出生的那一刻起就与上位机结下了不解之缘...
                     </TextBlock>
-                    <!--<h:HelixViewport3D Name="viewport">
-                        <h:SunLight />
-                    </h:HelixViewport3D>-->
                 </Grid>
+            </md:TransitionerSlide>
+            <md:TransitionerSlide>
+                <TextBlock>
+                    当天生上位机圣体的你出生的那一刻，这个世界的NPC们就该知道，上位机的神，来了...
+                </TextBlock>
             </md:TransitionerSlide>
             <md:TransitionerSlide />
             <md:TransitionerSlide />
-            <md:TransitionerSlide />
         </md:Transitioner>
-        <Border
-            Name="mask"
-            Background="Black"
-            Opacity="1">
-          
-        </Border>
+
+        <!--  下一页按钮  -->
         <Button
-      Padding="15"
-      HorizontalAlignment="Right"
-      VerticalAlignment="Top"
-      Background="Transparent"
-      BorderThickness="0"
-      Click="Button_Click"
-      Content="{iconPacks:Modern Kind=DoorLeave,
-                                 Width=30,
-                                 Height=30}"
-      Foreground="Black">
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            Click="Next"
+            Content="Next" />
+        <Border Name="mask" Background="Black">
+            <Border.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard Storyboard="{StaticResource delayThenDisappear}"/>
+                </EventTrigger>
+            </Border.Triggers>
+            <Grid>
+                <TextBlock
+                    VerticalAlignment="Top"
+                    FontSize="30"
+                    Foreground="White"
+                    Opacity="0">
+                    <TextBlock.Triggers>
+                        <EventTrigger RoutedEvent="Loaded">
+                            <BeginStoryboard Storyboard="{StaticResource delayThenFadeAway}" />
+                        </EventTrigger>
+                    </TextBlock.Triggers>
+                    《机动乾坤》
+                </TextBlock>
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="50"
+                    Foreground="White"
+                    Opacity="0"
+                    Text="第一章：天生圣体">
+                    <TextBlock.Triggers>
+                        <EventTrigger RoutedEvent="Loaded">
+                            <BeginStoryboard Storyboard="{StaticResource delayThenFadeAway}" />
+                        </EventTrigger>
+                    </TextBlock.Triggers>
+                </TextBlock>
+            </Grid>
+        </Border>
+
+        <!--  退出按钮  -->
+        <Button
+            Padding="15"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Background="Transparent"
+            BorderThickness="0"
+            Click="Button_Click"
+            Content="{iconPacks:Modern Kind=DoorLeave,
+                                       Width=30,
+                                       Height=30}"
+            Foreground="Black">
             <Button.Style>
                 <Style BasedOn="{StaticResource MahApps.Styles.Button.Circle}" TargetType="Button">
                     <Style.Triggers>

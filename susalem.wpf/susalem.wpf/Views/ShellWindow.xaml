@@ -14,7 +14,6 @@
     Width="1280"
     Height="720"
     mah:ControlsHelper.CornerRadius="5"
-    prism:ViewModelLocator.AutoWireViewModel="True"
     Background="Transparent"
     BorderThickness="0.5"
     ResizeBorderThickness="0"
@@ -47,6 +46,11 @@
                     DockPanel.Dock="Top"
                     ItemsSource="{Binding Menu}"
                     SelectedItem="{Binding SelectedItem}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding NavigateCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
                     <ListBox.ItemContainerStyle>
                         <Style BasedOn="{StaticResource MahApps.Styles.ListBoxItem}" TargetType="ListBoxItem">
                             <Setter Property="Margin" Value="3" />
@@ -139,6 +143,14 @@
                         </EventTrigger>
                     </Button.Triggers>
                 </Button>
+                <ToggleButton
+                    Margin="3"
+                    BorderThickness="0"
+                    Content="{icon:BootstrapIcons Kind=LayoutSplit,
+                                                  Width=30,
+                                                  Height=30}"
+                    DockPanel.Dock="Bottom"
+                    IsChecked="{Binding IsPaneOpen, ElementName=splitview}" />
             </DockPanel>
             <Border Grid.Column="1" Background="White">
                 <ContentControl x:Name="list" />
@@ -167,7 +179,15 @@
                                 Style="{StaticResource MahApps.Styles.Button.MetroWindow.Close.Dark.Win10}" />
                         </UniformGrid>
                     </DockPanel>
-                    <ContentControl x:Name="main" Grid.Row="1" />
+                    <mah:SplitView
+                        Name="splitview"
+                        Grid.Row="1"
+                        PaneBackground="White">
+                        <mah:SplitView.Pane>
+                            <ContentControl Name="pane" />
+                        </mah:SplitView.Pane>
+                        <ContentControl x:Name="main" />
+                    </mah:SplitView>
                 </Grid>
 
             </Border>

@@ -2,6 +2,9 @@
 using CommunityToolkit.Mvvm.Input;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
+using Prism.Regions;
+using susalem.wpf.Common;
+using susalem.wpf.Constants;
 using susalem.wpf.Views;
 using System;
 using System.Collections.Generic;
@@ -9,27 +12,34 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Controls;
+using System.Windows.Navigation;
 
 namespace susalem.wpf.ViewModels
 {
     public partial class ShellWindowViewModel : ObservableObject
     {
+        IRegionNavigationService _navigationService;
+
         MetroWindow shell;
+
         [ObservableProperty]
         MenuItem selectedItem;
+
         [ObservableProperty]
         ObservableCollection<MenuItem> menu = new()
         {
-            new(){Name="Message",Icon="CommentDotsRegular"},
-            new(){Name="Community",Icon="CommentsRegular"},
-            new(){Name="Enterprise",Icon="BuildingRegular"}
+            new(){Page=Pages.Machine,Icon="CubesSolid"},
+            new(){Page=Pages.Message,Icon="CommentDotsRegular"},
+            new(){Page=Pages.Community,Icon="CommentsRegular"},
+            new(){Page=Pages.Enterprise,Icon="BuildingRegular"},
         };
+        
         [RelayCommand]
         void Loaded(MetroWindow metroWindow)
         {
             shell = metroWindow;
         }
+
         [RelayCommand]
         async Task Travel()
         {
@@ -45,9 +55,17 @@ namespace susalem.wpf.ViewModels
             }
         }
 
-        public ShellWindowViewModel()
+        [RelayCommand]
+        void Navigate()
         {
-            SelectedItem = Menu.FirstOrDefault();
+            _navigationService.RequestNavigate(SelectedItem.Page);
+        }
+
+        public ShellWindowViewModel(IRegionManager regionManager)
+        {
+            _navigationService = regionManager.Regions[Regions.List].NavigationService;
+            regionManager.Regions[Regions.Pane].NavigationService.RequestNavigate(Pages.Alarm);
+
         }
     }
 }

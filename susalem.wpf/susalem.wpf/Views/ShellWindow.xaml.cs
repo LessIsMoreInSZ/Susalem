@@ -1,4 +1,6 @@
 ﻿using MahApps.Metro.Controls;
+using Prism.Regions;
+using susalem.wpf.Constants;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +22,7 @@ namespace susalem.wpf.Views
     /// </summary>
     public partial class ShellWindow : MetroWindow
     {
-        public ShellWindow()
+        public ShellWindow(IRegionManager regionManager)
         {
             InitializeComponent();
             min.Click += (s, e) => this.WindowState = WindowState.Minimized;
@@ -38,6 +40,14 @@ namespace susalem.wpf.Views
                     ico.Kind = MahApps.Metro.IconPacks.PackIconForkAwesomeKind.WindowMaximize;
                 }
             };
+
+            RegionManager.SetRegionName(list, Regions.List);
+            RegionManager.SetRegionManager(list,regionManager);
+            RegionManager.SetRegionName(main, Regions.Main);
+            RegionManager.SetRegionManager(main, regionManager);
+            RegionManager.SetRegionName(pane, Regions.Pane);
+            RegionManager.SetRegionManager(pane, regionManager);
+
         }
 
         public void WindowMove(object sender, MouseEventArgs e)
