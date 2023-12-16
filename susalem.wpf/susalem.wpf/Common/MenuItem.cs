@@ -8,7 +8,7 @@ namespace susalem.wpf.Common
 {
     public class MenuItem
     {
-        public string Name { get; set; }
-        public string Kind { get; set; }
+        public string Page { get; set; }
+        public string Icon { get; set; }
     }
 }

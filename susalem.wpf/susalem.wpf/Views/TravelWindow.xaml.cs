@@ -24,13 +24,16 @@ namespace susalem.wpf.Views
         public TravelWindow()
         {
             InitializeComponent();
-            var importer = new ModelImporter();
-            var diceGroup = importer.Load(@"D:\susalem\susalem.wpf\susalem.wpf\Assets\dice.obj");
-            var dice=new ModelVisual3D() { Content = diceGroup };
-            //viewport.Children.Add(dice);
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+         void Previous(object sender, RoutedEventArgs e)
+        {
+            tran.SelectedIndex--;
+        }
+        void Next(object sender, RoutedEventArgs e)
+        {
+            tran.SelectedIndex++;
+        }
+        void Button_Click(object sender, RoutedEventArgs e)
         {
             try
             {
