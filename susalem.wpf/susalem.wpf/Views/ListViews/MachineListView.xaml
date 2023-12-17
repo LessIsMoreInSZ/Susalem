@@ -1,0 +1,53 @@
+﻿<UserControl
+    x:Class="susalem.wpf.Views.ListViews.MachineListView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:local="clr-namespace:susalem.wpf.Views.ListViews"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="720"
+    d:DesignWidth="200"
+    mc:Ignorable="d">
+    <StackPanel>
+        <Button Margin="5" Command="{Binding AddMachineCommand}">
+            <StackPanel Orientation="Horizontal">
+                <icon:PackIconBoxIcons
+                    Width="24"
+                    Height="24"
+                    Margin="3"
+                    VerticalAlignment="Center"
+                    Kind="SolidPlusSquare" />
+                <TextBlock
+                    Margin="3"
+                    FontSize="20"
+                    Text="新增下位机" />
+            </StackPanel>
+        </Button>
+        <ListBox ItemsSource="{Binding Machines}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border MaxWidth="200" Margin="3">
+                        <DockPanel>
+                            <icon:PackIconFontAwesome
+                                Width="40"
+                                Height="40"
+                                Margin="3"
+                                Kind="{Binding Icon}" />
+                            <Grid Margin="3">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <DockPanel>
+                                    <TextBlock FontWeight="Black" Text="ID:" />
+                                    <TextBlock Text="{Binding Id}" />
+                                </DockPanel>
+                            </Grid>
+                        </DockPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,6 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <RadialGradientBrush x:Key="SkyWalkerLogoBrush" GradientOrigin="0.7,0.5">
+        <GradientStop Color="AliceBlue" />
+        <GradientStop Offset="1.5" Color="LightBlue" />
+    </RadialGradientBrush>
+</ResourceDictionary>
