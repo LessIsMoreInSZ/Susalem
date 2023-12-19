@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
     xmlns:local="clr-namespace:susalem.wpf.Views.ListViews"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -25,6 +26,11 @@
             </StackPanel>
         </Button>
         <ListBox ItemsSource="{Binding Machines}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding NavigateCommand}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Border MaxWidth="200" Margin="3">

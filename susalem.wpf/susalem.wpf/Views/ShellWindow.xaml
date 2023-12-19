@@ -162,9 +162,14 @@
                         <RowDefinition />
                     </Grid.RowDefinitions>
                     <DockPanel
+                        
                         Background="AliceBlue"
                         LastChildFill="False"
                         MouseMove="WindowMove">
+                        <mah:ToggleSwitch
+                           OnContent="Control"
+                            IsOn="{Binding SystemMode}"
+                            OffContent="View" />
                         <UniformGrid DockPanel.Dock="Right" Rows="1">
                             <Button
                                 Name="min"
@@ -180,6 +185,7 @@
                         </UniformGrid>
                     </DockPanel>
                     <mah:SplitView
+                        PanePlacement="Right"
                         Name="splitview"
                         Grid.Row="1"
                         PaneBackground="White">
