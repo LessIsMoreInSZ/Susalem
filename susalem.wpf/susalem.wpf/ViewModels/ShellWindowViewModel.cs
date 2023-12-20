@@ -16,8 +16,12 @@ using System.Windows.Navigation;
 
 namespace susalem.wpf.ViewModels
 {
-    public partial class ShellWindowViewModel : ObservableObject
+    public partial class ShellWindowViewModel : ObservableRecipient
     {
+        [ObservableProperty]
+        [NotifyPropertyChangedRecipients]
+        bool systemMode;
+
         IRegionNavigationService _navigationService;
 
         MetroWindow shell;
@@ -28,10 +32,10 @@ namespace susalem.wpf.ViewModels
         [ObservableProperty]
         ObservableCollection<MenuItem> menu = new()
         {
-            new(){Page=Pages.Machine,Icon="CubesSolid"},
-            new(){Page=Pages.Message,Icon="CommentDotsRegular"},
-            new(){Page=Pages.Community,Icon="CommentsRegular"},
-            new(){Page=Pages.Enterprise,Icon="BuildingRegular"},
+            new(){Page=ListPages.Machine,Icon="CubesSolid"},
+            new(){Page=ListPages.Message,Icon="CommentDotsRegular"},
+            new(){Page=ListPages.Community,Icon="CommentsRegular"},
+            new(){Page=ListPages.Enterprise,Icon="BuildingRegular"},
         };
         
         [RelayCommand]
@@ -64,7 +68,7 @@ namespace susalem.wpf.ViewModels
         public ShellWindowViewModel(IRegionManager regionManager)
         {
             _navigationService = regionManager.Regions[Regions.List].NavigationService;
-            regionManager.Regions[Regions.Pane].NavigationService.RequestNavigate(Pages.Alarm);
+            regionManager.Regions[Regions.Pane].NavigationService.RequestNavigate(ListPages.Alarm);
 
         }
     }

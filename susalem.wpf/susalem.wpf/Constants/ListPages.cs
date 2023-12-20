@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace susalem.wpf.Constants
 {
-    public class Pages
+    public class ListPages
     {
         public const string Machine = "Machine";
         public const string Message = "Message";

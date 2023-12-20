@@ -45,8 +45,9 @@ namespace susalem.wpf
             containerRegistry.Register<LoginWindow>();
             containerRegistry.Register<LoginWindowViewModel>();
             containerRegistry.RegisterForNavigation<ShellWindow, ShellWindowViewModel>();
-            containerRegistry.RegisterForNavigation<MachineListView, MachineListViewModel>(Pages.Machine);
-            containerRegistry.RegisterForNavigation<AlarmLightsView, AlarmLightsViewModel>(Pages.Alarm);
+            containerRegistry.RegisterForNavigation<MachineListView, MachineListViewModel>(ListPages.Machine);
+            containerRegistry.RegisterForNavigation<AlarmLightsView, AlarmLightsViewModel>(ListPages.Alarm);
+            containerRegistry.RegisterForNavigation<MachineDetailView, MachineDetailViewModel>(DetailPages.Machine);
         }
     }
 }
