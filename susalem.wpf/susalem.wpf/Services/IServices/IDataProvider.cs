@@ -9,19 +9,26 @@ namespace susalem.wpf.Services.IServices
 {
     public interface IDataProvider
     {
-        string Url { get; set; }
+        public interface IDataProvider
+        {
+            string Url { get; set; }
+            TimeSpan TimeOut { get; set; }
 
-        TimeSpan TimeOut { get; set; }
+            Task<HttpResponse<T>> PostData<T>(string url, Dictionary<string, string> data);
 
-        Task<HttpResponse<T>> AddAsync<T>();
+            Task<HttpResponse<T>> PostData<T>(string url, string json = "{}");
 
-        Task<HttpResponse> GetAsync(string url);
+            Task<HttpResponse<T>> PostData<T>(string url, object data);
 
-        Task<HttpResponse> DeleteAsync(string url);
+            string CreateClientPost(string url, string parameters, int timeOutInMillisecond);
 
-        Task<HttpResponse<T>> PostData<T>(string url, string json = "{}");
+            T CreateClientPost<T>(string url, string parameters, int timeOutInMillisecond);
 
-        Task<HttpResponse<T>> PostData<T>(string url, object data);
+            string CreateClientGet(string url, Dictionary<string, string> dic);
+
+            T CreateClientGet<T>(string url, Dictionary<string, string> dic);
+
+        }
 
 
     }
