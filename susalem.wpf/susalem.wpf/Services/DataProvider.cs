@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using ControlzEx.Standard;
+using Newtonsoft.Json;
 using susalem.wpf.Models.HttpModels;
 using susalem.wpf.Services.IServices;
 using System;
@@ -336,57 +337,70 @@ namespace susalem.wpf.Services
         /// <param name="parameters"></param>
         /// <param name="timeOutInMillisecond"></param>
         /// <returns></returns>
-        public string CreateClientPost(string url, string parameters, int timeOutInMillisecond)
+        public ResultModel<string> CreateClientPost(string url, string parameters, int timeOutInMillisecond=15000)
         {
-            using (HttpClient client = new HttpClient())
+            string httpResult = string.Empty;
+            try
             {
-                HttpContent content = new StringContent(parameters);
-
-                content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-                content.Headers.ContentType.CharSet = "utf-8";
-                Task<HttpResponseMessage> task = client.PostAsync(url, content);
-                HttpResponseMessage response = task.Result;
-                if (response.StatusCode == HttpStatusCode.OK)
+                using (HttpClient client = new HttpClient())
                 {
-                    Task<string> result = response.Content.ReadAsStringAsync();
-                    result.Wait();
-                    return result.Result;
+                    HttpContent content = new StringContent(parameters);
+
+                    content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                    content.Headers.ContentType.CharSet = "utf-8";
+                    Task<HttpResponseMessage> task = client.PostAsync(url, content);
+                    #region 超时
+                    if (task.Wait(timeOutInMillisecond))
+                    {
+                        HttpResponseMessage response = task.Result;
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            Task<string> result = response.Content.ReadAsStringAsync();
+                            //result.Wait();
+                            httpResult = result.Result;
+                        }
+                    }
+                    #endregion
                 }
-                #region 超时
-                //if (task.Wait(timeOutInMillisecond))
-                //{
-                //    HttpResponseMessage response = task.Result;
-                //    if (response.StatusCode == HttpStatusCode.OK)
-                //    {
-                //        Task<string> result = response.Content.ReadAsStringAsync();
-                //        result.Wait();
-                //        return result.Result;
-                //    }
-                //}
-                #endregion
             }
-            return null;
+            catch (Exception ex)
+            {
+                return new ResultModel<string>() { Success = false };
+            }
+            return new ResultModel<string>() { Success = true, Data = httpResult };
         }
+    
 
-        public T CreateClientPost<T>(string url, string parameters, int timeOutInMillisecond)
+        public ResultModel<T> CreateClientPost<T>(string url, string parameters, int timeOutInMillisecond=15000)
         {
-            using (HttpClient client = new HttpClient())
+            ResultModel<T> tHttpResult = new ResultModel<T>();
+            try
             {
-                HttpContent content = new StringContent(parameters);
-
-                content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-                content.Headers.ContentType.CharSet = "utf-8";
-                Task<HttpResponseMessage> task = client.PostAsync(url, content);
-                HttpResponseMessage response = task.Result;
-                if (response.StatusCode == HttpStatusCode.OK)
+                using (HttpClient client = new HttpClient())
                 {
-                    Task<string> result = response.Content.ReadAsStringAsync();
-                    result.Wait();
-                    ResultModel<T> t = JsonConvert.DeserializeObject<ResultModel<T>>(result.Result);
-                    return t.Data;
+                    HttpContent content = new StringContent(parameters);
+
+                    content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                    content.Headers.ContentType.CharSet = "utf-8";
+                    Task<HttpResponseMessage> task = client.PostAsync(url, content);
+                    HttpResponseMessage response = task.Result;
+                    if (task.Wait(timeOutInMillisecond))
+                    {
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            Task<string> result = response.Content.ReadAsStringAsync();
+                            //result.Wait();
+                            tHttpResult = JsonConvert.DeserializeObject<ResultModel<T>>(result.Result)!;
+                        }
+                    }
                 }
             }
-            return default(T);
+            catch (Exception ex)
+            {
+                return new ResultModel<T>() { Success = false };
+            }
+
+            return tHttpResult;
         }
 
         /// <summary>
@@ -395,69 +409,83 @@ namespace susalem.wpf.Services
         /// <param name="url">地址</param>
         /// <param name="dic">请求参数定义</param>
         /// <returns></returns>
-        public string CreateClientGet(string url, Dictionary<string, string> dic)
+        public ResultModel<string> CreateClientGet(string url, Dictionary<string, string> dic,int timeOutInMillisecond=15000)
         {
-            string result = string.Empty;
-            StringBuilder builder = new StringBuilder();
-            builder.Append(url);
-            if (dic.Count > 0)
+            string httpResult = string.Empty;
+            try
             {
-                builder.Append("?");
-                int i = 0;
-                foreach (var item in dic)
+                StringBuilder builder = new StringBuilder();
+                builder.Append(url);
+                if (dic.Count > 0)
                 {
-                    if (i > 0)
-                        builder.Append("&");
-                    builder.AppendFormat("{0}={1}", item.Key, item.Value);
-                    i++;
+                    builder.Append("?");
+                    int i = 0;
+                    foreach (var item in dic)
+                    {
+                        if (i > 0)
+                            builder.Append("&");
+                        builder.AppendFormat("{0}={1}", item.Key, item.Value);
+                        i++;
+                    }
+                }
+                using (HttpClient client = new HttpClient())
+                {
+                    Task<HttpResponseMessage> task = client.GetAsync(builder.ToString());
+                    if (task.Wait(timeOutInMillisecond))
+                    {
+                        HttpResponseMessage response = task.Result;
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            httpResult = response.Content.ReadAsStringAsync().Result;
+                        }
+                    }
                 }
             }
-            using (HttpClient client = new HttpClient())
+            catch (Exception ex)
             {
-                Task<HttpResponseMessage> task = client.GetAsync(builder.ToString());
-                HttpResponseMessage response = task.Result;
-                if (response.StatusCode == HttpStatusCode.OK)
-                {
-                    Task<string> taskResponse = response.Content.ReadAsStringAsync();
-                    taskResponse.Wait();
-                    return taskResponse.Result;
-                }
+                return new ResultModel<string> { Success = false };
             }
-
-            return result;
+            return new ResultModel<string>{Data = httpResult,Success = true};
         }
 
-        public T CreateClientGet<T>(string url, Dictionary<string, string> dic)
+        public ResultModel<T> CreateClientGet<T>(string url, Dictionary<string, string> dic, int timeOutInMillisecond = 15000)
         {
-            string result = string.Empty;
-            StringBuilder builder = new StringBuilder();
-            builder.Append(url);
-            if (dic.Count > 0)
+            ResultModel<T> tHttpResult = new ResultModel<T>();
+            try
             {
-                builder.Append("?");
-                int i = 0;
-                foreach (var item in dic)
+                StringBuilder builder = new StringBuilder();
+                builder.Append(url);
+                if (dic.Count > 0)
                 {
-                    if (i > 0)
-                        builder.Append("&");
-                    builder.AppendFormat("{0}={1}", item.Key, item.Value);
-                    i++;
+                    builder.Append("?");
+                    int i = 0;
+                    foreach (var item in dic)
+                    {
+                        if (i > 0)
+                            builder.Append("&");
+                        builder.AppendFormat("{0}={1}", item.Key, item.Value);
+                        i++;
+                    }
+                }
+                using (HttpClient client = new HttpClient())
+                {
+                    Task<HttpResponseMessage> task = client.GetAsync(builder.ToString());
+                    HttpResponseMessage response = task.Result;
+                    if (response.StatusCode == HttpStatusCode.OK)
+                    {
+                        string taskResponse = response.Content.ReadAsStringAsync().Result;
+                        //taskResponse.Wait();
+                        tHttpResult = JsonConvert.DeserializeObject<ResultModel<T>>(taskResponse);
+                    }
                 }
             }
-            using (HttpClient client = new HttpClient())
+            catch (Exception ex)
             {
-                Task<HttpResponseMessage> task = client.GetAsync(builder.ToString());
-                HttpResponseMessage response = task.Result;
-                if (response.StatusCode == HttpStatusCode.OK)
-                {
-                    string taskResponse = response.Content.ReadAsStringAsync().Result;
-                    //taskResponse.Wait();
-                    ResultModel<T> t = JsonConvert.DeserializeObject<ResultModel<T>>(taskResponse);
-                    return t.Data;
-                }
+                return new ResultModel<T>() { Success = false };
             }
 
-            return default(T);
+
+            return tHttpResult;
         }
     }
 }
