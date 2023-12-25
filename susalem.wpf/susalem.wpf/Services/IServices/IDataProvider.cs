@@ -20,13 +20,13 @@ namespace susalem.wpf.Services.IServices
 
             Task<HttpResponse<T>> PostData<T>(string url, object data);
 
-            string CreateClientPost(string url, string parameters, int timeOutInMillisecond);
+            ResultModel<string> CreateClientPost(string url, string parameters, int timeOutInMillisecond = 15000)
 
-            T CreateClientPost<T>(string url, string parameters, int timeOutInMillisecond);
+            ResultModel<T> CreateClientPost<T>(string url, string parameters, int timeOutInMillisecond = 15000)
 
-            string CreateClientGet(string url, Dictionary<string, string> dic);
+            ResultModel<string> CreateClientGet(string url, Dictionary<string, string> dic, int timeOutInMillisecond = 15000)
 
-            T CreateClientGet<T>(string url, Dictionary<string, string> dic);
+            ResultModel<T> CreateClientGet<T>(string url, Dictionary<string, string> dic, int timeOutInMillisecond = 15000)
 
         }
 
