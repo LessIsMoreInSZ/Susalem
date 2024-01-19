@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace susalem.wpf.Services
@@ -33,7 +34,14 @@ namespace susalem.wpf.Services
                 // 创建 SignalR 连接
                 HubConnection = new HubConnectionBuilder()
                     .WithUrl(url)
+                    .WithAutomaticReconnect(new RetryPolicy())
                     .Build();
+
+                HubConnection.Closed += async (error) =>
+                {
+                    await Task.Delay(1 * 1000);
+                    await HubConnection.StartAsync();
+                };
                 HubConnection.On<string, string>("SendMessage", (user, message) =>
                 {
                     try
@@ -46,7 +54,14 @@ namespace susalem.wpf.Services
                     }
                 });
 
-                HubConnection.StartAsync().Wait();
+                Task.Run(() =>
+                {
+                    while (HubConnection.State != HubConnectionState.Connected)
+                    {
+                        Thread.Sleep(3 * 1000);
+                        HubConnection.StartAsync();
+                    }
+                });
             }
             catch (Exception ex)
             {
