@@ -9,27 +9,26 @@ namespace susalem.wpf.Services.IServices
 {
     public interface IDataProvider
     {
-        public interface IDataProvider
-        {
-            string Url { get; set; }
-            TimeSpan TimeOut { get; set; }
+        string Url { get; set; }
+        TimeSpan TimeOut { get; set; }
 
-            Task<HttpResponse<T>> PostData<T>(string url, Dictionary<string, string> data);
+        Task<HttpResponse<T>> PostData<T>(string url, Dictionary<string, string> data);
 
-            Task<HttpResponse<T>> PostData<T>(string url, string json = "{}");
+        Task<HttpResponse<T>> PostData<T>(string url, string json = "{}");
 
-            Task<HttpResponse<T>> PostData<T>(string url, object data);
+        Task<HttpResponse<T>> PostData<T>(string url, object data);
 
-            ResultModel<string> CreateClientPost(string url, string parameters, int timeOutInMillisecond = 15000);
+        ResultModel<string> CreateClientPost(string url, string parameters, int timeOutInMillisecond);
 
-            ResultModel<T> CreateClientPost<T>(string url, string parameters, int timeOutInMillisecond = 15000);
+        ResultModel<T> CreateClientPost<T>(string url, string parameters, int timeOutInMillisecond);
 
-            ResultModel<string> CreateClientGet(string url, Dictionary<string, string> dic, int timeOutInMillisecond = 15000);
+        Task<ResultModel<T>> CreateClientPostAsync<T>(string url, string parameters);
 
-            ResultModel<T> CreateClientGet<T>(string url, Dictionary<string, string> dic, int timeOutInMillisecond = 15000);
+        ResultModel<string> CreateClientGet(string url, Dictionary<string, string> dic, int timeOutInMillisecond);
 
-        }
+        ResultModel<T> CreateClientGet<T>(string url, Dictionary<string, string> dic, int timeOutInMillisecond);
 
+        Task<ResultModel<T>> CreateClientGetAsync<T>(string url, Dictionary<string, string> dic);
 
     }
 }

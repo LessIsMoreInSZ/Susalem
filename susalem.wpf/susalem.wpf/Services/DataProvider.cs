@@ -1,4 +1,5 @@
 ﻿using ControlzEx.Standard;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using susalem.wpf.Models.HttpModels;
 using susalem.wpf.Services.IServices;
@@ -17,7 +18,7 @@ namespace susalem.wpf.Services
     public class ApiDataProvider : IDataProvider
     {
         private HttpClient _httpClient;
-        //private Logger _logger; //nlog，明天再配
+        //private Logger _logger;
         public ApiDataProvider()
         {
 
@@ -170,7 +171,6 @@ namespace susalem.wpf.Services
                 return new HttpResponse() { Msg = ex.Message, Success = false };
             }
         }
-
 
 
         #region HttpClient
@@ -337,7 +337,7 @@ namespace susalem.wpf.Services
         /// <param name="parameters"></param>
         /// <param name="timeOutInMillisecond"></param>
         /// <returns></returns>
-        public ResultModel<string> CreateClientPost(string url, string parameters, int timeOutInMillisecond=15000)
+        public ResultModel<string> CreateClientPost(string url, string parameters, int timeOutInMillisecond = 15000)
         {
             string httpResult = string.Empty;
             try
@@ -369,9 +369,9 @@ namespace susalem.wpf.Services
             }
             return new ResultModel<string>() { Success = true, Data = httpResult };
         }
-    
 
-        public ResultModel<T> CreateClientPost<T>(string url, string parameters, int timeOutInMillisecond=15000)
+
+        public ResultModel<T> CreateClientPost<T>(string url, string parameters, int timeOutInMillisecond = 15000)
         {
             ResultModel<T> tHttpResult = new ResultModel<T>();
             try
@@ -390,8 +390,37 @@ namespace susalem.wpf.Services
                         {
                             Task<string> result = response.Content.ReadAsStringAsync();
                             //result.Wait();
-                            tHttpResult = JsonConvert.DeserializeObject<ResultModel<T>>(result.Result)!;
+                            tHttpResult = JsonConvert.DeserializeObject<ResultModel<T>>(result.Result);
                         }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return new ResultModel<T>() { Success = false };
+            }
+
+            return tHttpResult;
+        }
+
+
+        public async Task<ResultModel<T>> CreateClientPostAsync<T>(string url, string parameters)
+        {
+            ResultModel<T> tHttpResult = new ResultModel<T>();
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    HttpContent content = new StringContent(parameters);
+
+                    content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                    content.Headers.ContentType.CharSet = "utf-8";
+                    HttpResponseMessage response = await client.PostAsync(url, content);
+                    if (response.StatusCode == HttpStatusCode.OK)
+                    {
+                        string result = await response.Content.ReadAsStringAsync();
+                        //result.Wait();
+                        tHttpResult = JsonConvert.DeserializeObject<ResultModel<T>>(result);
                     }
                 }
             }
@@ -409,7 +438,7 @@ namespace susalem.wpf.Services
         /// <param name="url">地址</param>
         /// <param name="dic">请求参数定义</param>
         /// <returns></returns>
-        public ResultModel<string> CreateClientGet(string url, Dictionary<string, string> dic,int timeOutInMillisecond=15000)
+        public ResultModel<string> CreateClientGet(string url, Dictionary<string, string> dic, int timeOutInMillisecond = 15000)
         {
             string httpResult = string.Empty;
             try
@@ -445,7 +474,7 @@ namespace susalem.wpf.Services
             {
                 return new ResultModel<string> { Success = false };
             }
-            return new ResultModel<string>{Data = httpResult,Success = true};
+            return new ResultModel<string> { Data = httpResult, Success = true };
         }
 
         public ResultModel<T> CreateClientGet<T>(string url, Dictionary<string, string> dic, int timeOutInMillisecond = 15000)
@@ -470,13 +499,17 @@ namespace susalem.wpf.Services
                 using (HttpClient client = new HttpClient())
                 {
                     Task<HttpResponseMessage> task = client.GetAsync(builder.ToString());
-                    HttpResponseMessage response = task.Result;
-                    if (response.StatusCode == HttpStatusCode.OK)
+                    if (task.Wait(timeOutInMillisecond))
                     {
-                        string taskResponse = response.Content.ReadAsStringAsync().Result;
-                        //taskResponse.Wait();
-                        tHttpResult = JsonConvert.DeserializeObject<ResultModel<T>>(taskResponse);
+                        HttpResponseMessage response = task.Result;
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            string taskResponse = response.Content.ReadAsStringAsync().Result;
+                            //taskResponse.Wait();
+                            tHttpResult = JsonConvert.DeserializeObject<ResultModel<T>>(taskResponse);
+                        }
                     }
+
                 }
             }
             catch (Exception ex)
@@ -487,5 +520,43 @@ namespace susalem.wpf.Services
 
             return tHttpResult;
         }
+
+        public async Task<ResultModel<T>> CreateClientGetAsync<T>(string url, Dictionary<string, string> dic)
+        {
+            ResultModel<T> tHttpResult = new ResultModel<T>();
+            try
+            {
+                StringBuilder builder = new StringBuilder();
+                builder.Append(url);
+                if (dic.Count > 0)
+                {
+                    builder.Append("?");
+                    int i = 0;
+                    foreach (var item in dic)
+                    {
+                        if (i > 0)
+                            builder.Append("&");
+                        builder.AppendFormat("{0}={1}", item.Key, item.Value);
+                        i++;
+                    }
+                }
+                using (HttpClient client = new HttpClient())
+                {
+                    HttpResponseMessage response = await client.GetAsync(builder.ToString());
+                    if (response.StatusCode == HttpStatusCode.OK)
+                    {
+                        string taskResponse = await response.Content.ReadAsStringAsync();
+                        tHttpResult = JsonConvert.DeserializeObject<ResultModel<T>>(taskResponse);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return new ResultModel<T>() { Success = false };
+            }
+
+            return tHttpResult;
+        }
+
     }
 }
