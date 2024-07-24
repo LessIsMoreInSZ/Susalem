@@ -9,14 +9,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="image\" />
+    <None Remove="image\btn_bg.png" />
+    <None Remove="image\tit_bg.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="ViewModels\" />
     <Folder Include="Models\" />
     <Folder Include="Services\" />
+    <Folder Include="Entities\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="HandyControl" Version="3.5.1" />
+    <PackageReference Include="HslCommunication" Version="12.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.26" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.26" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.26">
@@ -25,6 +31,15 @@
     </PackageReference>
     <PackageReference Include="Prism.Unity" Version="8.1.97" />
     <PackageReference Include="Prism.Wpf" Version="8.1.97" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="image\btn_bg.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="image\tit_bg.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

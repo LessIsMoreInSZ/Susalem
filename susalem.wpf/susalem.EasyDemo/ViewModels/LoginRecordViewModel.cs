@@ -1,10 +1,10 @@
-﻿using HQSCore.Models;
-using HQSCore.Services;
-using HslCommunication.Core.Net;
+﻿using HslCommunication.Core.Net;
 using HslCommunication.Secs.Types;
 using Microsoft.Extensions.Logging;
 using Prism.Mvvm;
 using Prism.Regions;
+using susalem.EasyDemo.Models;
+using susalem.EasyDemo.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -64,7 +64,7 @@ namespace susalem.EasyDemo.ViewModels
         {
             var _result = _userService.FindAllUser();
 
-            if (_result!=null&&_result.Count!=0)
+            if (_result!=null)
             {
                 foreach (var user in _result)
                 {

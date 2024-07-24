@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using susalem.EasyDemo.Entities;
+using susalem.EasyDemo.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -27,6 +29,8 @@ namespace susalem.EasyDemo.Repository
 
         //public DbSet<AlarmModel>? Alarms { get; set; }
 
-        //public DbSet<UserModel>? Users { get; set; }
+        public DbSet<UserModel>? Users { get; set; }
+
+        public DbSet<RoleModel>? Roles { get; set; }
     }
 }
