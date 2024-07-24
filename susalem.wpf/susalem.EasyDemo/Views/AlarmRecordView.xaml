@@ -1,12 +1,152 @@
-﻿<UserControl x:Class="susalem.EasyDemo.Views.AlarmRecordView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:susalem.EasyDemo.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+﻿<UserControl
+    x:Class="susalem.EasyDemo.Views.AlarmRecordView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:susalem.EasyDemo.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="Background" Value="#3991EB" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="14" />
+            <!--  更改鼠标悬停时的背景色  -->
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="BlueViolet" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style BasedOn="{StaticResource ListView.Small}" TargetType="{x:Type ListView}">
+            <Style.Triggers>
+                <!--  偶数行（AlternationIndex为偶数）的样式  -->
+                <Trigger Property="AlternationIndex" Value="0">
+                    <Setter Property="Background" Value="White" />
+                </Trigger>
+                <!--  奇数行（AlternationIndex为奇数）的样式  -->
+                <Trigger Property="AlternationIndex" Value="1">
+                    <Setter Property="Background" Value="Gray" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!--<Style TargetType="{x:Type ListViewItem}">
+         <Style.Triggers>
+             <Trigger Property="AlternationIndex" Value="0">
+        -->
+        <!--  偶数行样式  -->
+        <!--
+                 <Setter Property="Background" Value="LightBlue" />
+             </Trigger>
+             <Trigger Property="AlternationIndex" Value="1">
+        -->
+        <!--  奇数行样式  -->
+        <!--
+                 <Setter Property="Background" Value="White" />
+             </Trigger>
+         </Style.Triggers>
+     </Style>-->
+    </UserControl.Resources>
     <Grid>
-            
+        <!--<ListView Background="White" ItemsSource="{Binding DataList}">
+         <ListView.View>
+             <GridView>
+                 <GridViewColumn
+                     Width="80"
+                     DisplayMemberBinding="{Binding Index}"
+                     Header="1" />
+                 <GridViewColumn
+                     Width="100"
+                     DisplayMemberBinding="{Binding Name}"
+                     Header="2" />
+                 <GridViewColumn
+                     Width="200"
+                     DisplayMemberBinding="{Binding Remark}"
+                     Header="3" />
+             </GridView>
+         </ListView.View>
+     </ListView>-->
+
+        <DataGrid
+            x:Name="dataGrid"
+            Grid.Row="2"
+            AlternationCount="2"
+            AutoGenerateColumns="False"
+            ItemsSource="{Binding DataList}">
+            <DataGrid.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="DarkOrange" />
+                <!--  自定义选中时的背景色  -->
+                <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Transparent" />
+                <!--  保持非焦点状态下的边框颜色透明  -->
+            </DataGrid.Resources>
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Style.Triggers>
+                        <!--  偶数行（AlternationIndex为0）  -->
+                        <Trigger Property="AlternationIndex" Value="0">
+                            <Setter Property="Background" Value="#F6F6F6" />
+                        </Trigger>
+                        <!--  奇数行（AlternationIndex为1）  -->
+                        <Trigger Property="AlternationIndex" Value="1">
+                            <Setter Property="Background" Value="White" />
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Foreground" Value="White" />
+                            <!--  设置选中时的文本颜色  -->
+                            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                            <!--  应用自定义的选中背景色  -->
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="FontSize" Value="20" />
+                    <Setter Property="FontWeight" Value="Bold" />
+                    <!--  设置字体大小  -->
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="Background" Value="#3991EB" />
+                    <Setter Property="VerticalAlignment" Value="Center" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type DataGridColumnHeader}">
+                                <Border
+                                    x:Name="bg"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="10">
+                                    <!--  设置圆角  -->
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Stretch" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Name}"
+                    Header="angle" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Index}"
+                    Header="lower limit" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Remark}"
+                    Header="upper limit" />
+            </DataGrid.Columns>
+            <!--  这里添加列定义和其他内容  -->
+        </DataGrid>
+
     </Grid>
 </UserControl>

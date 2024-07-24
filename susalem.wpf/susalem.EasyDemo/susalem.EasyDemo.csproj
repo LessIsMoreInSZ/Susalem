@@ -10,14 +10,23 @@
 
   <ItemGroup>
     <None Remove="image\btn_bg.png" />
+    <None Remove="image\icon_warning-1.png" />
+    <None Remove="image\icon_warning-2.png" />
+    <None Remove="image\icon_上机.png" />
+    <None Remove="image\icon_历史记录.png" />
+    <None Remove="image\icon_参数设置.png" />
+    <None Remove="image\icon_回温.png" />
+    <None Remove="image\icon_报警记录.png" />
+    <None Remove="image\icon_账户切换.png" />
     <None Remove="image\tit_bg.png" />
+    <None Remove="image\大国工匠.jpg" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\" />
     <Folder Include="Models\" />
     <Folder Include="Services\" />
     <Folder Include="Entities\" />
+    <Folder Include="ViewModels\Dialogs\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,6 +38,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.122" />
     <PackageReference Include="Prism.Unity" Version="8.1.97" />
     <PackageReference Include="Prism.Wpf" Version="8.1.97" />
   </ItemGroup>
@@ -37,7 +47,34 @@
     <Resource Include="image\btn_bg.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="image\icon_warning-1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="image\icon_warning-2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="image\icon_上机.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="image\icon_历史记录.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="image\icon_参数设置.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="image\icon_回温.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="image\icon_报警记录.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="image\icon_账户切换.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="image\tit_bg.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="image\大国工匠.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

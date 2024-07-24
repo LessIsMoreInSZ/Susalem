@@ -1,8 +1,11 @@
 ﻿using HslCommunication.Core.Net;
 using HslCommunication.Secs.Types;
 using Microsoft.Extensions.Logging;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
+using Prism.Services.Dialogs;
+using susalem.EasyDemo.Entities;
 using susalem.EasyDemo.Models;
 using susalem.EasyDemo.Services;
 using System;
@@ -13,6 +16,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
+using System.Windows.Input;
 
 namespace susalem.EasyDemo.ViewModels
 {
@@ -20,13 +24,39 @@ namespace susalem.EasyDemo.ViewModels
     {
         private readonly IRegionManager _regionManager;
         private readonly IUserService _userService;
-        public LoginRecordViewModel(IRegionManager regionManager)
+        private readonly IDialogService _dialogService;
+        private readonly IRoleService _roleService;
+        public LoginRecordViewModel(IDialogService dialogService, IRegionManager regionManager,
+            IUserService userService, IRoleService roleService)
         {
+            _dialogService = dialogService;
             _regionManager = regionManager;
-           // _userService = userService;
-            //LoadUser();
+            _userService = userService;
+            _roleService = roleService;
+
+
+
         }
 
+        private ObservableCollection<RoleModel> roleModels = new ObservableCollection<RoleModel>();
+
+        public ObservableCollection<RoleModel> RoleModels
+        {
+            get { return roleModels; }
+            set
+            {
+                roleModels = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        private ObservableCollection<UserModel>? _allUser = new ObservableCollection<UserModel>();
+
+        public ObservableCollection<UserModel>? AllUser
+        {
+            get { return _allUser; }
+            set { _allUser = value; RaisePropertyChanged(); }
+        }
 
         private ObservableCollection<string> _users = new ObservableCollection<string>();
 
@@ -60,20 +90,50 @@ namespace susalem.EasyDemo.ViewModels
             set { _errorMessage = value; RaisePropertyChanged(); }
         }
 
-        private void LoadUser()
+        private async Task LoadUser()
         {
-            var _result = _userService.FindAllUser();
-
-            if (_result!=null)
+            await Task.Run(() =>
             {
-                foreach (var user in _result)
+                var _result = _userService.FindAllUser();
+
+                if (_result != null && _result.Count != 0)
                 {
-                    if (!string.IsNullOrWhiteSpace(user.UserName))
+                    Application.Current.Dispatcher.Invoke(() =>
                     {
-                        Users?.Add(user.UserName);
+                        AllUser.Clear();
+                        foreach (var user in _result)
+                        {
+                            if (!string.IsNullOrWhiteSpace(user.UserName))
+                            {
+                                Users?.Add(user.UserName);
+                                AllUser.Add(user);
+                            }
+                        }
+                    });
+
+                }
+            });
+        }
+
+        private async Task LoadAllRoles()
+        {
+            await Task.Run(() =>
+            {
+                var _result = _roleService.FindAllRole();
+
+                if (_result != null && _result.Count != 0)
+                {
+                    RoleModels.Clear();
+                    foreach (var role in _result)
+                    {
+                        if (!string.IsNullOrWhiteSpace(role.RoleName))
+                        {
+                            RoleModels?.Add(role);
+                        }
                     }
                 }
-            }
+            });
+
         }
 
         private void Login()
@@ -95,11 +155,16 @@ namespace susalem.EasyDemo.ViewModels
             {
                 try
                 {
-                    UserModel resultModel = _userService.Login(UserName, Password,false);
+                    UserModel resultModel = _userService.Login(UserName, Password, false);
 
-                    if (resultModel!=null)
+                    if (resultModel != null)
                     {
                         OverAllContext.User = resultModel!;
+                        Application.Current.Dispatcher.Invoke(() =>
+                        {
+                            _dialogService.ShowDialog("MessageView", new DialogParameters() { { "Content", "登录成功!" } }, null);
+                        });
+
                         //Application.Current.Dispatcher.Invoke(() => RequestClose?.Invoke(new DialogResult(ButtonResult.OK)));
                         //AppSession.IsLogon = false;
                     }
@@ -116,6 +181,46 @@ namespace susalem.EasyDemo.ViewModels
             });
         }
 
+        public ICommand RegisterCommand
+        {
+            get => new DelegateCommand(() =>
+            {
+                DialogParameters keyValuePairs = new DialogParameters();
+                keyValuePairs.Add("Users", AllUser);
+                keyValuePairs.Add("Roles", RoleModels);
+                _dialogService.ShowDialog("AddUserView", keyValuePairs, callback =>
+                {
+                    if (callback.Result == ButtonResult.OK)
+                    {
+                        LoadUser();
+                    }
+                });
+            });
+        }
 
+        public ICommand LoginCommand
+        {
+            get => new DelegateCommand(() =>
+            {
+                Login();
+            });
+        }
+
+        public ICommand PageLoaded
+        {
+            get => new DelegateCommand(async () =>
+            {
+                await LoadUser();
+                await LoadAllRoles();
+            });
+        }
+
+        public ICommand PageUnLoaded
+        {
+            get => new DelegateCommand(() =>
+            {
+                //Login();
+            });
+        }
     }
 }

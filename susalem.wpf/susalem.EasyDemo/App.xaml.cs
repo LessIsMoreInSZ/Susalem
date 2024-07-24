@@ -1,7 +1,10 @@
 ﻿using Prism.Ioc;
 using Prism.Unity;
+using susalem.EasyDemo.Services;
 using susalem.EasyDemo.ViewModels;
+using susalem.EasyDemo.ViewModels.Dialogs;
 using susalem.EasyDemo.Views;
+using susalem.EasyDemo.Views.Dialogs;
 using System.Configuration;
 using System.Data;
 using System.Windows;
@@ -20,6 +23,9 @@ namespace susalem.EasyDemo
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.Register<IUserService, UserService>();
+            containerRegistry.Register<IRoleService, RoleService>();
+
             containerRegistry.RegisterForNavigation<MainWindow, MainWindowViewModel>();
 
             containerRegistry.RegisterForNavigation<AlarmRecordView, AlarmRecordViewModel>();
@@ -28,6 +34,12 @@ namespace susalem.EasyDemo
             containerRegistry.RegisterForNavigation<LoginRecordView, LoginRecordViewModel>();
             containerRegistry.RegisterForNavigation<OperateMachineView, OperateMachineViewModel>();
             containerRegistry.RegisterForNavigation<ParameterSettingView, ParameterSettingViewModel>();
+
+            containerRegistry.RegisterDialog<ErrorView, ErrorViewModel>();
+            containerRegistry.RegisterDialog<WarningView, WarningViewModel>();
+            containerRegistry.RegisterDialog<AddUserView, AddUserViewModel>();
+            containerRegistry.RegisterDialog<MessageView, MessageViewModel>();
+
         }
     }
 
