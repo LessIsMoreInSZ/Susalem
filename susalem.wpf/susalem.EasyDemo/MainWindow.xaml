@@ -10,18 +10,79 @@
     Title="MainWindow"
     Width="1200"
     Height="800"
+    WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Window.Resources>
         <Style TargetType="Button">
-            <!--  BasedOn="{StaticResource ButtonDashedInfo}"  -->
             <Setter Property="Width" Value="150" />
             <Setter Property="Height" Value="60" />
             <Setter Property="FontSize" Value="22" />
             <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="1" ScaleY="1" />
+                </Setter.Value>
+            </Setter>
             <Setter Property="Background">
                 <Setter.Value>
                     <ImageBrush ImageSource="pack://application:,,,/image/btn_bg.png" Stretch="UniformToFill" />
                 </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="5">
+                            <ContentPresenter
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Content="{TemplateBinding Content}" />
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                                BeginTime="00:00:00"
+                                                Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                                To="1.1"
+                                                Duration="00:00:0.1" />
+                                            <DoubleAnimation
+                                                BeginTime="00:00:00"
+                                                Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                                To="1.1"
+                                                Duration="00:00:0.1" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                                BeginTime="00:00:00"
+                                                Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                                To="1"
+                                                Duration="00:00:0.1" />
+                                            <DoubleAnimation
+                                                BeginTime="00:00:00"
+                                                Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                                To="1"
+                                                Duration="00:00:0.1" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+
             </Setter>
         </Style>
     </Window.Resources>
@@ -87,20 +148,26 @@
             </Button>
             <Button Grid.Column="1" Command="{Binding LoginCommand}">
                 <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="7*" />
+                        <RowDefinition Height="8*" />
+                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <Image
+                        Grid.RowSpan="2"
                         Grid.Column="0"
                         Width="20"
                         Height="20"
-                        Margin="5"
+                        Margin="5,5,5,5"
                         Source="pack://application:,,,/image/icon_账户切换.png" />
                     <ContentPresenter
+                        Grid.RowSpan="2"
                         Grid.Column="1"
-                        Margin="5,0,0,0"
-                        VerticalAlignment="Center"
+                        Margin="5,1,0,0"
+                        VerticalAlignment="Top"
                         Content="账户切换" />
                 </Grid>
             </Button>
