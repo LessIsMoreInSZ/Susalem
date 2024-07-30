@@ -101,6 +101,7 @@ namespace susalem.EasyDemo.ViewModels
                     Application.Current.Dispatcher.Invoke(() =>
                     {
                         AllUser.Clear();
+                        Users.Clear();
                         foreach (var user in _result)
                         {
                             if (!string.IsNullOrWhiteSpace(user.UserName))
