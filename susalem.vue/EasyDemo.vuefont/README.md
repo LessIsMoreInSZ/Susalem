@@ -1,39 +1,23 @@
 # EasyDemo.vuefont
 
-This template should help get you started developing with Vue 3 in Vite.
+这个模板可以帮助您开始在 Vite 中使用 Vue 3 进行开发。
 
-## Recommended IDE Setup
+## IDE:
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+vscode和volar插件
 
-## Type Support for `.vue` Imports in TS
+## 项目组成
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+Vue+ElementPlus+pinia+Ts
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+## 项目安装依赖
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### 项目本地运行
 
 ```sh
 npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
 ```
