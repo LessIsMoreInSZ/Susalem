@@ -8,13 +8,13 @@ namespace susalem.vue.Controllers
     [Route("[controller]")]
     public class UserController : ControllerBase
     {
-        private readonly UserService _userService; // 定义一个只读字段来存储用户服务
-        private readonly ILogger<UserController> _logger; // 定义一个只读字段来存储日志记录器
+        private readonly UserService _userService; 
+        private readonly ILogger<UserController> _logger;
 
         public UserController(UserService userService, ILogger<UserController> logger) // 构造函数，注入用户服务和日志记录器
         {
-            _userService = userService; // 通过构造函数将用户服务赋值给私有字段
-            _logger = logger; // 通过构造函数将日志记录器赋值给私有字段
+            _userService = userService;
+            _logger = logger; 
         }
 
         [HttpPost("Register")]
@@ -87,7 +87,7 @@ namespace susalem.vue.Controllers
             var userRoles = await _userService.GetUserRoles(id);
             if (userRoles == null || userRoles.Count == 0)
             {
-                return NotFound(new { message = "未找到用户角色信息" });
+                return NotFound(new { message = "未找到用户角色信息" }); 
             }
             return Ok(userRoles);
         }
@@ -129,6 +129,41 @@ namespace susalem.vue.Controllers
             {
                 _logger.LogError(ex, "角色分配失败");
                 return StatusCode(500, new { message = "角色分配失败", error = ex.Message });
+            }
+        }
+
+        [HttpPost("ChangeUserRole")] //改变用户角色
+        public async Task<IActionResult> ChangeUserRole([FromBody] ChangeUserRoleDto changeUserRoleDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                await _userService.ChangeUserRole(changeUserRoleDto.UserId, changeUserRoleDto.NewRoleId);
+                return Ok(new { message = "用户角色更改成功" });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "更改用户角色失败");
+                return StatusCode(500, new { message = "更改用户角色失败", error = ex.Message });
+            }
+        }
+
+        [HttpDelete("{userId:int}/roles/{roleId:int}")] //删除用户角色
+        public async Task<IActionResult> RemoveUserRole(int userId, int roleId)
+        {
+            try
+            {
+                await _userService.ChangeUserRole(userId, roleId);
+                return Ok(new { message = "用户角色删除成功" });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "删除用户角色失败");
+                return StatusCode(500, new { message = "删除用户角色失败", error = ex.Message });
             }
         }
 
