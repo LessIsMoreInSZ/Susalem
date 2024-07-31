@@ -8,7 +8,7 @@ vscode和volar插件
 
 ## 项目组成
 
-Vue+ElementPlus+pinia+Ts
+Vue+NaiveUi+pinia+Ts
 
 ## 项目安装依赖
 
