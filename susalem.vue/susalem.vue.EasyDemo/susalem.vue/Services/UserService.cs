@@ -191,5 +191,54 @@ namespace susalem.vue.Services
                 await _dbContext.SaveChangesAsync();
             }
         }
+
+        public async Task ChangeUserRole(int userId, int newRoleId)
+        {
+            // 验证用户是否存在
+            var user = await _dbContext.Users.FindAsync(userId);
+            if (user == null)
+            {
+                throw new ArgumentException("未找到该用户");
+            }
+
+            // 移除用户的所有现有角色
+            var userRoles = await _dbContext.UserRoles
+                .Where(ur => ur.UserId == userId)
+                .ToListAsync();
+
+            _dbContext.UserRoles.RemoveRange(userRoles);
+
+            // 分配新角色
+            var userRole = new UserRole
+            {
+                UserId = userId,
+                RoleId = newRoleId
+            };
+
+            _dbContext.UserRoles.Add(userRole);
+            await _dbContext.SaveChangesAsync();
+        }
+        public async Task RemoveUserRole(int userId, int roleId)
+        {
+            // 验证用户是否存在
+            var user = await _dbContext.Users.FindAsync(userId);
+            if (user == null)
+            {
+                throw new ArgumentException("未找到该用户");
+            }
+
+            // 查找用户的角色关联
+            var userRole = await _dbContext.UserRoles
+                .FirstOrDefaultAsync(ur => ur.UserId == userId && ur.RoleId == roleId);
+
+            if (userRole == null)
+            {
+                throw new ArgumentException("无用户角色");
+            }
+
+            _dbContext.UserRoles.Remove(userRole);
+            await _dbContext.SaveChangesAsync();
+            await AssignDefaultRole(user.Id);
+        }
     }
 }

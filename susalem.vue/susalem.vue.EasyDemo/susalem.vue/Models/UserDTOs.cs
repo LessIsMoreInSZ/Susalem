@@ -64,4 +64,10 @@ namespace susalem.vue.Models
         public int RoleId { get; set; }
         public string RoleName { get; set; }
     }
+    public class ChangeUserRoleDto
+    {
+        public int UserId { get; set; }
+        public int OldRoleId { get; set; }
+        public int NewRoleId { get; set; }
+    }
 }
