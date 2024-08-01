@@ -1,0 +1,6 @@
+@susalem.vue_HostAddress = http://localhost:5298
+
+GET {{susalem.vue_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
