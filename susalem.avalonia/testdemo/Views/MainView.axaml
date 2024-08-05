@@ -4,12 +4,17 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:u="Klinik - Clinic Website Template"
+    xmlns:u="https://irihi.tech/ursa"
     xmlns:vm="clr-namespace:testdemo.ViewModels"
     d:DesignHeight="450"
     d:DesignWidth="800"
     x:DataType="vm:MainViewModel"
     mc:Ignorable="d">
+    <!--<UserControl.Resources>
+        <Style>
+            <Setter Property="FontFamily" Value="{StaticResource MyFont}" />
+        </Style>
+    </UserControl.Resources>-->
     <Design.DataContext>
         <!--
             This only sets the DataContext for the previewer in an IDE,
@@ -17,14 +22,19 @@
         -->
         <vm:MainViewModel />
     </Design.DataContext>
-    <StackPanel>
+    <!--<StackPanel>
         <TextBlock
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Text="{Binding Greeting}" />
-        <!--<u:ButtonGroup>
-            <Button>Hello</Button>
+
+    </StackPanel>-->
+	<!--FontFamily="{StaticResource MyFont}"-->
+	<StackPanel Margin="20">
+        <u:ButtonGroup Classes="Solid Warning">
+            <Button Content="你好" />
             <Button Content="World" />
-        </u:ButtonGroup>-->
+        </u:ButtonGroup>
+        <u:TagInput />
     </StackPanel>
 </UserControl>

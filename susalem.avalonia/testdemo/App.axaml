@@ -1,14 +1,18 @@
-
 <Application
     x:Class="testdemo.App"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:u-semi="Klinik - Clinic Website Template">
+    xmlns:u-semi="https://irihi.tech/ursa/themes/semi">
     <!--  RequestedThemeVariant="Default">  -->
     <!--  "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options.  -->
+    <!--<Application.Resources>
+        <FontFamily x:Key="MyFont">avares://Assets//FontFamily/Alibaba_PuHuiTi_2.0_115_Black_115_Black.ttf</FontFamily>
+    </Application.Resources>-->
 
     <Application.Styles>
         <!--<FluentTheme />-->
         <!--<StyleInclude Source="avares://Semi.Avalonia/Themes/Index.axaml" />-->
-        <!--<u-semi:SemiTheme Locale="zh-CN" />-->
+
+        <u-semi:SemiTheme Locale="zh-CN" />
+
     </Application.Styles>
 </Application>
