@@ -17,6 +17,10 @@ declare module 'vue' {
     NSpace: typeof import('naive-ui')['NSpace']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SearchFooter: typeof import('./src/components/SearchMenu/SearchFooter.vue')['default']
+    SearchMenu: typeof import('./src/components/SearchMenu/index.vue')['default']
+    SearchModal: typeof import('./src/components/SearchMenu/SearchModal.vue')['default']
+    SearchResult: typeof import('./src/components/SearchMenu/SearchResult.vue')['default']
     TheWelcome: typeof import('./src/components/TheWelcome.vue')['default']
     WelcomeItem: typeof import('./src/components/WelcomeItem.vue')['default']
   }

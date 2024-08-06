@@ -3,6 +3,7 @@ using susalem.vue.Data;
 using susalem.vue.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+string strDb = $"Data Source = {Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SQLite\\sqlite.db")}";
 
 //¿çÓò
 builder.Services.AddCors(options =>
@@ -23,7 +24,7 @@ builder.Services.AddControllers().AddJsonOptions(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<UserDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlite(strDb));
 builder.Services.AddScoped<UserService>();
 var app = builder.Build();
 
