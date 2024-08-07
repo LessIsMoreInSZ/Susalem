@@ -15,7 +15,7 @@ namespace susalem.vue.Services
 
         public void AddRecipe(Recipe entity)
         {
-             this._db.Add(entity);
+             _db.Add(entity);
         }
 
         public void DeleteRecipe(int id)
@@ -25,17 +25,17 @@ namespace susalem.vue.Services
 
         public List<Recipe> GetAllRecipes()
         {
-            throw new NotImplementedException();
+            return _db.Recipes.Select(x => x).ToList();
         }
 
         public Recipe GetRecipeById(int id)
         {
-            throw new NotImplementedException();
+            return _db.Recipes.Where(x => x.Id == id).FirstOrDefault();
         }
 
         public void UpdateRecipe(Recipe entity)
         {
-            throw new NotImplementedException();
+            _db.Update(entity);
         }
     }
 }
