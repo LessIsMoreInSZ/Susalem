@@ -167,5 +167,18 @@ namespace susalem.vue.Controllers
             }
         }
 
+        [HttpGet("Test")]
+        public async Task<IActionResult> Test()
+        {
+            try
+            {
+                return Ok(new { message = "666" });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "删除用户角色失败");
+                return StatusCode(500, new { message = "删除用户角色失败", error = ex.Message });
+            }
+        }
     }
 }
