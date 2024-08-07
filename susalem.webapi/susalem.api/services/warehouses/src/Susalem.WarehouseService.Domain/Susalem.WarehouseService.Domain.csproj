@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>Susalem.WarehouseService</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Susalem.WarehouseService.Domain.Shared\Susalem.WarehouseService.Domain.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+	  <PackageReference Include="Volo.Abp.Ddd.Domain" Version="6.0.3" />
+  </ItemGroup>
+
+</Project>
