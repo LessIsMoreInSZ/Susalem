@@ -11,6 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Assets\FontFamily\msyh.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Avalonia" Version="11.1.1" />
     <PackageReference Include="Avalonia.Themes.Fluent" Version="11.1.1" />
     <PackageReference Include="Avalonia.Fonts.Inter" Version="11.1.1" />
