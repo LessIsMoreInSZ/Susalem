@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\shared\SusalemAbp.Shared.DbContext\SusalemAbp.Shared.Domain.DbContext.csproj" />
     <ProjectReference Include="..\Susalem.WarehouseService.Domain.Shared\Susalem.WarehouseService.Domain.Shared.csproj" />
   </ItemGroup>
 
