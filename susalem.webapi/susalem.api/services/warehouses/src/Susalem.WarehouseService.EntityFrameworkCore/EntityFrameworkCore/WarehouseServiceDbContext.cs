@@ -2,6 +2,8 @@
 
 using Susalem.WarehouseService.EntityFrameworkCore.DbContextModelCreatingExtensions;
 
+using SusalemAbp.Shared.Domain.DbContext.IDbContext;
+
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
 

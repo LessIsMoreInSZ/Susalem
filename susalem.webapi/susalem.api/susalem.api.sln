@@ -57,6 +57,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Susalem.WarehouseService.Ht
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Susalem.WarehouseService.HttpApi.Client", "services\warehouses\src\Susalem.WarehouseService.HttpApi.Client\Susalem.WarehouseService.HttpApi.Client.csproj", "{3C4DEC7A-A151-4445-8FB7-DC5FABDCD950}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SusalemAbp.Shared.Domain.DbContext", "shared\SusalemAbp.Shared.DbContext\SusalemAbp.Shared.Domain.DbContext.csproj", "{192F3F35-6F55-4DE3-8FF9-5AF83BC2CA1D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -151,6 +153,10 @@ Global
 		{3C4DEC7A-A151-4445-8FB7-DC5FABDCD950}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C4DEC7A-A151-4445-8FB7-DC5FABDCD950}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C4DEC7A-A151-4445-8FB7-DC5FABDCD950}.Release|Any CPU.Build.0 = Release|Any CPU
+		{192F3F35-6F55-4DE3-8FF9-5AF83BC2CA1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{192F3F35-6F55-4DE3-8FF9-5AF83BC2CA1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{192F3F35-6F55-4DE3-8FF9-5AF83BC2CA1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{192F3F35-6F55-4DE3-8FF9-5AF83BC2CA1D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -180,6 +186,7 @@ Global
 		{FE0C3605-363C-4CDB-BD46-823137C65AF5} = {4B97A8DB-4F45-4119-98EA-14EE5884A7EB}
 		{DC1896F4-0562-45AD-9CEE-BBD7582F5A6A} = {4B97A8DB-4F45-4119-98EA-14EE5884A7EB}
 		{3C4DEC7A-A151-4445-8FB7-DC5FABDCD950} = {4B97A8DB-4F45-4119-98EA-14EE5884A7EB}
+		{192F3F35-6F55-4DE3-8FF9-5AF83BC2CA1D} = {D66EC530-4B6F-4FBD-9E21-98BEE00E7C7E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0CABA8B5-9961-451E-8B73-AB5F4B268131}
