@@ -6,10 +6,6 @@
 	</PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\warehouses\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Volo.Abp.EntityFrameworkCore.MySQL" Version="6.0.3" />
   </ItemGroup>
 
