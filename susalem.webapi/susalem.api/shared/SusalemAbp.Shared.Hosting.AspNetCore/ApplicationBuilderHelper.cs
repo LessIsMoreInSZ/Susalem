@@ -19,17 +19,7 @@ public static class ApplicationBuilderHelper
             .UseAutofac()
             .UseSerilog();
         var name = typeof(TStartupModule).Name;
-        try
-        {
-
-      
         await builder.AddApplicationAsync<TStartupModule>();
-        }
-        catch (Exception ex) 
-        {
-
-            throw;
-        }
         return builder.Build();
     }
 }
