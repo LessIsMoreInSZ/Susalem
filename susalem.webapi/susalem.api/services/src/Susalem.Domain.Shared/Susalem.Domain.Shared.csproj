@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>Susalem</RootNamespace>
+    <GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\Susalem\*.json" />
+    <Content Remove="Localization\Susalem\*.json" />
+  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Volo.Abp.Validation" Version="6.0.3" />
+	</ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="6.0.5" />
+  </ItemGroup>
+
+</Project>
