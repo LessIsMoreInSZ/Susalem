@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+
+	<ItemGroup>
+		<PackageReference Include="Volo.Abp.AspNetCore.Mvc" Version="6.0.3" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\Susalem.Abp.Auditing.Application.Contracts\Susalem.Abp.Auditing.Application.Contracts.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Susalem\" />
+	</ItemGroup>
+
+</Project>
