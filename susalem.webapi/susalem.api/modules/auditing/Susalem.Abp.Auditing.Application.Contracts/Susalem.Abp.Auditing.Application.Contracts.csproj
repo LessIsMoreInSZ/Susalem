@@ -8,10 +8,10 @@
 
 
 	<ItemGroup>
-		<PackageReference Include="Volo.Abp.Features" Version="6.0.3" />
-		<PackageReference Include="Volo.Abp.Authorization" Version="6.0.3" />
-		<PackageReference Include="Volo.Abp.AuditLogging.Domain.Shared" Version="6.0.3" />
-		<PackageReference Include="Volo.Abp.Ddd.Application.Contracts" Version="6.0.3" />
+		<PackageReference Include="Volo.Abp.Features" Version="$(VoloAbpPackageVersion)"  />
+		<PackageReference Include="Volo.Abp.Authorization" Version="$(VoloAbpPackageVersion)"  />
+		<PackageReference Include="Volo.Abp.AuditLogging.Domain.Shared" Version="$(VoloAbpPackageVersion)"  />
+		<PackageReference Include="Volo.Abp.Ddd.Application.Contracts" Version="$(VoloAbpPackageVersion)"  />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Susalem\" />
