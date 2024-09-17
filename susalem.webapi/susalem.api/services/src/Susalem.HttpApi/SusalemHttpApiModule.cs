@@ -10,6 +10,7 @@ using Volo.Abp.Identity;
 using Volo.Abp.Identity.Localization;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
+using Volo.Abp.OpenIddict.Localization;
 using Volo.Abp.PermissionManagement.HttpApi;
 using Volo.Abp.SettingManagement;
 using Volo.Abp.TenantManagement;
@@ -34,11 +35,17 @@ public class SusalemHttpApiModule : AbpModule
         {
             options.AddAssemblyResource(typeof(IdentityResource), typeof(AbpIdentityApplicationContractsModule).Assembly);
             options.AddAssemblyResource(typeof(IdentityResource), typeof(Volo.Abp.Identity.AbpIdentityApplicationContractsModule).Assembly);
+
+            options.AddAssemblyResource(typeof(AbpOpenIddictResource), typeof(SusalemHttpApiModule).Assembly);
         });
 
         PreConfigure<IMvcBuilder>(mvcBuilder =>
         {
+
             mvcBuilder.AddApplicationPartIfNotExists(typeof(AbpIdentityHttpApiModule).Assembly);
+
+            mvcBuilder.AddApplicationPartIfNotExists(typeof(SusalemHttpApiModule).Assembly);
+
         });
     }
     public override void ConfigureServices(ServiceConfigurationContext context)
