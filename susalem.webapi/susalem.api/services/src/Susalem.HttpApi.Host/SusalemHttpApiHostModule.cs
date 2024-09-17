@@ -40,7 +40,7 @@ public class SusalemHttpApiHostModule : AbpModule
             scopes: new
                 Dictionary<string, string> /* Requested scopes for authorization code request and descriptions for swagger UI only */
                 {
-                    { "Susalem", "Ordering Service API" }
+                    { "Susalem", "Susalem Service API" }
                 },
             apiTitle: "Susalem  API"
         );
