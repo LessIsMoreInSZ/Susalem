@@ -1,8 +1,13 @@
 ﻿using Localization.Resources.AbpUi;
+
+using Microsoft.Extensions.DependencyInjection;
+
 using Susalem.Localization;
 using Volo.Abp.Account;
+using Volo.Abp.AspNetCore.Mvc.Localization;
 using Volo.Abp.FeatureManagement;
 using Volo.Abp.Identity;
+using Volo.Abp.Identity.Localization;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.PermissionManagement.HttpApi;
@@ -15,6 +20,7 @@ namespace Susalem;
     typeof(SusalemApplicationContractsModule),
     typeof(AbpAccountHttpApiModule),
     typeof(AbpIdentityHttpApiModule),
+    typeof(AbpIdentityApplicationContractsModule),
     typeof(AbpPermissionManagementHttpApiModule),
     typeof(AbpTenantManagementHttpApiModule),
     typeof(AbpFeatureManagementHttpApiModule),
@@ -22,12 +28,20 @@ namespace Susalem;
     )]
 public class SusalemHttpApiModule : AbpModule
 {
-    public override void ConfigureServices(ServiceConfigurationContext context)
+    public override void PreConfigureServices(ServiceConfigurationContext context)
     {
-        ConfigureLocalization();
-    }
+        PreConfigure<AbpMvcDataAnnotationsLocalizationOptions>(options =>
+        {
+            options.AddAssemblyResource(typeof(IdentityResource), typeof(AbpIdentityApplicationContractsModule).Assembly);
+            options.AddAssemblyResource(typeof(IdentityResource), typeof(Volo.Abp.Identity.AbpIdentityApplicationContractsModule).Assembly);
+        });
 
-    private void ConfigureLocalization()
+        PreConfigure<IMvcBuilder>(mvcBuilder =>
+        {
+            mvcBuilder.AddApplicationPartIfNotExists(typeof(AbpIdentityHttpApiModule).Assembly);
+        });
+    }
+    public override void ConfigureServices(ServiceConfigurationContext context)
     {
         Configure<AbpLocalizationOptions>(options =>
         {
@@ -38,4 +52,5 @@ public class SusalemHttpApiModule : AbpModule
                 );
         });
     }
+
 }

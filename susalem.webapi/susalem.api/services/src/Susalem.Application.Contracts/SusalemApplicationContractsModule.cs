@@ -1,4 +1,5 @@
 ﻿using Volo.Abp.Account;
+using Volo.Abp.Authorization;
 using Volo.Abp.FeatureManagement;
 using Volo.Abp.Identity;
 using Volo.Abp.Modularity;
@@ -14,6 +15,8 @@ namespace Susalem;
     typeof(AbpAccountApplicationContractsModule),
     typeof(AbpFeatureManagementApplicationContractsModule),
     typeof(AbpIdentityApplicationContractsModule),
+    typeof(AbpIdentityDomainSharedModule),
+    typeof(AbpAuthorizationModule),
     typeof(AbpPermissionManagementApplicationContractsModule),
     typeof(AbpSettingManagementApplicationContractsModule),
     typeof(AbpTenantManagementApplicationContractsModule),

@@ -1,9 +1,0 @@
-﻿{
-  "culture": "en",
-  "texts": {
-    "InvalidAccessToken": "Invalid access token.",
-    "InvalidLinkUserId": "Invalid link user id.",
-    "InvalidLinkTenantId": "Invalid link tenant id.",
-    "TheTargetUserIsNotLinkedToYou": "The target user is not linked to you."
-  }
-}
