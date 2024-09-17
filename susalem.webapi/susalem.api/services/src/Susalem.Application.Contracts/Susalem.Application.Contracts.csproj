@@ -1,20 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\..\common.props" />
+	<Import Project="..\..\common.props" />
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <RootNamespace>Susalem</RootNamespace>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Susalem.Domain.Shared\Susalem.Domain.Shared.csproj" />
-  </ItemGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<RootNamespace>Susalem</RootNamespace>
+	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Volo.Abp.Ddd.Application.Contracts" Version="$(VoloAbpPackageVersion)"  />
-		<PackageReference Include="Volo.Abp.Authorization" Version="$(VoloAbpPackageVersion)"  />
+		<ProjectReference Include="..\Susalem.Domain.Shared\Susalem.Domain.Shared.csproj" />
 	</ItemGroup>
- 
+
+	<ItemGroup>
+		<PackageReference Include="Volo.Abp.ObjectExtending" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.Account.Application.Contracts" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.Identity.Application.Contracts" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.PermissionManagement.Application.Contracts" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.TenantManagement.Application.Contracts" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.FeatureManagement.Application.Contracts" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.SettingManagement.Application.Contracts" Version="$(VoloAbpPackageVersion)" />
+	</ItemGroup>
 
 </Project>

@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Volo.Abp.Authorization.Abstractions" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.Ddd.Application.Contracts" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.OpenIddict.Domain.Shared" Version="$(VoloAbpPackageVersion)" />
+	</ItemGroup>
+</Project>

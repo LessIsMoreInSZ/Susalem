@@ -1,14 +1,23 @@
-﻿using Volo.Abp.Application;
-using Volo.Abp.Authorization;
+﻿using Volo.Abp.Account;
 using Volo.Abp.AutoMapper;
+using Volo.Abp.FeatureManagement;
+using Volo.Abp.Identity;
 using Volo.Abp.Modularity;
+using Volo.Abp.PermissionManagement;
+using Volo.Abp.SettingManagement;
+using Volo.Abp.TenantManagement;
 
 namespace Susalem;
 
 [DependsOn(
-    typeof(SusalemDomainSharedModule),
-   typeof(AbpDddApplicationContractsModule),
-        typeof(AbpAuthorizationModule)
+    typeof(SusalemDomainModule),
+    typeof(AbpAccountApplicationModule),
+    typeof(SusalemApplicationContractsModule),
+    typeof(AbpIdentityApplicationModule),
+    typeof(AbpPermissionManagementApplicationModule),
+    typeof(AbpTenantManagementApplicationModule),
+    typeof(AbpFeatureManagementApplicationModule),
+    typeof(AbpSettingManagementApplicationModule)
     )]
 public class SusalemApplicationModule : AbpModule
 {

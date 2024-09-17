@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Volo.Abp.OpenIddict.AspNetCore" Version="$(VoloAbpPackageVersion)" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\wechat\LINGYUN.Abp.Identity.WeChat\LINGYUN.Abp.Identity.WeChat.csproj" />
+		<ProjectReference Include="..\..\wechat\LINGYUN.Abp.WeChat.MiniProgram\LINGYUN.Abp.WeChat.MiniProgram.csproj" />
+		<ProjectReference Include="..\..\wechat\LINGYUN.Abp.WeChat.Official\LINGYUN.Abp.WeChat.Official.csproj" />
+	</ItemGroup>
+</Project>

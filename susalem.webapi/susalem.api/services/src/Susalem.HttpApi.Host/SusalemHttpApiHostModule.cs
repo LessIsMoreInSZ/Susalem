@@ -4,7 +4,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-using Susalem.DbMigrations;
 using Susalem.EntityFrameworkCore;
 
 using SusalemAbp.Shared.Hosting.AspNetCore;
@@ -13,7 +12,6 @@ using SusalemAbp.Shared.Hosting.Microservices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 using Volo.Abp;
 using Volo.Abp.AspNetCore.Mvc;
@@ -108,10 +106,5 @@ public class SusalemHttpApiHostModule : AbpModule
         app.UseUnitOfWork();
         app.UseConfiguredEndpoints();
     }
-    public override async Task OnPostApplicationInitializationAsync(ApplicationInitializationContext context)
-    {
-        await context.ServiceProvider
-            .GetRequiredService<SusalemDatabaseMigrationChecker>()
-            .CheckAndApplyDatabaseMigrationsAsync();
-    }
+ 
 }

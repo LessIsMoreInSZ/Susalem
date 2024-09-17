@@ -8,14 +8,22 @@
     <GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Identity.Domain.Shared" Version="$(VoloAbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.BackgroundJobs.Domain.Shared" Version="$(VoloAbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.AuditLogging.Domain.Shared" Version="$(VoloAbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.TenantManagement.Domain.Shared" Version="$(VoloAbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.Domain.Shared" Version="$(VoloAbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.Domain.Shared" Version="$(VoloAbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.SettingManagement.Domain.Shared" Version="$(VoloAbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.OpenIddict.Domain.Shared" Version="$(VoloAbpPackageVersion)" />
+  </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Localization\Susalem\*.json" />
     <Content Remove="Localization\Susalem\*.json" />
   </ItemGroup>
-	<ItemGroup>
-		<PackageReference Include="Volo.Abp.Validation" Version="$(VoloAbpPackageVersion)"  />
-	</ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="6.0.5" />
   </ItemGroup>

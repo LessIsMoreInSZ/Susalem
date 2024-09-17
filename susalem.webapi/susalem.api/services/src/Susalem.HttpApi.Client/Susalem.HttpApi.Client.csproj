@@ -1,22 +1,28 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\..\common.props" />
+	<Import Project="..\..\common.props" />
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <RootNamespace>Susalem</RootNamespace>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Susalem.Application.Contracts\Susalem.Application.Contracts.csproj" />
-  </ItemGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<RootNamespace>Susalem</RootNamespace>
+	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Volo.Abp.Http.Client" Version="$(VoloAbpPackageVersion)"  />
+		<ProjectReference Include="..\Susalem.Application.Contracts\Susalem.Application.Contracts.csproj" />
 	</ItemGroup>
+
 	<ItemGroup>
-    <EmbeddedResource Include="**\*generate-proxy.json" />
-    <Content Remove="**\*generate-proxy.json" />
-  </ItemGroup>
+		<PackageReference Include="Volo.Abp.Account.HttpApi.Client" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.Identity.HttpApi.Client" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.PermissionManagement.HttpApi.Client" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.TenantManagement.HttpApi.Client" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.FeatureManagement.HttpApi.Client" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.SettingManagement.HttpApi.Client" Version="$(VoloAbpPackageVersion)" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="**\*generate-proxy.json" />
+		<Content Remove="**\*generate-proxy.json" />
+	</ItemGroup>
 
 </Project>

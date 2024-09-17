@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Volo.Abp.Sms" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.OpenIddict.AspNetCore" Version="$(VoloAbpPackageVersion)" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\identity\Susalem.Abp.Identity.Domain\Susalem.Abp.Identity.Domain.csproj" />
+	</ItemGroup>
+</Project>

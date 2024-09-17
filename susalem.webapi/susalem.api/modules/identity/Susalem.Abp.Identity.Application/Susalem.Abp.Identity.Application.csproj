@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Susalem.Abp.Identity.Application.Contracts\Susalem.Abp.Identity.Application.Contracts.csproj" />
+    <ProjectReference Include="..\Susalem.Abp.Identity.Domain\Susalem.Abp.Identity.Domain.csproj" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Volo.Abp.Identity.Application" Version="$(VoloAbpPackageVersion)" />
+	</ItemGroup>
+</Project>

@@ -1,4 +1,7 @@
-﻿using Volo.Abp.Threading;
+﻿using Microsoft.EntityFrameworkCore;
+using Volo.Abp.Identity;
+using Volo.Abp.ObjectExtending;
+using Volo.Abp.Threading;
 
 namespace Susalem.EntityFrameworkCore;
 
@@ -8,6 +11,8 @@ public static class SusalemEfCoreEntityExtensionMappings
 
     public static void Configure()
     {
+        SusalemGlobalFeatureConfigurator.Configure();
+        SusalemModuleExtensionConfigurator.Configure();
 
         OneTimeRunner.Run(() =>
         {

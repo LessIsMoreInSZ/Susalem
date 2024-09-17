@@ -1,18 +1,27 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\..\common.props" />
+	<Import Project="..\..\common.props" />
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>Susalem</RootNamespace>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Susalem.Domain.Shared\Susalem.Domain.Shared.csproj" />
-  </ItemGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<RootNamespace>Susalem</RootNamespace>
+	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Volo.Abp.Ddd.Domain" Version="$(VoloAbpPackageVersion)"  />
+		<ProjectReference Include="..\Susalem.Domain.Shared\Susalem.Domain.Shared.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Volo.Abp.Emailing" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.Identity.Domain" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.PermissionManagement.Domain.Identity" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.BackgroundJobs.Domain" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.AuditLogging.Domain" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.TenantManagement.Domain" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.FeatureManagement.Domain" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.SettingManagement.Domain" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.OpenIddict.Domain" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.PermissionManagement.Domain.OpenIddict" Version="$(VoloAbpPackageVersion)" />
 	</ItemGroup>
 
 </Project>

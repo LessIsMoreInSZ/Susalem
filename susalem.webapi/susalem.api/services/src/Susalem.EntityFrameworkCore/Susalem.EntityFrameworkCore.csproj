@@ -1,26 +1,30 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\..\common.props" />
+	<Import Project="..\..\common.props" />
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>Susalem</RootNamespace>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<RootNamespace>Susalem</RootNamespace>
+	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Volo.Abp.EntityFrameworkCore.MySQL" Version="$(VoloAbpPackageVersion)"  />
+		<ProjectReference Include="..\Susalem.Domain\Susalem.Domain.csproj" />
+		<PackageReference Include="Volo.Abp.EntityFrameworkCore.Mysql" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.PermissionManagement.EntityFrameworkCore" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.SettingManagement.EntityFrameworkCore" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.Identity.EntityFrameworkCore" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.BackgroundJobs.EntityFrameworkCore" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.AuditLogging.EntityFrameworkCore" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.TenantManagement.EntityFrameworkCore" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.FeatureManagement.EntityFrameworkCore" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.OpenIddict.EntityFrameworkCore" Version="$(VoloAbpPackageVersion)" />
 	</ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.5">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-      <PrivateAssets>compile; contentFiles; build; buildMultitargeting; buildTransitive; analyzers; native</PrivateAssets>
-    </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Susalem.Domain\Susalem.Domain.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-  </ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.5">
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+			<PrivateAssets>compile; contentFiles; build; buildMultitargeting; buildTransitive; analyzers; native</PrivateAssets>
+		</PackageReference>
+	</ItemGroup>
 
 </Project>

@@ -25,7 +25,7 @@ namespace Susalem.Abp.IdentityServer
             {
                 options.Resources
                     .Get<AbpIdentityServerResource>()
-                    .AddVirtualJson("/LINGYUN/Abp/IdentityServer/Localization/Resources");
+                    .AddVirtualJson("/Susalem/Abp/IdentityServer/Localization/Resources");
             });
         }
     }

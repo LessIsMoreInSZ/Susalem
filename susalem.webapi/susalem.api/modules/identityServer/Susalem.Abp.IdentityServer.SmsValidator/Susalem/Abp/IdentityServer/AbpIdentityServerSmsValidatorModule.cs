@@ -1,6 +1,7 @@
-﻿using Susalem.Abp.IdentityServer.SmsValidator;
-using Microsoft.Extensions.DependencyInjection;
-using Volo.Abp.IdentityServer;
+﻿using Microsoft.Extensions.DependencyInjection;
+
+using Susalem.Abp.IdentityServer.SmsValidator;
+
 using Volo.Abp.IdentityServer.Localization;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
@@ -30,7 +31,7 @@ namespace Susalem.Abp.IdentityServer
             {
                 options.Resources
                     .Get<AbpIdentityServerResource>()
-                    .AddVirtualJson("/LINGYUN/Abp/IdentityServer/Localization/SmsValidator");
+                    .AddVirtualJson("/Susalem/Abp/IdentityServer/Localization/SmsValidator");
             });
         }
     }

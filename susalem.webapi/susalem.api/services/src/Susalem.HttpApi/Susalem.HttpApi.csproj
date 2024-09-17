@@ -1,18 +1,23 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\..\common.props" />
+	<Import Project="..\..\common.props" />
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>Susalem</RootNamespace>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Susalem.Application.Contracts\Susalem.Application.Contracts.csproj" />
-  </ItemGroup>
-
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<RootNamespace>Susalem</RootNamespace>
+	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Volo.Abp.AspNetCore.Mvc" Version="$(VoloAbpPackageVersion)"  />
+		<ProjectReference Include="..\Susalem.Application.Contracts\Susalem.Application.Contracts.csproj" />
 	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Volo.Abp.Account.HttpApi" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.Identity.HttpApi" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.PermissionManagement.HttpApi" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.TenantManagement.HttpApi" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.FeatureManagement.HttpApi" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.SettingManagement.HttpApi" Version="$(VoloAbpPackageVersion)" />
+	</ItemGroup>
+
 </Project>

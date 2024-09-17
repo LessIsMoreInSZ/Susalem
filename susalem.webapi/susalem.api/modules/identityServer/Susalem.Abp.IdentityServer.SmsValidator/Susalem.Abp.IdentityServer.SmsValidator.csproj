@@ -4,8 +4,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
-	<ItemGroup>
-	  <ProjectReference Include="..\Susalem.Abp.IdentityServer.Domain\Susalem.Abp.IdentityServer.Domain.csproj" />
-	</ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\identity\Susalem.Abp.Identity.Domain\Susalem.Abp.Identity.Domain.csproj" />
+    <ProjectReference Include="..\Susalem.Abp.IdentityServer.Domain\Susalem.Abp.IdentityServer.Domain.csproj" />
+  </ItemGroup>
 </Project>
