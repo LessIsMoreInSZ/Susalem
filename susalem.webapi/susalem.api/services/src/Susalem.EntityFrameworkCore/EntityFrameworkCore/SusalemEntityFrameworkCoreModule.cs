@@ -5,7 +5,6 @@ using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore.MySQL;
 using Volo.Abp.FeatureManagement.EntityFrameworkCore;
-using Volo.Abp.Identity;
 using Volo.Abp.Identity.EntityFrameworkCore;
 using Volo.Abp.Modularity;
 using Volo.Abp.OpenIddict.EntityFrameworkCore;
@@ -17,7 +16,6 @@ namespace Susalem.EntityFrameworkCore;
 
 [DependsOn(
     typeof(SusalemDomainModule),
-    typeof(AbpIdentityDomainModule),
     typeof(AbpIdentityEntityFrameworkCoreModule),
     typeof(AbpOpenIddictEntityFrameworkCoreModule),
     typeof(AbpPermissionManagementEntityFrameworkCoreModule),
@@ -39,8 +37,6 @@ public class SusalemEntityFrameworkCoreModule : AbpModule
     {
         context.Services.AddAbpDbContext<SusalemDbContext>(options =>
         {
-            options.AddRepository<IdentityRole, EfCoreIdentityRoleRepository>();
-            options.AddRepository<IdentityUser, EfCoreIdentityUserRepository>();
             /* Remove "includeAllEntities: true" to create
              * default repositories only for aggregate roots */
             options.AddDefaultRepositories(includeAllEntities: true);
@@ -48,8 +44,8 @@ public class SusalemEntityFrameworkCoreModule : AbpModule
 
         Configure<AbpDbContextOptions>(options =>
         {
-                /* The main point to change your DBMS.
-                 * See also SusalemMigrationsDbContextFactory for EF Core tooling. */
+            /* The main point to change your DBMS.
+             * See also SusalemMigrationsDbContextFactory for EF Core tooling. */
             options.UseMySQL();
         });
 

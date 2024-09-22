@@ -28,4 +28,8 @@
     <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="6.0.5" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Susalem\" />
+  </ItemGroup>
+
 </Project>

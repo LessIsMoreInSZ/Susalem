@@ -3,6 +3,7 @@
 using Microsoft.Extensions.DependencyInjection;
 
 using Susalem.Localization;
+
 using Volo.Abp.Account;
 using Volo.Abp.AspNetCore.Mvc.Localization;
 using Volo.Abp.FeatureManagement;
@@ -18,10 +19,9 @@ using Volo.Abp.TenantManagement;
 namespace Susalem;
 
 [DependsOn(
-    typeof(SusalemApplicationContractsModule),
+   typeof(SusalemApplicationContractsModule),
     typeof(AbpAccountHttpApiModule),
     typeof(AbpIdentityHttpApiModule),
-    typeof(AbpIdentityApplicationContractsModule),
     typeof(AbpPermissionManagementHttpApiModule),
     typeof(AbpTenantManagementHttpApiModule),
     typeof(AbpFeatureManagementHttpApiModule),

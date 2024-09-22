@@ -12,7 +12,7 @@ using Volo.Abp.EntityFrameworkCore;
 namespace Susalem.Migrations
 {
     [DbContext(typeof(SusalemDbContext))]
-    [Migration("20240917081543_initDb")]
+    [Migration("20240922075233_initDb")]
     partial class initDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -23,7 +23,6 @@ namespace Susalem;
     typeof(AbpAuditLoggingDomainModule),
     typeof(AbpBackgroundJobsDomainModule),
     typeof(AbpFeatureManagementDomainModule),
-    typeof(AbpIdentityDomainSharedModule),
     typeof(AbpIdentityDomainModule),
     typeof(AbpOpenIddictDomainModule),
     typeof(AbpPermissionManagementDomainOpenIddictModule),

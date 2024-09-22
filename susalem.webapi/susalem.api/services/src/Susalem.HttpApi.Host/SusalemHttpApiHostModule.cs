@@ -1,50 +1,114 @@
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
+
+using OpenIddict.Validation.AspNetCore;
 
 using Susalem.EntityFrameworkCore;
-
-using SusalemAbp.Shared.Hosting.AspNetCore;
-using SusalemAbp.Shared.Hosting.Microservices;
+using Susalem.MultiTenancy;
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 using Volo.Abp;
+using Volo.Abp.Account;
+using Volo.Abp.Account.Web;
+using Volo.Abp.AspNetCore.MultiTenancy;
 using Volo.Abp.AspNetCore.Mvc;
+using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared;
+using Volo.Abp.AspNetCore.Serilog;
+using Volo.Abp.Autofac;
+using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
+using Volo.Abp.Swashbuckle;
+using Volo.Abp.UI.Navigation.Urls;
+using Volo.Abp.VirtualFileSystem;
 
 namespace Susalem;
 
 [DependsOn(
-  typeof(SusalemHttpApiModule),
+    typeof(SusalemHttpApiModule),
+    typeof(AbpAutofacModule),
+    typeof(AbpAspNetCoreMultiTenancyModule),
     typeof(SusalemApplicationModule),
-    typeof(SusalemAbpSharedHostingMicroservicesModule),
-    typeof(SusalemEntityFrameworkCoreModule)
+    typeof(SusalemEntityFrameworkCoreModule),
+    typeof(AbpAccountWebOpenIddictModule),
+    typeof(AbpAspNetCoreSerilogModule),
+    typeof(AbpSwashbuckleModule)
 )]
 public class SusalemHttpApiHostModule : AbpModule
 {
+    public override void PreConfigureServices(ServiceConfigurationContext context)
+    {
+        PreConfigure<OpenIddictBuilder>(builder =>
+        {
+            builder.AddValidation(options =>
+            {
+                options.AddAudiences("Susalem");
+                options.UseLocalServer();
+                options.UseAspNetCore();
+            });
+        });
+    }
+
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
         var configuration = context.Services.GetConfiguration();
         var hostingEnvironment = context.Services.GetHostingEnvironment();
 
-        JwtBearerConfigurationHelper.Configure(context, "Susalem");
+        ConfigureAuthentication(context);
+        ConfigureConventionalControllers();
+        ConfigureLocalization();
+        ConfigureCors(context, configuration);
+        ConfigureSwaggerServices(context, configuration);
+    }
 
-        SwaggerConfigurationHelper.ConfigureWithAuth(
-            context: context,
-            authority: configuration["AuthServer:Authority"],
-            scopes: new
-                Dictionary<string, string> /* Requested scopes for authorization code request and descriptions for swagger UI only */
-                {
-                    { "Susalem", "Susalem Service API" }
-                },
-            apiTitle: "Susalem  API"
-        );
+    private void ConfigureAuthentication(ServiceConfigurationContext context)
+    {
+        context.Services.ForwardIdentityAuthenticationForBearer(OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme);
+    }
+    
+    private void ConfigureConventionalControllers()
+    {
+        Configure<AbpAspNetCoreMvcOptions>(options =>
+        {
+            options.ConventionalControllers.Create(typeof(SusalemApplicationModule).Assembly);
+        });
+    }
 
+    private static void ConfigureSwaggerServices(ServiceConfigurationContext context, IConfiguration configuration)
+    {
+        context.Services.AddAbpSwaggerGenWithOAuth(
+            configuration["AuthServer:Authority"],
+            new Dictionary<string, string>
+            {
+                    {"Susalem", "Susalem API"}
+            },
+            options =>
+            {
+                options.SwaggerDoc("v1", new OpenApiInfo { Title = "Susalem API", Version = "v1" });
+                options.DocInclusionPredicate((docName, description) => true);
+                options.CustomSchemaIds(type => type.FullName);
+            });
+    }
+
+    private void ConfigureLocalization()
+    {
+        Configure<AbpLocalizationOptions>(options =>
+        {
+            options.Languages.Add(new LanguageInfo("en", "en", "English"));
+            options.Languages.Add(new LanguageInfo("zh-Hans", "zh-Hans", "简体中文"));
+        });
+    }
+
+    private void ConfigureCors(ServiceConfigurationContext context, IConfiguration configuration)
+    {
         context.Services.AddCors(options =>
         {
             options.AddDefaultPolicy(builder =>
@@ -53,7 +117,7 @@ public class SusalemHttpApiHostModule : AbpModule
                     .WithOrigins(
                         configuration["App:CorsOrigins"]
                             .Split(",", StringSplitOptions.RemoveEmptyEntries)
-                            .Select(o => o.Trim().RemovePostFix("/"))
+                            .Select(o => o.RemovePostFix("/"))
                             .ToArray()
                     )
                     .WithAbpExposedHeaders()
@@ -61,16 +125,6 @@ public class SusalemHttpApiHostModule : AbpModule
                     .AllowAnyHeader()
                     .AllowAnyMethod()
                     .AllowCredentials();
-            });
-        });
-
-        // TODO: Crate controller instead of auto-controller configuration
-        Configure<AbpAspNetCoreMvcOptions>(options =>
-        {
-            options.ConventionalControllers.Create(typeof(SusalemApplicationModule).Assembly, opts =>
-            {
-                opts.RootPath = "susalem";
-                opts.RemoteServiceName = "Susalem";
             });
         });
     }
@@ -85,26 +139,40 @@ public class SusalemHttpApiHostModule : AbpModule
             app.UseDeveloperExceptionPage();
         }
 
-        app.UseCorrelationId();
-        app.UseCors();
         app.UseAbpRequestLocalization();
+
+        if (!env.IsDevelopment())
+        {
+            app.UseErrorPage();
+        }
+
+        app.UseCorrelationId();
         app.UseStaticFiles();
         app.UseRouting();
+        app.UseCors();
         app.UseAuthentication();
-        app.UseAbpClaimsMap();
-        app.UseAuthorization();
-        app.UseSwagger();
-        app.UseSwaggerUI(options =>
+        app.UseAbpOpenIddictValidation();
+
+        if (MultiTenancyConsts.IsEnabled)
         {
-            var configuration = context.ServiceProvider.GetRequiredService<IConfiguration>();
-            options.SwaggerEndpoint("/swagger/v1/swagger.json", "Ordering Service API");
-            options.OAuthClientId(configuration["AuthServer:SwaggerClientId"]);
-            options.OAuthClientSecret(configuration["AuthServer:SwaggerClientSecret"]);
-        });
-        app.UseAbpSerilogEnrichers();
-        app.UseAuditing();
+            app.UseMultiTenancy();
+        }
+
         app.UseUnitOfWork();
+        app.UseAuthorization();
+
+        app.UseSwagger();
+        app.UseAbpSwaggerUI(c =>
+        {
+            c.SwaggerEndpoint("/swagger/v1/swagger.json", "Susalem API");
+
+            var configuration = context.ServiceProvider.GetRequiredService<IConfiguration>();
+            c.OAuthClientId(configuration["AuthServer:SwaggerClientId"]);
+            c.OAuthScopes("Susalem");
+        });
+
+        app.UseAuditing();
+        app.UseAbpSerilogEnrichers();
         app.UseConfiguredEndpoints();
     }
- 
 }
