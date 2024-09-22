@@ -21,7 +21,6 @@ namespace Susalem;
 [DependsOn(
    typeof(SusalemApplicationContractsModule),
     typeof(AbpAccountHttpApiModule),
-    typeof(AbpIdentityHttpApiModule),
     typeof(AbpPermissionManagementHttpApiModule),
     typeof(AbpTenantManagementHttpApiModule),
     typeof(AbpFeatureManagementHttpApiModule),
@@ -33,17 +32,11 @@ public class SusalemHttpApiModule : AbpModule
     {
         PreConfigure<AbpMvcDataAnnotationsLocalizationOptions>(options =>
         {
-            options.AddAssemblyResource(typeof(IdentityResource), typeof(AbpIdentityApplicationContractsModule).Assembly);
-            options.AddAssemblyResource(typeof(IdentityResource), typeof(Volo.Abp.Identity.AbpIdentityApplicationContractsModule).Assembly);
-
             options.AddAssemblyResource(typeof(AbpOpenIddictResource), typeof(SusalemHttpApiModule).Assembly);
         });
 
         PreConfigure<IMvcBuilder>(mvcBuilder =>
         {
-
-            mvcBuilder.AddApplicationPartIfNotExists(typeof(AbpIdentityHttpApiModule).Assembly);
-
             mvcBuilder.AddApplicationPartIfNotExists(typeof(SusalemHttpApiModule).Assembly);
 
         });

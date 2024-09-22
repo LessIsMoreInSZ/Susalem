@@ -14,11 +14,14 @@
 
   <ItemGroup>
     <PackageReference Include="Volo.Abp.Account.Application" Version="$(VoloAbpPackageVersion)" />
-	  <PackageReference Include="Volo.Abp.Identity.Application" Version="$(VoloAbpPackageVersion)" />
     <PackageReference Include="Volo.Abp.PermissionManagement.Application" Version="$(VoloAbpPackageVersion)" />
     <PackageReference Include="Volo.Abp.TenantManagement.Application" Version="$(VoloAbpPackageVersion)" />
     <PackageReference Include="Volo.Abp.FeatureManagement.Application" Version="$(VoloAbpPackageVersion)" />
     <PackageReference Include="Volo.Abp.SettingManagement.Application" Version="$(VoloAbpPackageVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Susalem\" />
   </ItemGroup>
 
 </Project>
