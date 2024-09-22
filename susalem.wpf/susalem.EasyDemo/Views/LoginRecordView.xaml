@@ -60,7 +60,7 @@
             <Grid>
 
                 <Grid.Background>
-                    <ImageBrush ImageSource="pack://application:,,,/image/大国工匠.jpg" Stretch="Fill" />
+                    <ImageBrush ImageSource="pack://application:,,,/image/SPIL.jpg" Stretch="Fill" />
                 </Grid.Background>
             </Grid>
 
