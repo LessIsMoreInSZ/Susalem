@@ -27,8 +27,4 @@
 		</PackageReference>
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Susalem\" />
-	</ItemGroup>
-
 </Project>

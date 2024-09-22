@@ -21,8 +21,4 @@
 		<PackageReference Include="Volo.Abp.SettingManagement.Application.Contracts" Version="$(VoloAbpPackageVersion)" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Susalem\" />
-	</ItemGroup>
-
 </Project>

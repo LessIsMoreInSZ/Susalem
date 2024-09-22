@@ -13,7 +13,6 @@
 
 	<ItemGroup>
 		<PackageReference Include="Volo.Abp.Emailing" Version="$(VoloAbpPackageVersion)" />
-		<PackageReference Include="Volo.Abp.Identity.Domain" Version="$(VoloAbpPackageVersion)" />
 		<PackageReference Include="Volo.Abp.PermissionManagement.Domain.Identity" Version="$(VoloAbpPackageVersion)" />
 		<PackageReference Include="Volo.Abp.BackgroundJobs.Domain" Version="$(VoloAbpPackageVersion)" />
 		<PackageReference Include="Volo.Abp.AuditLogging.Domain" Version="$(VoloAbpPackageVersion)" />
@@ -22,10 +21,6 @@
 		<PackageReference Include="Volo.Abp.SettingManagement.Domain" Version="$(VoloAbpPackageVersion)" />
 		<PackageReference Include="Volo.Abp.OpenIddict.Domain" Version="$(VoloAbpPackageVersion)" />
 		<PackageReference Include="Volo.Abp.PermissionManagement.Domain.OpenIddict" Version="$(VoloAbpPackageVersion)" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Susalem\" />
 	</ItemGroup>
 
 </Project>
