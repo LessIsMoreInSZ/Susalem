@@ -10,14 +10,15 @@ using OpenIddict.Validation.AspNetCore;
 
 using Susalem.EntityFrameworkCore;
 using Susalem.MultiTenancy;
+using Susalem.Settings;
+
+using SusalemAbp.Shared.Hosting.AspNetCore;
 
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 
 using Volo.Abp;
-using Volo.Abp.Account;
 using Volo.Abp.Account.Web;
 using Volo.Abp.AspNetCore.MultiTenancy;
 using Volo.Abp.AspNetCore.Mvc;
@@ -26,9 +27,6 @@ using Volo.Abp.AspNetCore.Serilog;
 using Volo.Abp.Autofac;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
-using Volo.Abp.Swashbuckle;
-using Volo.Abp.UI.Navigation.Urls;
-using Volo.Abp.VirtualFileSystem;
 
 namespace Susalem;
 
@@ -40,7 +38,8 @@ namespace Susalem;
     typeof(SusalemEntityFrameworkCoreModule),
     typeof(AbpAccountWebOpenIddictModule),
     typeof(AbpAspNetCoreSerilogModule),
-    typeof(AbpSwashbuckleModule)
+    typeof(AbpAspNetCoreSerilogModule),
+    typeof(SusalemAbpSharedHostingAspNetCoreModule)
 )]
 public class SusalemHttpApiHostModule : AbpModule
 {
@@ -61,6 +60,9 @@ public class SusalemHttpApiHostModule : AbpModule
     {
         var configuration = context.Services.GetConfiguration();
         var hostingEnvironment = context.Services.GetHostingEnvironment();
+
+        //配置数据库表名
+        SusalemSettings.ConfigureDataTableName();
 
         ConfigureAuthentication(context);
         ConfigureConventionalControllers();

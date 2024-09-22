@@ -6,7 +6,6 @@ using Volo.Abp.VirtualFileSystem;
 namespace SusalemAbp.Shared.Hosting.AspNetCore
 {
     [DependsOn(
-    typeof(SusalemAbpSharedHostingModule),
     typeof(AbpAspNetCoreSerilogModule),
     typeof(AbpSwashbuckleModule)
 )]

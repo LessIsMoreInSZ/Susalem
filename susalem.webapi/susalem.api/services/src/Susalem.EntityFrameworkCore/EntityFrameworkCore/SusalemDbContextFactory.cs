@@ -1,8 +1,10 @@
-﻿using System;
-using System.IO;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
+
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+
+using System.IO;
 
 namespace Susalem.EntityFrameworkCore;
 
@@ -17,7 +19,10 @@ public class SusalemDbContextFactory : IDesignTimeDbContextFactory<SusalemDbCont
         var configuration = BuildConfiguration();
 
         var builder = new DbContextOptionsBuilder<SusalemDbContext>()
-            .UseMySql(configuration.GetConnectionString("Default"), MySqlServerVersion.LatestSupportedServerVersion);
+            .UseMySql(configuration.GetConnectionString("Default"), MySqlServerVersion.LatestSupportedServerVersion, mysqlOptions =>
+            {
+                mysqlOptions.SchemaBehavior(MySqlSchemaBehavior.Ignore);
+            });
 
         return new SusalemDbContext(builder.Options);
     }

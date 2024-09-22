@@ -362,7 +362,7 @@ namespace Susalem.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "OpenIddictApplications",
+                name: "OidcApplications",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
@@ -406,12 +406,12 @@ namespace Susalem.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OpenIddictApplications", x => x.Id);
+                    table.PrimaryKey("PK_OidcApplications", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "OpenIddictScopes",
+                name: "OidcScopes",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
@@ -443,7 +443,7 @@ namespace Susalem.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OpenIddictScopes", x => x.Id);
+                    table.PrimaryKey("PK_OidcScopes", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -709,7 +709,7 @@ namespace Susalem.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "OpenIddictAuthorizations",
+                name: "OidcAuthorizations",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
@@ -739,11 +739,11 @@ namespace Susalem.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OpenIddictAuthorizations", x => x.Id);
+                    table.PrimaryKey("PK_OidcAuthorizations", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_OpenIddictAuthorizations_OpenIddictApplications_ApplicationId",
+                        name: "FK_OidcAuthorizations_OidcApplications_ApplicationId",
                         column: x => x.ApplicationId,
-                        principalTable: "OpenIddictApplications",
+                        principalTable: "OidcApplications",
                         principalColumn: "Id");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
@@ -777,7 +777,7 @@ namespace Susalem.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "OpenIddictTokens",
+                name: "OidcTokens",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
@@ -812,16 +812,16 @@ namespace Susalem.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OpenIddictTokens", x => x.Id);
+                    table.PrimaryKey("PK_OidcTokens", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_OpenIddictTokens_OpenIddictApplications_ApplicationId",
+                        name: "FK_OidcTokens_OidcApplications_ApplicationId",
                         column: x => x.ApplicationId,
-                        principalTable: "OpenIddictApplications",
+                        principalTable: "OidcApplications",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_OpenIddictTokens_OpenIddictAuthorizations_AuthorizationId",
+                        name: "FK_OidcTokens_OidcAuthorizations_AuthorizationId",
                         column: x => x.AuthorizationId,
-                        principalTable: "OpenIddictAuthorizations",
+                        principalTable: "OidcAuthorizations",
                         principalColumn: "Id");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
@@ -981,33 +981,33 @@ namespace Susalem.Migrations
                 column: "UserName");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OpenIddictApplications_ClientId",
-                table: "OpenIddictApplications",
+                name: "IX_OidcApplications_ClientId",
+                table: "OidcApplications",
                 column: "ClientId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OpenIddictAuthorizations_ApplicationId_Status_Subject_Type",
-                table: "OpenIddictAuthorizations",
+                name: "IX_OidcAuthorizations_ApplicationId_Status_Subject_Type",
+                table: "OidcAuthorizations",
                 columns: new[] { "ApplicationId", "Status", "Subject", "Type" });
 
             migrationBuilder.CreateIndex(
-                name: "IX_OpenIddictScopes_Name",
-                table: "OpenIddictScopes",
+                name: "IX_OidcScopes_Name",
+                table: "OidcScopes",
                 column: "Name");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OpenIddictTokens_ApplicationId_Status_Subject_Type",
-                table: "OpenIddictTokens",
+                name: "IX_OidcTokens_ApplicationId_Status_Subject_Type",
+                table: "OidcTokens",
                 columns: new[] { "ApplicationId", "Status", "Subject", "Type" });
 
             migrationBuilder.CreateIndex(
-                name: "IX_OpenIddictTokens_AuthorizationId",
-                table: "OpenIddictTokens",
+                name: "IX_OidcTokens_AuthorizationId",
+                table: "OidcTokens",
                 column: "AuthorizationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OpenIddictTokens_ReferenceId",
-                table: "OpenIddictTokens",
+                name: "IX_OidcTokens_ReferenceId",
+                table: "OidcTokens",
                 column: "ReferenceId");
         }
 
@@ -1065,10 +1065,10 @@ namespace Susalem.Migrations
                 name: "AbpUserTokens");
 
             migrationBuilder.DropTable(
-                name: "OpenIddictScopes");
+                name: "OidcScopes");
 
             migrationBuilder.DropTable(
-                name: "OpenIddictTokens");
+                name: "OidcTokens");
 
             migrationBuilder.DropTable(
                 name: "AbpEntityChanges");
@@ -1086,13 +1086,13 @@ namespace Susalem.Migrations
                 name: "AbpUsers");
 
             migrationBuilder.DropTable(
-                name: "OpenIddictAuthorizations");
+                name: "OidcAuthorizations");
 
             migrationBuilder.DropTable(
                 name: "AbpAuditLogs");
 
             migrationBuilder.DropTable(
-                name: "OpenIddictApplications");
+                name: "OidcApplications");
         }
     }
 }
