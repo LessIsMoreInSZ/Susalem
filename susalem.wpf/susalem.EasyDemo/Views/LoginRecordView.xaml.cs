@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prism.Regions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,12 @@ namespace susalem.EasyDemo.Views
     /// </summary>
     public partial class LoginRecordView : UserControl
     {
-        public LoginRecordView()
+        public LoginRecordView(IRegionManager regionManager)
         {
             InitializeComponent();
+
+            RegionManager.SetRegionManager(this, regionManager);
+            RegionManager.UpdateRegions();
         }
     }
 }

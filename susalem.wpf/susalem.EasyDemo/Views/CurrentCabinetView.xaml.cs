@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace susalem.EasyDemo.ViewModels.Dialogs
+namespace susalem.EasyDemo.Views
 {
     /// <summary>
-    /// WarningView.xaml 的交互逻辑
+    /// CurrentCabinetView.xaml 的交互逻辑
     /// </summary>
-    public partial class WarningView : UserControl
+    public partial class CurrentCabinetView : UserControl
     {
-        public WarningView()
+        public CurrentCabinetView()
         {
             InitializeComponent();
         }

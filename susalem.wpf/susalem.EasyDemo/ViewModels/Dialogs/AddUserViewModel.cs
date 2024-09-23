@@ -1,12 +1,12 @@
 ﻿using HandyControl.Controls;
-using HslCommunication.Secs.Types;
-using Prism.Commands;
-using Prism.Mvvm;
-using Prism.Services.Dialogs;
 using susalem.EasyDemo.Entities;
 using susalem.EasyDemo.Models;
 using susalem.EasyDemo.Services;
 using susalem.EasyDemo.Share;
+using HslCommunication.Secs.Types;
+using Prism.Commands;
+using Prism.Mvvm;
+using Prism.Services.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -128,12 +128,17 @@ namespace susalem.EasyDemo.ViewModels.Dialogs
 
                 UserModel? _user = new UserModel();
                 _user!.UserName = UserName;
+
                 _user!.Password = Cryptography.Encrypt(Password ?? string.Empty);
                 //_user!.UserIcon = "Images/user.png";
                 _user!.RealName = "";
                 _user.RoleId = CurrentRole.RoleId;
 
                 var userResult = _userService.AddUser(_user);
+
+                DialogResult dialogResult = new DialogResult(ButtonResult.OK);
+                RequestClose?.Invoke(dialogResult);
+
             });
         }
     }

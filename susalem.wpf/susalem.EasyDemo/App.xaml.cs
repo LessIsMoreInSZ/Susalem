@@ -25,6 +25,9 @@ namespace susalem.EasyDemo
         {
             containerRegistry.Register<IUserService, UserService>();
             containerRegistry.Register<IRoleService, RoleService>();
+            containerRegistry.Register<IHistoryService, HistoryService>();
+            containerRegistry.Register<IChamParaService, ChamParaService>();
+            containerRegistry.Register<ICabinetInfoService, CabinetInfoService>();
 
             containerRegistry.RegisterForNavigation<MainWindow, MainWindowViewModel>();
 
@@ -34,6 +37,8 @@ namespace susalem.EasyDemo
             containerRegistry.RegisterForNavigation<LoginRecordView, LoginRecordViewModel>();
             containerRegistry.RegisterForNavigation<OperateMachineView, OperateMachineViewModel>();
             containerRegistry.RegisterForNavigation<ParameterSettingView, ParameterSettingViewModel>();
+            containerRegistry.RegisterForNavigation<CurrentCabinetView, CurrentCabinetViewModel>();
+
 
             containerRegistry.RegisterDialog<ErrorView, ErrorViewModel>();
             containerRegistry.RegisterDialog<WarningView, WarningViewModel>();

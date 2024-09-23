@@ -1,13 +1,13 @@
-﻿using HslCommunication.Core.Net;
+﻿using susalem.EasyDemo.Entities;
+using susalem.EasyDemo.Models;
+using susalem.EasyDemo.Services;
+using HslCommunication.Core.Net;
 using HslCommunication.Secs.Types;
 using Microsoft.Extensions.Logging;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
 using Prism.Services.Dialogs;
-using susalem.EasyDemo.Entities;
-using susalem.EasyDemo.Models;
-using susalem.EasyDemo.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -33,8 +33,8 @@ namespace susalem.EasyDemo.ViewModels
             _regionManager = regionManager;
             _userService = userService;
             _roleService = roleService;
-
-
+            
+            
 
         }
 
@@ -111,7 +111,7 @@ namespace susalem.EasyDemo.ViewModels
                             }
                         }
                     });
-
+                    
                 }
             });
         }
@@ -134,7 +134,7 @@ namespace susalem.EasyDemo.ViewModels
                     }
                 }
             });
-
+           
         }
 
         private void Login()
@@ -156,9 +156,9 @@ namespace susalem.EasyDemo.ViewModels
             {
                 try
                 {
-                    UserModel resultModel = _userService.Login(UserName, Password, false);
+                    UserModel resultModel = _userService.Login(UserName, Password,false);
 
-                    if (resultModel != null)
+                    if (resultModel!=null)
                     {
                         OverAllContext.User = resultModel!;
                         Application.Current.Dispatcher.Invoke(() =>
@@ -209,7 +209,7 @@ namespace susalem.EasyDemo.ViewModels
 
         public ICommand PageLoaded
         {
-            get => new DelegateCommand(async () =>
+            get => new DelegateCommand(async() =>
             {
                 await LoadUser();
                 await LoadAllRoles();

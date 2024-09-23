@@ -28,6 +28,7 @@ namespace susalem.EasyDemo.ViewModels.Dialogs
 
         public void OnDialogOpened(IDialogParameters parameters)
         {
+            OverAllContext.IsWarn = false;
             if (parameters.ContainsKey("Text"))
             {
                 Text = parameters.GetValue<string>("Text");
@@ -35,7 +36,7 @@ namespace susalem.EasyDemo.ViewModels.Dialogs
         }
 
         /// <summary>
-        /// 化学品料号
+        /// 工匠品料号
         /// </summary>
         private string? text;
 
@@ -49,6 +50,7 @@ namespace susalem.EasyDemo.ViewModels.Dialogs
         {
             get => new DelegateCommand(() =>
             {
+                OverAllContext.IsWarn = true;
                 RequestClose.Invoke(new DialogResult(ButtonResult.OK, new DialogParameters() { }));
             });
         }

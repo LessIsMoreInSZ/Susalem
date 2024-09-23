@@ -18,7 +18,7 @@ namespace susalem.EasyDemo.ViewModels.Dialogs
         public event Action<IDialogResult> RequestClose;
 
         /// <summary>
-        /// 化学品料号
+        /// 工匠品料号
         /// </summary>
         private string? chemicalNum;
 
@@ -62,6 +62,7 @@ namespace susalem.EasyDemo.ViewModels.Dialogs
 
         public void OnDialogOpened(IDialogParameters parameters)
         {
+            OverAllContext.IsError = false;
             if (parameters.ContainsKey("ChemicalNum") && parameters.ContainsKey("ExpirationTime") &&
                 parameters.ContainsKey("CabinetNum"))
             {
@@ -75,6 +76,7 @@ namespace susalem.EasyDemo.ViewModels.Dialogs
         {
             get => new DelegateCommand(() =>
             {
+                OverAllContext.IsError = true;
                 RequestClose.Invoke(new DialogResult(ButtonResult.OK, new DialogParameters() { }));
             });
         }

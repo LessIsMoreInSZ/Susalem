@@ -23,19 +23,19 @@ namespace susalem.EasyDemo.Entities
         public string CabinetId { get; set; }
 
         /// <summary>
-        /// 化学品名称
+        /// 工匠品名称
         /// </summary>
         [Column("Name")]
         public string? Name { get; set; }
 
         /// <summary>
-        /// 化学品料号
+        /// 工匠品料号
         /// </summary>
         [Column("PNCode")]
         public string? PNCode { get; set; }
 
         /// <summary>
-        /// 化学品编号
+        /// 工匠品编号
         /// </summary>
         [Column("SerialNum")]
         public string? SerialNum { get; set; }

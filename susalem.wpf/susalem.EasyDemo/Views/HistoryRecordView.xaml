@@ -1,12 +1,138 @@
-﻿<UserControl x:Class="susalem.EasyDemo.Views.HistoryRecordView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:susalem.EasyDemo.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+﻿<UserControl
+    x:Class="susalem.EasyDemo.Views.HistoryRecordView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:local="clr-namespace:susalem.EasyDemo.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="1200"
+    mc:Ignorable="d">
     <Grid>
-        <TextBlock Text="record"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.ColumnSpan="2" Orientation="Horizontal">
+                <TextBlock VerticalAlignment="Center" Text="开始时间" />
+                <hc:DateTimePicker
+                    x:Name="date"
+                    Height="35"
+                    MinWidth="150"
+                    SelectedDateTime="{Binding StartDate}" />
+                <TextBlock VerticalAlignment="Center" Text="结束时间" />
+                <hc:DateTimePicker
+                    Height="35"
+                    MinWidth="150"
+                    SelectedDateTime="{Binding EndDate}" />
+                <TextBlock VerticalAlignment="Center" Text="机柜号" />
+                <TextBox
+                    Height="35"
+                    MinWidth="150"
+                    Text="{Binding CabinetId}" />
+                <TextBlock VerticalAlignment="Center" Text="机台码" />
+                <TextBox
+                    Height="35"
+                    MinWidth="150"
+                    Text="{Binding MachineId}" />
+                <Button
+                    Margin="50,0,0,0"
+                    Command="{Binding QueryCommand}"
+                    Content="查询" />
+            </StackPanel>
+        </Grid>
+        <DataGrid
+            x:Name="dataGrid"
+            Grid.Row="1"
+            AlternationCount="2"
+            AutoGenerateColumns="False"
+            ItemsSource="{Binding DataList}">
+            <DataGrid.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="DarkOrange" />
+                <!--  自定义选中时的背景色  -->
+                <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Transparent" />
+                <!--  保持非焦点状态下的边框颜色透明  -->
+            </DataGrid.Resources>
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Style.Triggers>
+                        <!--  偶数行（AlternationIndex为0）  -->
+                        <Trigger Property="AlternationIndex" Value="0">
+                            <Setter Property="Background" Value="#F6F6F6" />
+                        </Trigger>
+                        <!--  奇数行（AlternationIndex为1）  -->
+                        <Trigger Property="AlternationIndex" Value="1">
+                            <Setter Property="Background" Value="White" />
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Foreground" Value="White" />
+                            <!--  设置选中时的文本颜色  -->
+                            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                            <!--  应用自定义的选中背景色  -->
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="FontSize" Value="20" />
+                    <Setter Property="FontWeight" Value="Bold" />
+                    <!--  设置字体大小  -->
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="Background" Value="#3991EB" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type DataGridColumnHeader}">
+                                <Border
+                                    x:Name="bg"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="10">
+                                    <!--  设置圆角  -->
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Stretch" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding CabinetId}"
+                    Header="柜号" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Name}"
+                    Header="工匠品名称" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding PNCode}"
+                    Header="工匠品料号" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding SerialNum}"
+                    Header="工匠品编号" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding MachineId}"
+                    Header="机台码" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding OpenCabinetTime}"
+                    Header="开柜时间" />
+            </DataGrid.Columns>
+            <!--  这里添加列定义和其他内容  -->
+        </DataGrid>
     </Grid>
 </UserControl>
