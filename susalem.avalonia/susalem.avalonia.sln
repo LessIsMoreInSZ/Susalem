@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "susalem.EasyDemo", "susalem.EasyDemo\susalem.EasyDemo.csproj", "{6A23ACF4-C7AF-414E-9062-CD67B608CA29}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "susalem.Communication", "susalem.Communication\susalem.Communication.csproj", "{1C7EB867-148A-454B-9580-EFA7AA1E47A4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{6A23ACF4-C7AF-414E-9062-CD67B608CA29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A23ACF4-C7AF-414E-9062-CD67B608CA29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A23ACF4-C7AF-414E-9062-CD67B608CA29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C7EB867-148A-454B-9580-EFA7AA1E47A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C7EB867-148A-454B-9580-EFA7AA1E47A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C7EB867-148A-454B-9580-EFA7AA1E47A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C7EB867-148A-454B-9580-EFA7AA1E47A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

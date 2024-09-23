@@ -1,0 +1,160 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:susalem.EasyDemo.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="susalem.EasyDemo.Views.SerialComView"
+             x:DataType="viewModels:SerialComViewModel">
+    <Design.DataContext>
+        <viewModels:SerialComViewModel />
+    </Design.DataContext>
+    <UserControl.Styles>
+        <Style Selector="TextBlock.Label">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="3 0 5 0" />
+        </Style>
+        <Style Selector="StackPanel.ConfigItem">
+            <Setter Property="Orientation" Value="Horizontal" />
+            <Setter Property="Margin" Value="0 3 0 3"></Setter>
+        </Style>
+        <Style Selector="Border.ConfigBorder">
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="BorderBrush" Value="Gainsboro" />
+            <Setter Property="CornerRadius" Value="4" />
+            <Setter Property="Padding" Value="5" />
+        </Style>
+    </UserControl.Styles>
+    <Grid ColumnDefinitions="200,*">
+        <Grid RowDefinitions="Auto,Auto,Auto" Margin="5">
+            <Border Grid.Column="0" Classes="ConfigBorder">
+                <StackPanel>
+                    <TextBlock FontWeight="Bold" Text="串口设置"></TextBlock>
+                    <Border Height="1" Margin="0 3 0 0" Background="Gainsboro" />
+                    <!-- 串口号 -->
+                    <StackPanel Classes="ConfigItem">
+                        <TextBlock Classes="Label">串口号</TextBlock>
+                        <ComboBox ItemsSource="{Binding ComPortList}"
+                                  IsEnabled="{Binding !IsConnected}"
+                                  MinWidth="120"
+                                  SelectedItem="{Binding SelectedComPort}">
+                        </ComboBox>
+                    </StackPanel>
+                    <!-- 波特率 -->
+                    <StackPanel Orientation="Horizontal" Classes="ConfigItem">
+                        <TextBlock Classes="Label">波特率</TextBlock>
+                        <ComboBox ItemsSource="{Binding BaudRates}"
+                                  IsEnabled="{Binding !IsConnected}"
+                                  MinWidth="120"
+                                  SelectedItem="{Binding BaudRate}">
+                        </ComboBox>
+                    </StackPanel>
+                    <!-- 校验位 -->
+                    <StackPanel Orientation="Horizontal" Classes="ConfigItem">
+                        <TextBlock Classes="Label">校验位</TextBlock>
+                        <ComboBox ItemsSource="{Binding ParitiesSource}"
+                                  DisplayMemberBinding="{Binding Name}"
+                                  IsEnabled="{Binding !IsConnected}"
+                                  MinWidth="120"
+                                  SelectedValueBinding="{Binding Value}"
+                                  SelectedItem="{Binding SelectedParity}">
+                        </ComboBox>
+                    </StackPanel>
+                    <!-- 数据位 -->
+                    <StackPanel Orientation="Horizontal" Classes="ConfigItem">
+                        <TextBlock Classes="Label">数据位</TextBlock>
+                        <ComboBox ItemsSource="{Binding DataBits}"
+                                  IsEnabled="{Binding !IsConnected}"
+                                  MinWidth="120"
+                                  SelectedItem="{Binding DataBit}">
+                        </ComboBox>
+                    </StackPanel>
+                    <!-- 停止位 -->
+                    <StackPanel Orientation="Horizontal" Classes="ConfigItem">
+                        <TextBlock Classes="Label">停止位</TextBlock>
+                        <ComboBox ItemsSource="{Binding StopBitsSource}"
+                                  DisplayMemberBinding="{Binding Name}"
+                                  SelectedValueBinding="{Binding Value}"
+                                  MinWidth="120"
+                                  IsEnabled="{Binding !IsConnected}"
+                                  SelectedItem="{Binding SelectedStopBits}">
+                        </ComboBox>
+                    </StackPanel>
+                    <!-- 连接按钮 -->
+                    <ToggleButton HorizontalAlignment="Center" Width="100" IsChecked="{Binding IsConnected}"
+                                  Command="{Binding ConnectionCommand}" Margin="0 5 0 0">
+                        <ToggleButton.Styles>
+                            <Style Selector="ToggleButton">
+                                <Style Selector="^:unchecked">
+                                    <Setter Property="Template">
+                                        <ControlTemplate>
+                                            <Button Command="{Binding $parent[ToggleButton].Command}" MinWidth="100">
+                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                                    <Ellipse Height="20" Width="20" Fill="Black" />
+                                                    <TextBlock VerticalAlignment="Center" Margin="10 0 5 0" Text="打开"></TextBlock>
+                                                </StackPanel>
+                                            </Button>
+                                        </ControlTemplate>
+                                    </Setter>
+                                </Style>
+                                <Style Selector="^:checked">
+                                    <Setter Property="Template">
+                                        <ControlTemplate>
+                                            <Button Command="{Binding $parent[ToggleButton].Command}" MinWidth="100">
+                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                                    <Ellipse Height="20" Width="20" Fill="Red"></Ellipse>
+                                                    <TextBlock VerticalAlignment="Center" Margin="10 0 5 0" Text="关闭"></TextBlock>
+                                                </StackPanel>
+                                            </Button>
+                                        </ControlTemplate>
+                                    </Setter>
+                                </Style>
+                            </Style>
+                        </ToggleButton.Styles>
+                        <ToggleButton.Content>
+
+                        </ToggleButton.Content>
+                    </ToggleButton>
+                </StackPanel>
+            </Border>
+            <Border Grid.Row="1" Classes="ConfigBorder" Margin="0 10 0 0">
+                <StackPanel>
+                    <TextBlock FontWeight="Bold" Text="接收设置"></TextBlock>
+                    <Border Height="1" Margin="0 3 0 0" Background="Gainsboro" />
+                    <StackPanel Classes="ConfigItem">
+                        <RadioButton GroupName="ReceiveShowType" Content="ASCII" />
+                        <RadioButton Margin="20 0 0 0" GroupName="ReceiveShowType" Content="HEX" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+            <Border Grid.Row="2" Classes="ConfigBorder" Margin="0 10 0 0">
+                <StackPanel>
+                    <TextBlock FontWeight="Bold" Text="发送设置"></TextBlock>
+                    <Border Height="1" Margin="0 3 0 0" Background="Gainsboro" />
+                    <StackPanel Classes="ConfigItem">
+                        <RadioButton GroupName="ReceiveShowType" Content="ASCII" />
+                        <RadioButton Margin="20 0 0 0" GroupName="ReceiveShowType" Content="HEX" />
+                    </StackPanel>
+                    <StackPanel Classes="ConfigItem">
+                        <CheckBox Content="循环周期"></CheckBox>
+                        <TextBox Text="20" />
+                        <TextBlock VerticalAlignment="Center" Text="ms"></TextBlock>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+        <Grid Grid.Column="1" Grid.RowDefinitions="5*,*">
+            <TextBox Grid.Row="0"></TextBox>
+            <Grid ColumnDefinitions="10*,*" Grid.Row="1">
+                <TextBox></TextBox>
+                <Button Grid.Column="1"
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Center"
+                        VerticalAlignment="Stretch"
+                        VerticalContentAlignment="Center">
+                    发送
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>
