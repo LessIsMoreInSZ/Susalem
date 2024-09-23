@@ -7,6 +7,8 @@ using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
+using Susalem.Settings;
+
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Identity;
@@ -101,8 +103,8 @@ public class SusalemDbMigrationService : ITransientDependency
         Logger.LogInformation($"Executing {(tenant == null ? "host" : tenant.Name + " tenant")} database seed...");
 
         await _dataSeeder.SeedAsync(new DataSeedContext(tenant?.Id)
-            .WithProperty(IdentityDataSeedContributor.AdminEmailPropertyName, IdentityDataSeedContributor.AdminEmailDefaultValue)
-            .WithProperty(IdentityDataSeedContributor.AdminPasswordPropertyName, IdentityDataSeedContributor.AdminPasswordDefaultValue)
+            .WithProperty(IdentityDataSeedContributor.AdminEmailPropertyName, SusalemSettings.AdminEmailDefaultValue) // 邮箱
+            .WithProperty(IdentityDataSeedContributor.AdminPasswordPropertyName, SusalemSettings.AdminPasswordDefaultValue) // 密码
         );
     }
 

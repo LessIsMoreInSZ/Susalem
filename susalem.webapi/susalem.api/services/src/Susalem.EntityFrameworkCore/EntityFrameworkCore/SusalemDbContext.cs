@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
 using Volo.Abp.Data;
@@ -23,10 +24,8 @@ public class SusalemDbContext :
     IIdentityDbContext,
     ITenantManagementDbContext
 {
-    /* Add DbSet properties for your Aggregate Roots / Entities here. */
 
     #region Entities from the modules
-
     //Identity
     public DbSet<IdentityUser> Users { get; set; }
     public DbSet<IdentityRole> Roles { get; set; }
@@ -62,5 +61,13 @@ public class SusalemDbContext :
         builder.ConfigureFeatureManagement();
         builder.ConfigureTenantManagement();
 
+        /* Configure your own tables/entities inside here */
+
+        //builder.Entity<YourEntity>(b =>
+        //{
+        //    b.ToTable(SusalemConsts.DbTablePrefix + "YourEntities", SusalemConsts.DbSchema);
+        //    b.ConfigureByConvention(); //auto configure for the base class props
+        //    //...
+        //});
     }
 }

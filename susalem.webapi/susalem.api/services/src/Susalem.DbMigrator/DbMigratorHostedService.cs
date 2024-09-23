@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Susalem.Data;
 using Serilog;
 using Volo.Abp;
+using Susalem.Settings;
 
 namespace Susalem.DbMigrator;
 
@@ -22,6 +23,8 @@ public class DbMigratorHostedService : IHostedService
 
     public async Task StartAsync(CancellationToken cancellationToken)
     {
+        //配置数据库表名
+        SusalemSettings.ConfigureDataTableName();
         using (var application = await AbpApplicationFactory.CreateAsync<SusalemDbMigratorModule>(options =>
         {
            options.Services.ReplaceConfiguration(_configuration);

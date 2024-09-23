@@ -14,7 +14,6 @@ namespace Susalem;
     typeof(SusalemApplicationContractsModule),
     typeof(AbpAccountHttpApiClientModule),
     typeof(AbpIdentityHttpApiClientModule),
-    typeof(AbpIdentityApplicationContractsModule),
     typeof(AbpPermissionManagementHttpApiClientModule),
     typeof(AbpTenantManagementHttpApiClientModule),
     typeof(AbpFeatureManagementHttpApiClientModule),

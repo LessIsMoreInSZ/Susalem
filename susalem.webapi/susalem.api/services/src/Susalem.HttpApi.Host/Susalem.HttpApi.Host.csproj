@@ -11,14 +11,12 @@
 
 	<ItemGroup>
 		<PackageReference Include="Volo.Abp.AspNetCore.MultiTenancy" Version="$(VoloAbpPackageVersion)" />
-		<PackageReference Include="Volo.Abp.Autofac" Version="$(VoloAbpPackageVersion)" />
-		<PackageReference Include="Volo.Abp.AspNetCore.Serilog" Version="$(VoloAbpPackageVersion)" />
-		<PackageReference Include="Volo.Abp.Swashbuckle" Version="$(VoloAbpPackageVersion)" />
 		<PackageReference Include="Volo.Abp.Account.Web.OpenIddict" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.LeptonXLite" Version="1.0.5" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\..\shared\SusalemAbp.Shared.Hosting.Microservices\SusalemAbp.Shared.Hosting.Microservices.csproj" />
+		<ProjectReference Include="..\..\..\shared\SusalemAbp.Shared.Hosting.AspNetCore\SusalemAbp.Shared.Hosting.AspNetCore.csproj" />
 		<ProjectReference Include="..\Susalem.Application\Susalem.Application.csproj" />
 		<ProjectReference Include="..\Susalem.EntityFrameworkCore\Susalem.EntityFrameworkCore.csproj" />
 		<ProjectReference Include="..\Susalem.HttpApi\Susalem.HttpApi.csproj" />
@@ -29,6 +27,34 @@
 		<Content Remove="Logs\**" />
 		<EmbeddedResource Remove="Logs\**" />
 		<None Remove="Logs\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Remove="wwwroot\images\logo\leptonx\logo-dark-thumbnail.png" />
+	  <Content Remove="wwwroot\images\logo\leptonx\logo-dark.png" />
+	  <Content Remove="wwwroot\images\logo\leptonx\logo-light-thumbnail.png" />
+	  <Content Remove="wwwroot\images\logo\leptonx\logo-light.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Page Include="wwwroot\images\logo\leptonx\logo-dark-thumbnail.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Page>
+	  <Page Include="wwwroot\images\logo\leptonx\logo-dark.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Page>
+	  <Page Include="wwwroot\images\logo\leptonx\logo-light-thumbnail.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Page>
+	  <Page Include="wwwroot\images\logo\leptonx\logo-light.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Page>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Update="wwwroot\global-styles.css">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
 	</ItemGroup>
 
 </Project>

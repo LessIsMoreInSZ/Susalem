@@ -3,6 +3,7 @@
 using Microsoft.Extensions.DependencyInjection;
 
 using Susalem.Localization;
+
 using Volo.Abp.Account;
 using Volo.Abp.AspNetCore.Mvc.Localization;
 using Volo.Abp.FeatureManagement;
@@ -18,10 +19,8 @@ using Volo.Abp.TenantManagement;
 namespace Susalem;
 
 [DependsOn(
-    typeof(SusalemApplicationContractsModule),
+   typeof(SusalemApplicationContractsModule),
     typeof(AbpAccountHttpApiModule),
-    typeof(AbpIdentityHttpApiModule),
-    typeof(AbpIdentityApplicationContractsModule),
     typeof(AbpPermissionManagementHttpApiModule),
     typeof(AbpTenantManagementHttpApiModule),
     typeof(AbpFeatureManagementHttpApiModule),
@@ -33,17 +32,11 @@ public class SusalemHttpApiModule : AbpModule
     {
         PreConfigure<AbpMvcDataAnnotationsLocalizationOptions>(options =>
         {
-            options.AddAssemblyResource(typeof(IdentityResource), typeof(AbpIdentityApplicationContractsModule).Assembly);
-            options.AddAssemblyResource(typeof(IdentityResource), typeof(Volo.Abp.Identity.AbpIdentityApplicationContractsModule).Assembly);
-
             options.AddAssemblyResource(typeof(AbpOpenIddictResource), typeof(SusalemHttpApiModule).Assembly);
         });
 
         PreConfigure<IMvcBuilder>(mvcBuilder =>
         {
-
-            mvcBuilder.AddApplicationPartIfNotExists(typeof(AbpIdentityHttpApiModule).Assembly);
-
             mvcBuilder.AddApplicationPartIfNotExists(typeof(SusalemHttpApiModule).Assembly);
 
         });
