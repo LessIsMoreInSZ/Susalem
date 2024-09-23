@@ -32,5 +32,11 @@ namespace susalem.EasyDemo.Repository
         public DbSet<UserModel>? Users { get; set; }
 
         public DbSet<RoleModel>? Roles { get; set; }
+
+        public DbSet<ChemicalParaModel>? ChemicalParas { get; set; }
+
+        public DbSet<CabinetInfoModel>? CabinetInfos { get; set; }
+
+        public DbSet<HistoryModel>? Historys { get; set; }
     }
 }

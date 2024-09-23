@@ -13,7 +13,7 @@ namespace susalem.EasyDemo.Services
         public int AddCabinetInfo(CabinetInfoModel info)
         {
             int nRet = 0;
-            using (HQSRepository hc = new HQSRepository())
+            using (JccRepository hc = new JccRepository())
             {
                 try
                 {
@@ -30,7 +30,7 @@ namespace susalem.EasyDemo.Services
         public int EditCabinetInfo(CabinetInfoModel info)
         {
             int nRet = 0;
-            using (HQSRepository hc = new HQSRepository())
+            using (JccRepository hc = new JccRepository())
             {
                 try
                 {
@@ -47,7 +47,7 @@ namespace susalem.EasyDemo.Services
         public async Task<int> EditCabinetInfoList(IEnumerable<CabinetInfoModel> infoList)
         {
             int nRet = 0;
-            using (HQSRepository hc = new HQSRepository())
+            using (JccRepository hc = new JccRepository())
             {
                 try
                 {
@@ -64,7 +64,7 @@ namespace susalem.EasyDemo.Services
         public List<CabinetInfoModel> FindAllCabinetInfos()
         {
             List<CabinetInfoModel> result = new List<CabinetInfoModel>();
-            using (HQSRepository hc = new HQSRepository())
+            using (JccRepository hc = new JccRepository())
             {
                 try
                 {
@@ -80,7 +80,7 @@ namespace susalem.EasyDemo.Services
         public CabinetInfoModel? FindCabinetInfoByCabinetCode(int id)
         {
             CabinetInfoModel? result = new CabinetInfoModel();
-            using (HQSRepository hc = new HQSRepository())
+            using (JccRepository hc = new JccRepository())
             {
                 try
                 {

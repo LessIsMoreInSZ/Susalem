@@ -13,7 +13,7 @@ namespace susalem.EasyDemo.Services
         public int AddHistory(HistoryModel model)
         {
             int nRet = 0;
-            using (HQSRepository hc = new HQSRepository())
+            using (JccRepository hc = new JccRepository())
             {
                 try
                 {
@@ -30,7 +30,7 @@ namespace susalem.EasyDemo.Services
         public List<HistoryModel> FindAllHistorys()
         {
             List<HistoryModel> result = new List<HistoryModel>();
-            using (HQSRepository hc = new HQSRepository())
+            using (JccRepository hc = new JccRepository())
             {
                 try
                 {
@@ -46,7 +46,7 @@ namespace susalem.EasyDemo.Services
         public HistoryModel FindHistoryById(string machinecode, string cabinetId)
         {
             HistoryModel result = new HistoryModel();
-            using (HQSRepository hc = new HQSRepository())
+            using (JccRepository hc = new JccRepository())
             {
                 try
                 {
@@ -62,7 +62,7 @@ namespace susalem.EasyDemo.Services
         public HistoryModel FindHistoryByTime(DateTime startTime, DateTime endTime)
         {
             HistoryModel result = new HistoryModel();
-            using (HQSRepository hc = new HQSRepository())
+            using (JccRepository hc = new JccRepository())
             {
                 try
                 {

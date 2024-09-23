@@ -14,7 +14,7 @@ namespace susalem.EasyDemo.Services
         public int AddPara(ChemicalParaModel para)
         {
             int nRet = 0;
-            using (HQSRepository hc = new HQSRepository())
+            using (JccRepository hc = new JccRepository())
             {
                 try
                 {
@@ -31,7 +31,7 @@ namespace susalem.EasyDemo.Services
         public int DeletePara(int id)
         {
             int nRet = 0;
-            using (HQSRepository hc = new HQSRepository())
+            using (JccRepository hc = new JccRepository())
             {
                 try
                 {
@@ -48,7 +48,7 @@ namespace susalem.EasyDemo.Services
         public int EditPara(ChemicalParaModel para)
         {
             int nRet = 0;
-            using (HQSRepository hc = new HQSRepository())
+            using (JccRepository hc = new JccRepository())
             {
                 try
                 {
@@ -65,7 +65,7 @@ namespace susalem.EasyDemo.Services
         public List<ChemicalParaModel> FindAllParas()
         {
             List<ChemicalParaModel> result = new List<ChemicalParaModel>();
-            using (HQSRepository hc = new HQSRepository())
+            using (JccRepository hc = new JccRepository())
             {
                 try
                 {
@@ -81,7 +81,7 @@ namespace susalem.EasyDemo.Services
         public ChemicalParaModel FindParaById(int id)
         {
             ChemicalParaModel result = new ChemicalParaModel();
-            using (HQSRepository hc = new HQSRepository())
+            using (JccRepository hc = new JccRepository())
             {
                 try
                 {
