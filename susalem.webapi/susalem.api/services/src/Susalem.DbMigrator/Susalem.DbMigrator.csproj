@@ -29,7 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.Autofac" Version="6.0.3" />
+    <PackageReference Include="Volo.Abp.Autofac" Version="$(VoloAbpPackageVersion)" />
     <ProjectReference Include="..\Susalem.Application.Contracts\Susalem.Application.Contracts.csproj" />
     <ProjectReference Include="..\Susalem.EntityFrameworkCore\Susalem.EntityFrameworkCore.csproj" />
   </ItemGroup>

@@ -8,6 +8,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\..\modules\susalem.identity\src\Susalem.Identity.Domain\Susalem.Identity.Domain.csproj" />
 		<ProjectReference Include="..\Susalem.Domain.Shared\Susalem.Domain.Shared.csproj" />
 	</ItemGroup>
 
@@ -21,6 +22,10 @@
 		<PackageReference Include="Volo.Abp.SettingManagement.Domain" Version="$(VoloAbpPackageVersion)" />
 		<PackageReference Include="Volo.Abp.OpenIddict.Domain" Version="$(VoloAbpPackageVersion)" />
 		<PackageReference Include="Volo.Abp.PermissionManagement.Domain.OpenIddict" Version="$(VoloAbpPackageVersion)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Susalem\" />
 	</ItemGroup>
 
 </Project>

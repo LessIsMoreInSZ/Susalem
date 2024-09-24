@@ -1069,7 +1069,7 @@ namespace Susalem.Migrations
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable("OidcApplications", (string)null);
+                    b.ToTable("OIDCApplications", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.OpenIddict.Authorizations.OpenIddictAuthorization", b =>
@@ -1146,7 +1146,7 @@ namespace Susalem.Migrations
 
                     b.HasIndex("ApplicationId", "Status", "Subject", "Type");
 
-                    b.ToTable("OidcAuthorizations", (string)null);
+                    b.ToTable("OIDCAuthorizations", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.OpenIddict.Scopes.OpenIddictScope", b =>
@@ -1221,7 +1221,7 @@ namespace Susalem.Migrations
 
                     b.HasIndex("Name");
 
-                    b.ToTable("OidcScopes", (string)null);
+                    b.ToTable("OIDCScopes", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.OpenIddict.Tokens.OpenIddictToken", b =>
@@ -1315,7 +1315,7 @@ namespace Susalem.Migrations
 
                     b.HasIndex("ApplicationId", "Status", "Subject", "Type");
 
-                    b.ToTable("OidcTokens", (string)null);
+                    b.ToTable("OIDCTokens", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.PermissionManagement.PermissionGrant", b =>

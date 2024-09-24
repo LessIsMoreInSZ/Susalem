@@ -51,6 +51,8 @@ public class SusalemHttpApiHostModule : AbpModule
 {
     public override void PreConfigureServices(ServiceConfigurationContext context)
     {
+        //配置ABP数据库表名
+        SusalemSettings.ConfigureDataTableName();
         PreConfigure<OpenIddictBuilder>(builder =>
         {
             builder.AddValidation(options =>
@@ -66,8 +68,7 @@ public class SusalemHttpApiHostModule : AbpModule
     {
         var configuration = context.Services.GetConfiguration();
         var hostingEnvironment = context.Services.GetHostingEnvironment();
-        //配置ABP数据库表名
-        SusalemSettings.ConfigureDataTableName();
+     
         ConfigureAuthentication(context);
         ConfigureBundles();
         ConfigureUrls(configuration);

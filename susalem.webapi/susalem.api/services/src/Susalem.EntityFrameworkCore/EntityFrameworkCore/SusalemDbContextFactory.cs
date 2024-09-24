@@ -19,10 +19,7 @@ public class SusalemDbContextFactory : IDesignTimeDbContextFactory<SusalemDbCont
         var configuration = BuildConfiguration();
 
         var builder = new DbContextOptionsBuilder<SusalemDbContext>()
-            .UseMySql(configuration.GetConnectionString("Default"), MySqlServerVersion.LatestSupportedServerVersion, mysqlOptions =>
-            {
-                mysqlOptions.SchemaBehavior(MySqlSchemaBehavior.Ignore);
-            });
+            .UseMySql(configuration.GetConnectionString("Default"), MySqlServerVersion.LatestSupportedServerVersion);
 
         return new SusalemDbContext(builder.Options);
     }

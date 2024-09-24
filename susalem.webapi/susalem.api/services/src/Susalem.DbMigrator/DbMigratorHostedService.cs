@@ -25,6 +25,7 @@ public class DbMigratorHostedService : IHostedService
     {
         //配置数据库表名
         SusalemSettings.ConfigureDataTableName();
+
         using (var application = await AbpApplicationFactory.CreateAsync<SusalemDbMigratorModule>(options =>
         {
            options.Services.ReplaceConfiguration(_configuration);

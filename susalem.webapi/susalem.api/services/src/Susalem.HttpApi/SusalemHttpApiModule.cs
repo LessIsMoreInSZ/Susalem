@@ -7,8 +7,6 @@ using Susalem.Localization;
 using Volo.Abp.Account;
 using Volo.Abp.AspNetCore.Mvc.Localization;
 using Volo.Abp.FeatureManagement;
-using Volo.Abp.Identity;
-using Volo.Abp.Identity.Localization;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.OpenIddict.Localization;
@@ -21,6 +19,7 @@ namespace Susalem;
 [DependsOn(
    typeof(SusalemApplicationContractsModule),
     typeof(AbpAccountHttpApiModule),
+    typeof(Susalem.Identity.AbpIdentityHttpApiModule),
     typeof(AbpPermissionManagementHttpApiModule),
     typeof(AbpTenantManagementHttpApiModule),
     typeof(AbpFeatureManagementHttpApiModule),

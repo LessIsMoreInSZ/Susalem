@@ -20,7 +20,7 @@ public static class SusalemConsts
     /// <summary>
     /// OIDC
     /// </summary>
-    internal const string OpenIddictPrefix = "Oidc";
+    internal const string OpenIddictPrefix = "OIDC";
     #endregion
 
     #region 架构  Mysql不支持  根据数据库启用

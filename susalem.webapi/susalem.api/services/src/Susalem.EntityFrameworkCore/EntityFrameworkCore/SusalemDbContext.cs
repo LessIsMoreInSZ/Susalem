@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
+using Susalem.Settings;
+
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
 using Volo.Abp.Data;
@@ -51,7 +53,8 @@ public class SusalemDbContext :
         base.OnModelCreating(builder);
 
         /* Include modules to your migration db context */
-
+        // 重新配置表前缀
+        SusalemSettings.ConfigureDataTableName();
         builder.ConfigurePermissionManagement();
         builder.ConfigureSettingManagement();
         builder.ConfigureBackgroundJobs();
