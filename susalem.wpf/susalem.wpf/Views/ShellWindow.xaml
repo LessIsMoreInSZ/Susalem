@@ -9,18 +9,16 @@
     xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
-    Name="shell"
-    Title="ShellWindow"
-    Width="1280"
+    Name="shell"  
+    Title="ShellWindow" 
+    Width="1280" 
     Height="720"
     mah:ControlsHelper.CornerRadius="5"
-    Background="Transparent"
-    BorderThickness="0.5"
-    ResizeBorderThickness="0"
+
     ResizeMode="NoResize"
     TitleBarHeight="0"
     WindowStartupLocation="CenterScreen"
-    mc:Ignorable="d">
+    mc:Ignorable="d" WindowTransitionsEnabled="False">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadedCommand}" CommandParameter="{Binding ElementName=shell}" />
@@ -155,7 +153,7 @@
             <Border Grid.Column="1" Background="White">
                 <ContentControl x:Name="list" />
             </Border>
-            <Border Grid.Column="2" Background="AliceBlue">
+            <Border Grid.Column="2" Background="AliceBlue" Visibility="Hidden">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="32" />
@@ -197,6 +195,7 @@
                 </Grid>
 
             </Border>
+            <local:ThreeDView Grid.Column="2"/>
         </Grid>
     </Border>
 </mah:MetroWindow>

@@ -25,18 +25,18 @@ namespace susalem.wpf
 //#if DEBUG
 //            return new TravelWindow();
 //#else
-            var login = Container.Resolve<LoginWindow>();
-            var result= login.ShowDialog();
-            if (result is null||!result.Value)
-            {
-                App.Current.Shutdown();
-                return null;
-            }
-            else
-            {
-                ShutdownMode = ShutdownMode.OnMainWindowClose;
+            //var login = Container.Resolve<LoginWindow>();
+            //var result= login.ShowDialog();
+            //if (result is null||!result.Value)
+            //{
+            //    App.Current.Shutdown();
+            //    return null;
+            //}
+            //else
+            //{
+            //    ShutdownMode = ShutdownMode.OnMainWindowClose;
                 return Container.Resolve<ShellWindow>();
-            }
+            //}
 //#endif
         }
 

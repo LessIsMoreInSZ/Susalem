@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+    <PackageReference Include="HelixToolkit.Wpf" Version="2.25.0" />
     <PackageReference Include="MahApps.Metro" Version="2.4.10" />
     <PackageReference Include="MahApps.Metro.IconPacks" Version="4.11.0" />
     <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
@@ -23,6 +24,12 @@
 
   <ItemGroup>
     <Resource Include="Assets\dice.stl" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="TDModels\efem.3ds">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
