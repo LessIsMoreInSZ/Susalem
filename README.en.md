@@ -1,36 +1,16 @@
 # Susalem
 
-#### Description
-加入带锅宫酱，来到苏州耶路撒冷的怀抱吧！
+####Introduction
+Join us And Welcome to Suzhou!
 
-#### Software Architecture
-Software architecture description
+####Software Description
+Susalem is an open-source line-based MES project, but this is not entirely correct, as some of its sub-projects can also be used directly or indirectly for SCADA, HMI, etc. The rest will be explained later,... I'm off to work. Installation Guide
+WPF part is developed with .NET6, and ORM uses EF Core. The rest can be directly imported from NuGet packages, and if there are third-party DLLs, we will provide related dependencies in a separate package.
 
-#### Installation
+####Instructions
+1. To make it easier for beginners to get started with this project, we have extracted the EasyDemo portion of the code. If reading the entire codebase is too overwhelming, you can read the EasyDemo portion separately. If you feel that there are other parts of the EasyDemo that should be extracted, please contact the developer or submit an Issue.
+2. This code is fully open-source, but no one is allowed to sell the source code in any way, especially on TaoBao or XianYu. Please respect the developer's labor.
+3. This code is allowed to be used commercially, but we hope you will do so with a grateful heart. If you make a profit through this project, we hope you will try your best to provide some donations.
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### Instructions
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### Contribution
-
-1.  Fork the repository
-2.  Create Feat_xxx branch
-3.  Commit your code
-4.  Create Pull Request
-
-
-#### Gitee Feature
-
-1.  You can use Readme\_XXX.md to support different languages, such as Readme\_en.md, Readme\_zh.md
-2.  Gitee blog [blog.gitee.com](https://blog.gitee.com)
-3.  Explore open source project [https://gitee.com/explore](https://gitee.com/explore)
-4.  The most valuable open source project [GVP](https://gitee.com/gvp)
-5.  The manual of Gitee [https://gitee.com/help](https://gitee.com/help)
-6.  The most popular members  [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+####Contributions and Special Skills
+Later, my brothers and I will tell you a joke on Bilibili.
