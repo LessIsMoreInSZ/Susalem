@@ -51,7 +51,7 @@ namespace susalem.wpf.ViewModels
             {
                 model3d.Material = Materials.Yellow;
             }
-            MessageBox.Show(SelectedModel.GetName());
+            //MessageBox.Show(SelectedModel.GetName());
         }
 
         public PointSelectionCommand PointSelectionCommand { get; private set; }
