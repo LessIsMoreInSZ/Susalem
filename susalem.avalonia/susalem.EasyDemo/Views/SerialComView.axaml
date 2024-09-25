@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:susalem.EasyDemo.ViewModels"
+             xmlns:controls="clr-namespace:susalem.EasyDemo.Controls"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="susalem.EasyDemo.Views.SerialComView"
              x:DataType="viewModels:SerialComViewModel">
@@ -54,10 +55,11 @@
                         <TextBlock Classes="Label">校验位</TextBlock>
                         <ComboBox ItemsSource="{Binding ParitiesSource}"
                                   DisplayMemberBinding="{Binding Name}"
+                                  SelectedValueBinding="{Binding}"
                                   IsEnabled="{Binding !IsConnected}"
                                   MinWidth="120"
-                                  SelectedValueBinding="{Binding Value}"
-                                  SelectedItem="{Binding SelectedParity}">
+
+                                  SelectedValue="{Binding SelectedParity}">
                         </ComboBox>
                     </StackPanel>
                     <!-- 数据位 -->
@@ -66,7 +68,7 @@
                         <ComboBox ItemsSource="{Binding DataBits}"
                                   IsEnabled="{Binding !IsConnected}"
                                   MinWidth="120"
-                                  SelectedItem="{Binding DataBit}">
+                                  SelectedValue="{Binding DataBit}">
                         </ComboBox>
                     </StackPanel>
                     <!-- 停止位 -->
@@ -74,10 +76,10 @@
                         <TextBlock Classes="Label">停止位</TextBlock>
                         <ComboBox ItemsSource="{Binding StopBitsSource}"
                                   DisplayMemberBinding="{Binding Name}"
-                                  SelectedValueBinding="{Binding Value}"
                                   MinWidth="120"
+                                  SelectedValueBinding="{Binding}"
                                   IsEnabled="{Binding !IsConnected}"
-                                  SelectedItem="{Binding SelectedStopBits}">
+                                  SelectedValue="{Binding SelectedStopBits}">
                         </ComboBox>
                     </StackPanel>
                     <!-- 连接按钮 -->
@@ -123,7 +125,8 @@
                     <Border Height="1" Margin="0 3 0 0" Background="Gainsboro" />
                     <StackPanel Classes="ConfigItem">
                         <RadioButton GroupName="ReceiveShowType" Content="ASCII" />
-                        <RadioButton Margin="20 0 0 0" GroupName="ReceiveShowType" Content="HEX" />
+                        <RadioButton IsChecked="{Binding ReceiveIsHex}" Margin="20 0 0 0" GroupName="ReceiveShowType"
+                                     Content="HEX" />
                     </StackPanel>
                 </StackPanel>
             </Border>
@@ -132,8 +135,11 @@
                     <TextBlock FontWeight="Bold" Text="发送设置"></TextBlock>
                     <Border Height="1" Margin="0 3 0 0" Background="Gainsboro" />
                     <StackPanel Classes="ConfigItem">
-                        <RadioButton GroupName="ReceiveShowType" Content="ASCII" />
-                        <RadioButton Margin="20 0 0 0" GroupName="ReceiveShowType" Content="HEX" />
+                        <RadioButton GroupName="SendType" Content="ASCII" />
+                        <RadioButton IsChecked="{Binding SendIsHex}"
+                                     Margin="20 0 0 0"
+                                     GroupName="SendType"
+                                     Content="HEX" />
                     </StackPanel>
                     <StackPanel Classes="ConfigItem">
                         <CheckBox Content="循环周期"></CheckBox>
@@ -143,15 +149,32 @@
                 </StackPanel>
             </Border>
         </Grid>
-        <Grid Grid.Column="1" Grid.RowDefinitions="5*,*">
-            <TextBox Grid.Row="0"></TextBox>
+        <Grid Grid.Column="1" RowDefinitions="5*,*">
+            <Border>
+                <controls:TextEdit
+                    BorderThickness="1"
+                    BorderBrush="Gainsboro"
+                    CornerRadius="4"
+                    HorizontalAlignment="Stretch"
+                    
+                    VerticalAlignment="Stretch"
+                    FontSize="14"
+                    FontFamily="Cascadia Code,Consolas,Menlo,Monospace"
+                    x:Name="TextEdit" />
+            </Border>
             <Grid ColumnDefinitions="10*,*" Grid.Row="1">
-                <TextBox></TextBox>
+                <Border BorderBrush="Gainsboro" BorderThickness="1" CornerRadius="4" Padding="4">
+                    <TextBox VerticalAlignment="Stretch"
+                             HorizontalAlignment="Stretch" BorderThickness="0"
+                             Text="{Binding SendString}">
+                    </TextBox>
+                </Border>
                 <Button Grid.Column="1"
                         HorizontalAlignment="Stretch"
                         HorizontalContentAlignment="Center"
                         VerticalAlignment="Stretch"
-                        VerticalContentAlignment="Center">
+                        VerticalContentAlignment="Center"
+                        Command="{Binding SendCommand}">
                     发送
                 </Button>
             </Grid>
