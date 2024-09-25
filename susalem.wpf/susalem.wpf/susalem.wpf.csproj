@@ -9,6 +9,13 @@
 
   <ItemGroup>
     <None Remove="Assets\dice.stl" />
+    <None Remove="TDModels\efem.3ds" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="TDModels\efem.3ds">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -24,12 +31,6 @@
 
   <ItemGroup>
     <Resource Include="Assets\dice.stl" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="TDModels\efem.3ds">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>
