@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
+using Susalem.EntityFrameworkCore.DbContextModelCreatingExtensions;
 using Susalem.Mes.EntityFrameworkCore;
 using Susalem.Settings;
 
@@ -54,10 +55,12 @@ public class SusalemDbContext :
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
-
+       
         /* Include modules to your migration db context */
         // 重新配置表前缀
         SusalemSettings.ConfigureDataTableName();
+
+        #region 系统表
         builder.ConfigurePermissionManagement();
         builder.ConfigureSettingManagement();
         builder.ConfigureBackgroundJobs();
@@ -66,14 +69,11 @@ public class SusalemDbContext :
         builder.ConfigureOpenIddict();
         builder.ConfigureFeatureManagement();
         builder.ConfigureTenantManagement();
+        #endregion
+        #region MES
+        builder.ConfigureService();
+        #endregion
 
-        /* Configure your own tables/entities inside here */
 
-        //builder.Entity<YourEntity>(b =>
-        //{
-        //    b.ToTable(SusalemConsts.DbTablePrefix + "YourEntities", SusalemConsts.DbSchema);
-        //    b.ConfigureByConvention(); //auto configure for the base class props
-        //    //...
-        //});
     }
 }
