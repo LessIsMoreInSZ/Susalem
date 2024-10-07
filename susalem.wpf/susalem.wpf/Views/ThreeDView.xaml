@@ -13,7 +13,7 @@
     prism:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
     <Grid>
-        <helix:HelixViewport3D Name="vp" IsHeadLightEnabled="True">
+        <helix:HelixViewport3D Name="vp" IsHeadLightEnabled="True"  MouseDown="vp_MouseDown">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Loaded">
                     <i:InvokeCommandAction Command="{Binding LoadedCommand}" CommandParameter="{Binding ElementName=vp}" />
