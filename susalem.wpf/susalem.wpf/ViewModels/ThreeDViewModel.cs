@@ -77,6 +77,7 @@ namespace susalem.wpf.ViewModels
                 GeometryModel3D geo3d = item.Value as GeometryModel3D;
                 if(geo3d.Material== Materials.Yellow)
                 {
+                    Console.WriteLine(item.Key);
                     Console.WriteLine("666");
 
                 }
