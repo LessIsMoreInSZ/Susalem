@@ -25,7 +25,7 @@ namespace SusalemAbp.webapi
 
             try
             {
-                Log.Information("Starting Xds.Mes.HttpApi.Host.");
+                Log.Information("Starting Susalem.HttpApi.Host.");
                 var builder = WebApplication.CreateBuilder(args);
 
                 // Add services to the container.

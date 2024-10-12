@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="..\..\common.props" />
 
@@ -19,6 +19,10 @@
   <ItemGroup>
     <EmbeddedResource Include="Localization\Mes\*.json" />
     <Content Remove="Localization\Mes\*.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Enum\Ecm\ExtraPropertyEnum\" />
   </ItemGroup>
 
 </Project>
