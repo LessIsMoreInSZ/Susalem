@@ -1,8 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using HelixToolkit.Wpf;
+using susalem.wpf.Visual3D;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,11 +26,25 @@ namespace susalem.wpf.ViewModels
         Viewport3D viewport;
 
         [RelayCommand]
+
         void Loaded(HelixViewport3D vp)
         {
-            if(viewport is null)
+            if (viewport is null)
             {
-                viewport= vp.Viewport;
+                viewport = vp.Viewport;
+                foreach(var item in viewport.Children)
+                {
+                    //foreach (var child in item.)
+                    //{
+                    //}
+
+                    _3d = item as ChildSelectableVisual3D;
+                    if(_3d!=null)
+                    {
+                        //for
+                    }
+                    Console.WriteLine(item);
+                }
                 PointSelectionCommand = new PointSelectionCommand(viewport, OnModelSelected);
                 viewport.InputBindings.Add(new MouseBinding(PointSelectionCommand, new MouseGesture(MouseAction.LeftClick)));
 
@@ -36,21 +52,45 @@ namespace susalem.wpf.ViewModels
 
         }
 
+        ChildSelectableVisual3D _3d;
+
         private void OnModelSelected(object? sender, ModelsSelectedEventArgs e)
         {
             if (SelectedModel is not null)
             {
                 if (SelectedModel is GeometryModel3D model)
                 {
-                    model.Material =null;
+                    model.Material = null;
                 }
             }
-           
-            SelectedModel =e.SelectedModels.FirstOrDefault();
+
+            SelectedModel = e.SelectedModels.FirstOrDefault();
+            Model3D model3D = e.SelectedModels.FirstOrDefault() as Model3D;
             if (SelectedModel is GeometryModel3D model3d)
             {
                 model3d.Material = Materials.Yellow;
             }
+
+            Console.WriteLine(_3d);
+            foreach(var item in _3d.ChildrenDictionary)
+            {
+                GeometryModel3D geo3d = item.Value as GeometryModel3D;
+                if(geo3d.Material== Materials.Yellow)
+                {
+                    Console.WriteLine(item.Key);
+                    Console.WriteLine("666");
+
+                }
+            }
+            var SelectedModels = e.SelectedModels;
+            //foreach (var model in SelectedModels)
+            //{
+            //    Debug.Write(model.GetName());
+            //}
+
+
+
+
             //MessageBox.Show(SelectedModel.GetName());
         }
 
