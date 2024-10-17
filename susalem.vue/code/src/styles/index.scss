@@ -1,0 +1,94 @@
+// 全局 CSS 变量
+@import "./variables.css";
+// Transition
+@import "./transition.scss";
+// Element Plus
+@import "./element-plus.scss";
+// Vxe Table
+@import "./vxe-table.scss";
+// 注册多主题
+@import "./theme/register.scss";
+// mixin
+@import "./mixins.scss";
+
+// 业务页面几乎都应该在根元素上挂载 class="app-container"，以保持页面美观
+.app-container {
+  padding: 10px;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background-color: var(--v3-body-bg-color);
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial,
+    sans-serif;
+  @extend %scrollbar;
+}
+
+#app {
+  height: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+a,
+a:focus,
+a:hover {
+  color: inherit;
+  outline: none;
+  text-decoration: none;
+}
+
+div:focus {
+  outline: none;
+}
+
+.el-table__body-wrapper tr td.el-table-fixed-column--left.is-first-column::before,
+.el-table__body-wrapper tr td.el-table-fixed-column--left.is-last-column::before,
+.el-table__body-wrapper tr td.el-table-fixed-column--right.is-first-column::before,
+.el-table__body-wrapper tr td.el-table-fixed-column--right.is-last-column::before,
+.el-table__body-wrapper tr th.el-table-fixed-column--left.is-first-column::before,
+.el-table__body-wrapper tr th.el-table-fixed-column--left.is-last-column::before,
+.el-table__body-wrapper tr th.el-table-fixed-column--right.is-first-column::before,
+.el-table__body-wrapper tr th.el-table-fixed-column--right.is-last-column::before,
+.el-table__footer-wrapper tr td.el-table-fixed-column--left.is-first-column::before,
+.el-table__footer-wrapper tr td.el-table-fixed-column--left.is-last-column::before,
+.el-table__footer-wrapper tr td.el-table-fixed-column--right.is-first-column::before,
+.el-table__footer-wrapper tr td.el-table-fixed-column--right.is-last-column::before,
+.el-table__footer-wrapper tr th.el-table-fixed-column--left.is-first-column::before,
+.el-table__footer-wrapper tr th.el-table-fixed-column--left.is-last-column::before,
+.el-table__footer-wrapper tr th.el-table-fixed-column--right.is-first-column::before,
+.el-table__footer-wrapper tr th.el-table-fixed-column--right.is-last-column::before,
+.el-table__header-wrapper tr td.el-table-fixed-column--left.is-first-column::before,
+.el-table__header-wrapper tr td.el-table-fixed-column--left.is-last-column::before,
+.el-table__header-wrapper tr td.el-table-fixed-column--right.is-first-column::before,
+.el-table__header-wrapper tr td.el-table-fixed-column--right.is-last-column::before,
+.el-table__header-wrapper tr th.el-table-fixed-column--left.is-first-column::before,
+.el-table__header-wrapper tr th.el-table-fixed-column--left.is-last-column::before,
+.el-table__header-wrapper tr th.el-table-fixed-column--right.is-first-column::before,
+.el-table__header-wrapper tr th.el-table-fixed-column--right.is-last-column::before {
+  bottom: 0px !important;
+}
+
+.el-card {
+  --el-card-padding: 10px;
+}
+
+.searchTop {
+  margin-bottom: 10px !important;
+  // :deep(.el-card__body) {
+  //   padding-bottom: 2px;
+  // }
+}
+.searchForm .el-form-item {
+  margin-bottom: 0px !important;
+}
