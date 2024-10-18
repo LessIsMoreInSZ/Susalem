@@ -26,7 +26,8 @@ namespace susalem.wpf.Views
         public ThreeDView()
         {
             InitializeComponent();
-            cv.Source = "TDModels\\efem.3ds";
+            cv.Source = "TDModels\\efem.3ds"; 
+
         }
 
         private void efem_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
