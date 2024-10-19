@@ -33,4 +33,10 @@
     <Resource Include="Assets\dice.stl" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="TDModels\SP-2001.stl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

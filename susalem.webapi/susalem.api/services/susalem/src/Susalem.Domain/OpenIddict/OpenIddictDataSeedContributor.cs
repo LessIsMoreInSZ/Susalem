@@ -78,32 +78,6 @@ public class OpenIddictDataSeedContributor : IDataSeedContributor, ITransientDep
 
         var configurationSection = _configuration.GetSection("OpenIddict:Applications");
 
-        //Web Client
-        var webClientId = configurationSection["Susalem_Web:ClientId"];
-        if (!webClientId.IsNullOrWhiteSpace())
-        {
-            var webClientRootUrl = configurationSection["Susalem_Web:RootUrl"].EnsureEndsWith('/');
-
-            /* Susalem_Web client is only needed if you created a tiered
-             * solution. Otherwise, you can delete this client. */
-            await CreateApplicationAsync(
-                name: webClientId,
-                type: OpenIddictConstants.ClientTypes.Confidential,
-                consentType: OpenIddictConstants.ConsentTypes.Implicit,
-                displayName: "Web Application",
-                secret: configurationSection["Susalem_Web:ClientSecret"] ?? "1q2w3e*",
-                grantTypes: new List<string> //Hybrid flow
-                {
-                    OpenIddictConstants.GrantTypes.AuthorizationCode,
-                    OpenIddictConstants.GrantTypes.Implicit
-                },
-                scopes: commonScopes,
-                redirectUri: $"{webClientRootUrl}signin-oidc",
-                clientUri: webClientRootUrl,
-                postLogoutRedirectUri: $"{webClientRootUrl}signout-callback-oidc"
-            );
-        }
-
         // Swagger Client
         var swaggerClientId = configurationSection["Susalem_Swagger:ClientId"];
         if (!swaggerClientId.IsNullOrWhiteSpace())
@@ -125,7 +99,34 @@ public class OpenIddictDataSeedContributor : IDataSeedContributor, ITransientDep
                 clientUri: swaggerRootUrl
             );
         }
-    }
+
+        // Susalem_Local_Web
+        var localWebClientId = configurationSection["Susalem_Local_Web:ClientId"];
+        if (!swaggerClientId.IsNullOrWhiteSpace())
+        {
+            var localWebClientRootUrl = configurationSection["Susalem_Local_Web:RootUrl"].TrimEnd('/');
+
+            await CreateApplicationAsync(
+                name: localWebClientId,
+                type: OpenIddictConstants.ClientTypes.Confidential,
+                consentType: OpenIddictConstants.ConsentTypes.Implicit,
+                displayName: "Local Web Application",
+                secret: configurationSection["Susalem_Local_Web:ClientSecret"] ?? "1q2w3e*",
+                grantTypes: new List<string> //Hybrid flow
+                {
+                  OpenIddictConstants.GrantTypes.AuthorizationCode,
+                    OpenIddictConstants.GrantTypes.Password,
+                    OpenIddictConstants.GrantTypes.ClientCredentials,
+                    OpenIddictConstants.GrantTypes.RefreshToken
+                },
+                scopes: commonScopes,
+                redirectUri: localWebClientRootUrl,
+                clientUri: localWebClientRootUrl,
+                postLogoutRedirectUri: localWebClientRootUrl
+            );
+        }
+
+}
 
     private async Task CreateApplicationAsync(
         [NotNull] string name,

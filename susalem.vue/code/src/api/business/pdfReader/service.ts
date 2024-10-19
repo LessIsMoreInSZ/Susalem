@@ -25,7 +25,8 @@ function createService() {
       console.log("responseType", responseType)
       if (responseType === "blob" || responseType === "arraybuffer") return apiData
       // 这个 code 是和后端约定的业务 code
-      const code = apiData.code
+      // const code = apiData.code
+      const code = response.status
       // 如果没有 code, 代表这不是项目后端开发的 api
       if (code === undefined) {
         ElMessage.error("非本系统的接口")
