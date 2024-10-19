@@ -25,8 +25,8 @@ export const useUserStore = defineStore("user", () => {
   //const modules = import.meta.glob('/src/*/*.vue')
 
   /** 登录 */
-  const login = async ({ employeeNumber, password }: LoginRequestData) => {
-    const { data } = await loginApi({ employeeNumber, password })
+  const login = async ({ username, password }: LoginRequestData) => {
+    const { data } = await loginApi({ username, password })
     setToken(data.token)
     token.value = data.token
   }

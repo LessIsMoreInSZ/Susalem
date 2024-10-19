@@ -18,12 +18,12 @@ const loading = ref(false)
 
 /** 登录表单数据 */
 const loginFormData: LoginRequestData = reactive({
-  employeeNumber: "",
+  username: "",
   password: ""
 })
 /** 登录表单校验规则 */
 const loginFormRules: FormRules = {
-  employeeNumber: [{ required: true, message: "请输入用户名", trigger: "blur" }],
+  username: [{ required: true, message: "请输入用户名", trigger: "blur" }],
   password: [
     { required: true, message: "请输入密码", trigger: "blur" },
     { min: 6, max: 16, message: "长度在 6 到 16 个字符", trigger: "blur" }
@@ -33,10 +33,10 @@ const loginFormRules: FormRules = {
 const fastLogin = () => {
   loading.value = true
   let fastLoginData = {
-    employeeNumber: "admin",
+    username: "admin",
     password: Md5.hashStr("123456").toString()
   }
-  localStorage.setItem("employeeNumber", fastLoginData.employeeNumber)
+  localStorage.setItem("username", fastLoginData.username)
   useUserStore()
     .login(fastLoginData)
     .then(() => {
@@ -56,11 +56,12 @@ const handleLogin = () => {
     if (valid) {
       loading.value = true
       let submitLoginFormData = {
-        userNameOrEmailAddress: loginFormData.employeeNumber,
-        password: Md5.hashStr(loginFormData.password).toString()
+        username: loginFormData.username,
+        // password: Md5.hashStr(loginFormData.password).toString()
+        password: loginFormData.password
       }
       // useUserStore().employeeNumber = submitLoginFormData.employeeNumber
-      localStorage.setItem("userNameOrEmailAddress", submitLoginFormData.userNameOrEmailAddress)
+      localStorage.setItem("username", submitLoginFormData.username)
       useUserStore()
         .login(submitLoginFormData)
         .then(() => {
@@ -94,9 +95,9 @@ const handleLogin = () => {
       </div>
       <div class="content">
         <el-form ref="loginFormRef" :model="loginFormData" :rules="loginFormRules" @keyup.enter="handleLogin">
-          <el-form-item prop="employeeNumber">
+          <el-form-item prop="username">
             <el-input
-              v-model.trim="loginFormData.employeeNumber"
+              v-model.trim="loginFormData.username"
               placeholder="用户名"
               type="text"
               tabindex="1"
