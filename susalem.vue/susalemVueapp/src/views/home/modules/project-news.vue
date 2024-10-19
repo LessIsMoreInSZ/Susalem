@@ -13,7 +13,7 @@ interface NewsItem {
 }
 
 const newses = computed<NewsItem[]>(() => [
-  { id: 1, content: 'Pridejoy 在2024年4月28日创建了开源项目 SusalemAdmin! ', time: '2024-04-28 22:22:22' },
+  { id: 1, content: 'Pridejoy 在2024年4月28日创建了开源项目 MalusAdmin! ', time: '2024-04-28 22:22:22' },
   { id: 2, content: $t('page.home.projectNews.desc2'), time: '2021-10-27 10:24:54' },
   { id: 3, content: $t('page.home.projectNews.desc3'), time: '2021-10-31 22:43:12' },
   { id: 4, content: $t('page.home.projectNews.desc4'), time: '2021-11-03 20:33:31' },
@@ -24,7 +24,7 @@ const newses = computed<NewsItem[]>(() => [
 <template>
   <NCard :title="$t('page.home.projectNews.title')" :bordered="false" size="small" segmented class="card-wrapper">
     <template #header-extra>
-      <a class="text-primary" href="SusalemAdmin">{{ $t('page.home.projectNews.moreNews') }}</a>
+      <a class="text-primary" href="MalusAdmin">{{ $t('page.home.projectNews.moreNews') }}</a>
     </template>
     <NList>
       <NListItem v-for="item in newses" :key="item.id">
