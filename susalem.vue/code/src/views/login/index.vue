@@ -56,11 +56,11 @@ const handleLogin = () => {
     if (valid) {
       loading.value = true
       let submitLoginFormData = {
-        employeeNumber: loginFormData.employeeNumber,
+        userNameOrEmailAddress: loginFormData.employeeNumber,
         password: Md5.hashStr(loginFormData.password).toString()
       }
       // useUserStore().employeeNumber = submitLoginFormData.employeeNumber
-      localStorage.setItem("employeeNumber", submitLoginFormData.employeeNumber)
+      localStorage.setItem("userNameOrEmailAddress", submitLoginFormData.userNameOrEmailAddress)
       useUserStore()
         .login(submitLoginFormData)
         .then(() => {
