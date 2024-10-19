@@ -20,7 +20,7 @@ export function getDynamicRoutesApi() {
 }
 /** 退出登录接口 POST /api/login/outLogin */
 export async function outLogin(options?: { [key: string]: any }) {
-  return request<Login.LoginResponseData>( {
+  return request<any>( {
     url:'/api/login/outLogin',
     method: 'POST',
     ...(options || {}),
@@ -37,7 +37,7 @@ export async function loginApi(body: Login.LoginRequestData, options?: { [key: s
   urlencoded.append("username", body.username || '');
   urlencoded.append("password", body.password || '');
 
-  return request<Login.LoginResponseData>({
+  return request<any>({
     url:'/connect/token',
     method: 'POST',
     data: urlencoded,
