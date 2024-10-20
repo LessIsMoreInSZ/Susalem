@@ -92,6 +92,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Susalem.HttpApi.Client", "s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Susalem.HttpApi.Host", "services\susalem\src\Susalem.HttpApi.Host\Susalem.HttpApi.Host.csproj", "{6DE6A902-CA06-4C70-A264-0114E258FD1F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker", "docker", "{7C51C4BC-22CF-45F1-800B-D135ACBA9F96}"
+	ProjectSection(SolutionItems) = preProject
+		Dockerfile = Dockerfile
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
