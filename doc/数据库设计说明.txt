@@ -1,0 +1,16 @@
+Ecm 能耗管理
+分项能耗 CFG_EcmStructs  CFG_EcmStructs 
+实时能耗 CFG_EcmStructs 
+能耗历史 CFG_EcmRecordHistories
+Eqm 设备管理
+设备基础信息 CFG_EqmEquipments
+设备组件类型 CFG_EqmModuleTypes
+设备档案 CFG_EqmArchives
+故障配置 CFG_EqmFaultConfigs
+设备报警 CFG_EqmAccidentEntrys
+OEE CFG_EqmOEEHistories
+Fam 工厂人员管理
+班次管理 CFG_FamShiftConfigs CFG_FamShiftConfigsItems
+排班管理 CFG_FamDayShifts CFG_FamDayShiftsItems
+员工管理 CFG_FamEmployees 
+QMS （数采）
