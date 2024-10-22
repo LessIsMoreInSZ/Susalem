@@ -363,7 +363,6 @@ FodyWeavers.xsd
 /Harmontronics.Extension.Fa/Harmontronics.Extension.Fa.Repository/sqlite_extension.db-shm
 /Harmontronics.Extension.Fa/Harmontronics.Extension.Fa.Repository/sqlite_extension.db-wal
 .vs/
-packages/
 obj/
 .idea/
 bin/
