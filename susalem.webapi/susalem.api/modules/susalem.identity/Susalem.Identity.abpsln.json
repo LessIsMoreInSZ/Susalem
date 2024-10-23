@@ -1,7 +1,0 @@
-{
-  "modules": {
-    "Susalem.Identity": {
-      "path": "Susalem.Identity.abpmdl.json"
-    }
-  }
-}
