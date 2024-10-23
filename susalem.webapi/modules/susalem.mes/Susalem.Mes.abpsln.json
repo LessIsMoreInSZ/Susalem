@@ -1,0 +1,7 @@
+{
+  "modules": {
+    "Susalem.Mes": {
+      "path": "Susalem.Mes.abpmdl.json"
+    }
+  }
+}

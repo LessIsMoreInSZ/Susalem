@@ -1,0 +1,111 @@
+{
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {},
+      "host": {}
+    }
+  },
+  "packages": {
+    "Susalem.Mes.Domain.Shared": {
+      "path": "src/Susalem.Mes.Domain.Shared/Susalem.Mes.Domain.Shared.abppkg.json",
+      "folder": "src"
+    },
+    "Susalem.Mes.Domain": {
+      "path": "src/Susalem.Mes.Domain/Susalem.Mes.Domain.abppkg.json",
+      "folder": "src"
+    },
+    "Susalem.Mes.Application.Contracts": {
+      "path": "src/Susalem.Mes.Application.Contracts/Susalem.Mes.Application.Contracts.abppkg.json",
+      "folder": "src"
+    },
+    "Susalem.Mes.Application": {
+      "path": "src/Susalem.Mes.Application/Susalem.Mes.Application.abppkg.json",
+      "folder": "src"
+    },
+    "Susalem.Mes.EntityFrameworkCore": {
+      "path": "src/Susalem.Mes.EntityFrameworkCore/Susalem.Mes.EntityFrameworkCore.abppkg.json",
+      "folder": "src"
+    },
+    "Susalem.Mes.MongoDB": {
+      "path": "src/Susalem.Mes.MongoDB/Susalem.Mes.MongoDB.abppkg.json",
+      "folder": "src"
+    },
+    "Susalem.Mes.HttpApi": {
+      "path": "src/Susalem.Mes.HttpApi/Susalem.Mes.HttpApi.abppkg.json",
+      "folder": "src"
+    },
+    "Susalem.Mes.HttpApi.Client": {
+      "path": "src/Susalem.Mes.HttpApi.Client/Susalem.Mes.HttpApi.Client.abppkg.json",
+      "folder": "src"
+    },
+    "Susalem.Mes.TestBase": {
+      "path": "test/Susalem.Mes.TestBase/Susalem.Mes.TestBase.abppkg.json",
+      "folder": "test"
+    },
+    "Susalem.Mes.EntityFrameworkCore.Tests": {
+      "path": "test/Susalem.Mes.EntityFrameworkCore.Tests/Susalem.Mes.EntityFrameworkCore.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "Susalem.Mes.MongoDB.Tests": {
+      "path": "test/Susalem.Mes.MongoDB.Tests/Susalem.Mes.MongoDB.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "Susalem.Mes.Domain.Tests": {
+      "path": "test/Susalem.Mes.Domain.Tests/Susalem.Mes.Domain.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "Susalem.Mes.Application.Tests": {
+      "path": "test/Susalem.Mes.Application.Tests/Susalem.Mes.Application.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "Susalem.Mes.HttpApi.Host": {
+      "path": "host/Susalem.Mes.HttpApi.Host/Susalem.Mes.HttpApi.Host.abppkg.json",
+      "folder": "host"
+    },
+    "Susalem.Mes.Web": {
+      "path": "src/Susalem.Mes.Web/Susalem.Mes.Web.abppkg.json",
+      "folder": "src"
+    },
+    "Susalem.Mes.HttpApi.Client.ConsoleTestApp": {
+      "path": "test/Susalem.Mes.HttpApi.Client.ConsoleTestApp/Susalem.Mes.HttpApi.Client.ConsoleTestApp.abppkg.json",
+      "folder": "test"
+    },
+    "Susalem.Mes.Web.Host": {
+      "path": "host/Susalem.Mes.Web.Host/Susalem.Mes.Web.Host.abppkg.json",
+      "folder": "host"
+    },
+    "Susalem.Mes.AuthServer": {
+      "path": "host/Susalem.Mes.AuthServer/Susalem.Mes.AuthServer.abppkg.json",
+      "folder": "host"
+    },
+    "Susalem.Mes.Host.Shared": {
+      "path": "host/Susalem.Mes.Host.Shared/Susalem.Mes.Host.Shared.abppkg.json",
+      "folder": "host"
+    },
+    "Susalem.Mes.Web.Unified": {
+      "path": "host/Susalem.Mes.Web.Unified/Susalem.Mes.Web.Unified.abppkg.json",
+      "folder": "host"
+    },
+    "Susalem.Mes.Blazor": {
+      "path": "src/Susalem.Mes.Blazor/Susalem.Mes.Blazor.abppkg.json",
+      "folder": "src"
+    },
+    "Susalem.Mes.Blazor.Host": {
+      "path": "host/Susalem.Mes.Blazor.Host/Susalem.Mes.Blazor.Host.abppkg.json",
+      "folder": "host"
+    },
+    "Susalem.Mes.Blazor.Server": {
+      "path": "src/Susalem.Mes.Blazor.Server/Susalem.Mes.Blazor.Server.abppkg.json",
+      "folder": "src"
+    },
+    "Susalem.Mes.Blazor.WebAssembly": {
+      "path": "src/Susalem.Mes.Blazor.WebAssembly/Susalem.Mes.Blazor.WebAssembly.abppkg.json",
+      "folder": "src"
+    },
+    "Susalem.Mes.Blazor.Server.Host": {
+      "path": "host/Susalem.Mes.Blazor.Server.Host/Susalem.Mes.Blazor.Server.Host.abppkg.json",
+      "folder": "host"
+    }
+  }
+}

@@ -1,0 +1,5 @@
+<Project>
+	<PropertyGroup>
+		<VoloAbpPackageVersion>6.0.3</VoloAbpPackageVersion>
+	</PropertyGroup>
+</Project>
