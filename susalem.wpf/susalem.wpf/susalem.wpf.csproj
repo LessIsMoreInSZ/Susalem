@@ -2,13 +2,15 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Assets\dice.stl" />
+    <None Remove="Assets\map.png" />
+    <None Remove="Assets\space.jpg" />
     <None Remove="TDModels\efem.3ds" />
   </ItemGroup>
 
@@ -20,8 +22,11 @@
 
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+    <PackageReference Include="Dirkster.AvalonDock" Version="4.72.1" />
+    <PackageReference Include="Dirkster.AvalonDock.Themes.VS2013" Version="4.72.1" />
     <PackageReference Include="HelixToolkit.Wpf" Version="2.25.0" />
-    <PackageReference Include="MahApps.Metro" Version="2.4.10" />
+    <PackageReference Include="LiveChartsCore.SkiaSharpView.WPF" Version="2.0.0-rc3.3" />
+    <PackageReference Include="MahApps.Metro" Version="3.0.0-alpha0513" />
     <PackageReference Include="MahApps.Metro.IconPacks" Version="4.11.0" />
     <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="8.0.1" />
@@ -31,6 +36,8 @@
 
   <ItemGroup>
     <Resource Include="Assets\dice.stl" />
+    <Resource Include="Assets\map.png" />
+    <Resource Include="Assets\space.jpg" />
   </ItemGroup>
 
   <ItemGroup>

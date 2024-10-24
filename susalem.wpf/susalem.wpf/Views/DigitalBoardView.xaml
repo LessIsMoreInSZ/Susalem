@@ -1,0 +1,164 @@
+﻿<UserControl
+    x:Class="susalem.wpf.Views.DigitalBoardView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:avalon="https://github.com/Dirkster99/AvalonDock"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:lc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
+    xmlns:local="clr-namespace:susalem.wpf.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:susalem.wpf.ViewModels"
+    d:DataContext="{d:DesignInstance vm:DigitalBoardViewModel}"
+    d:DesignHeight="1200"
+    d:DesignWidth="1600"
+    Foreground="{DynamicResource MahApps.Brushes.ThemeBackground}"
+    mc:Ignorable="d">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/space.jpg" />
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <!--  title  -->
+        <Border>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="300" />
+                </Grid.ColumnDefinitions>
+                <ToolBar HorizontalAlignment="Left" ToolBarTray.IsLocked="True">
+                    <Button Content="{iconPacks:Unicons Kind=Palette}" />
+                    <Button />
+                    <Button />
+                </ToolBar>
+                <TextBlock
+                    Grid.Column="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="20"
+                    Text="{Binding Title}" />
+                <TextBlock
+                    Grid.Column="2"
+                    Margin="20,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Text="{Binding Datetime}" />
+            </Grid>
+        </Border>
+        <!--  content  -->
+        <Grid Grid.Row="1">
+            <!--  content background  -->
+            <Border />
+
+            <DockingManager>
+                <DockingManager.Background>
+                    <ImageBrush ImageSource="/Assets/space.jpg" />
+                </DockingManager.Background>
+                <LayoutRoot >
+                    <LayoutPanel>
+
+                        <LayoutAnchorablePaneGroup DockWidth="500" Orientation="Vertical">
+                            <LayoutAnchorablePane DockHeight="2*">
+                                <!--  trend  -->
+                                <LayoutAnchorable Title="Some Trend">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock Text="{Binding TrendDescription}" />
+                                        <lc:CartesianChart
+                                            Grid.Row="1"
+                                            LegendPosition="Top"
+                                            Series="{Binding TrendSeries}" />
+                                    </Grid>
+                                </LayoutAnchorable>
+
+                            </LayoutAnchorablePane>
+                            <LayoutAnchorablePane DockHeight="3*">
+                                <!--  user data  -->
+                                <LayoutAnchorable Title="User Data">
+                                    <DataGrid
+                                        AlternatingRowBackground="#FF0A0D34"
+                                        AutoGenerateColumns="False"
+                                        CanUserResizeColumns="False"
+                                        Foreground="White" RowHeight="50"
+                                        ItemsSource="{Binding UserDatas}"
+                                        RowBackground="#FF0D1A52">
+                                        <DataGrid.ColumnHeaderStyle>
+                                            <Style BasedOn="{StaticResource MahApps.Styles.DataGridColumnHeader}" TargetType="DataGridColumnHeader">
+                                                <Setter Property="Background" Value="#FF4B45C9" />
+                                                <Setter Property="Foreground" Value="White" />
+                                                <Setter Property="BorderThickness" Value="0" />
+                                                <Setter Property="MinHeight" Value="40" />
+                                            </Style>
+
+                                        </DataGrid.ColumnHeaderStyle>
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn
+                                                MinWidth="40"
+                                                Binding="{Binding No}"
+                                                Header="No" />
+                                            <DataGridTextColumn
+                                                MinWidth="60"
+                                                Binding="{Binding Username}"
+                                                Header="User" />
+                                            <DataGridTextColumn
+                                                Width="*"
+                                                Binding="{Binding Datetime}"
+                                                Header="Datetime" />
+                                            <DataGridTextColumn
+                                                MinWidth="80"
+                                                Binding="{Binding State}"
+                                                Header="State" />
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </LayoutAnchorable>
+                            </LayoutAnchorablePane>
+                        </LayoutAnchorablePaneGroup>
+                        <LayoutDocumentPane DockWidth="*" ShowHeader="False" >
+                            <LayoutDocument CanClose="False" >
+                                <Grid >
+                                    <Grid.Background>
+                                        <ImageBrush ImageSource="/Assets/map.png" Stretch="Uniform"/>
+                                    </Grid.Background>
+                                    <!--  CN map image  -->
+                                  
+
+                                    <!--  add some paths  -->
+                                    <!--<ListBox/>-->
+
+                                    <!--  maybe add a flayout from bottom  -->
+                                </Grid>
+                            </LayoutDocument>
+                        </LayoutDocumentPane>
+                        <LayoutAnchorablePaneGroup DockWidth="500" Orientation="Vertical">
+                            <LayoutAnchorablePane DockHeight="3*">
+                                <LayoutAnchorable Title="Relative">
+                                    <lc:PolarChart Series="{Binding RelativeSeries}" />
+                                </LayoutAnchorable>
+
+                            </LayoutAnchorablePane>
+                            <LayoutAnchorablePane DockHeight="3*">
+                                <LayoutAnchorable Title="Average">
+                                    <lc:CartesianChart Series="{Binding AverageSeries}" />
+                                </LayoutAnchorable>
+
+                            </LayoutAnchorablePane>
+                            <LayoutAnchorablePane DockHeight="4*">
+                                <LayoutAnchorable Title="Today" />
+                            </LayoutAnchorablePane>
+                        </LayoutAnchorablePaneGroup>
+                    </LayoutPanel>
+                </LayoutRoot>
+            </DockingManager>
+        </Grid>
+        <!--  preserve  -->
+    </Grid>
+</UserControl>

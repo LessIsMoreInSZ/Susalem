@@ -36,6 +36,7 @@ namespace susalem.wpf.ViewModels
             new(){Page=ListPages.Message,Icon="CommentDotsRegular"},
             new(){Page=ListPages.Community,Icon="CommentsRegular"},
             new(){Page=ListPages.Enterprise,Icon="BuildingRegular"},
+            new(){Page=ListPages.DigitalBoard,Icon="ChartAreaSolid"},
         };
         
         [RelayCommand]
