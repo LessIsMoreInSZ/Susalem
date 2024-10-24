@@ -12,8 +12,6 @@ using Susalem.EntityFrameworkCore;
 using Susalem.MultiTenancy;
 using Susalem.Settings;
 
-using SusalemAbp.Shared.Hosting.AspNetCore;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,7 +42,7 @@ namespace Susalem;
     typeof(AbpAccountWebOpenIddictModule),
     typeof(AbpAspNetCoreSerilogModule),
       typeof(AbpAspNetCoreMvcUiLeptonXLiteThemeModule),
-    typeof(SusalemAbpSharedHostingAspNetCoreModule)
+    typeof(SusalemSharedModule.SusalemSharedModule)
 )]
 public class SusalemHttpApiHostModule : AbpModule
 {

@@ -1,11 +1,8 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
 using Serilog;
-
-using SusalemAbp.Shared.Hosting.AspNetCore;
-
+using Serilog.Events;
 using System;
 using System.Threading.Tasks;
 
@@ -13,18 +10,34 @@ namespace Susalem;
 
 public class Program
 {
-    public async static Task<int> Main(string[] args)
+    public static async Task<int> Main(string[] args)
     {
-
-        var assemblyName = typeof(Program).Assembly.GetName().Name;
-
-        SerilogConfigurationHelper.Configure(assemblyName);
+        Log.Logger = new LoggerConfiguration()
+#if DEBUG
+                     .MinimumLevel.Debug()
+#else
+                .MinimumLevel.Information()
+#endif
+                     .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+                     .MinimumLevel.Override("Microsoft.EntityFrameworkCore", LogEventLevel.Warning)
+                     .Enrich.FromLogContext()
+                     .WriteTo.Logger(log => log.Filter.ByIncludingOnly(evt => evt.Level == LogEventLevel.Information).WriteTo.File($"Logs/{(DateTime.Now.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.CurrentCulture) + "/info.txt")}", fileSizeLimitBytes: 8388608000), LogEventLevel.Information)
+                     .WriteTo.Logger(log => log.Filter.ByIncludingOnly(evt => evt.Level == LogEventLevel.Warning).WriteTo.File($"Logs/{(DateTime.Now.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.CurrentCulture) + "/warning.txt")}", fileSizeLimitBytes: 83886080), LogEventLevel.Warning)
+                     .WriteTo.Logger(log => log.Filter.ByIncludingOnly(evt => evt.Level == LogEventLevel.Fatal).WriteTo.File($"Logs/{(DateTime.Now.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.CurrentCulture) + "/fatal.txt")}", fileSizeLimitBytes: 83886080), LogEventLevel.Fatal)
+                     .WriteTo.Logger(log => log.Filter.ByIncludingOnly(evt => evt.Level == LogEventLevel.Error).WriteTo.File($"Logs/{(DateTime.Now.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.CurrentCulture) + "/error.txt")}", fileSizeLimitBytes: 83886080), LogEventLevel.Error)
+                     .WriteTo.Async(c => c.Console())
+                     .CreateLogger();
 
         try
         {
-            Log.Information($"Starting {assemblyName}.");
-            var app = await ApplicationBuilderHelper
-                .BuildApplicationAsync<SusalemHttpApiHostModule>(args);
+            Log.Information($"Starting Susalem.HttpApi.Host.");
+
+            var builder = WebApplication.CreateBuilder(args);
+            builder.Host.AddAppSettingsSecretsJson()
+                   .UseAutofac()
+                   .UseSerilog();
+            await builder.AddApplicationAsync<SusalemHttpApiHostModule>();
+            var app = builder.Build();
             await app.InitializeApplicationAsync();
             await app.RunAsync();
             return 0;
@@ -41,7 +54,7 @@ public class Program
         }
         finally
         {
-            Log.CloseAndFlush();
+            await Log.CloseAndFlushAsync();
         }
     }
 }

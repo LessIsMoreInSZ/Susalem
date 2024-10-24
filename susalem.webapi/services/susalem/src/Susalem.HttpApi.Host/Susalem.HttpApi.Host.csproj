@@ -17,13 +17,19 @@
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
+		<PackageReference Include="Serilog.AspNetCore" Version="8.0.3" />
+		<PackageReference Include="Serilog.Sinks.Async" Version="2.1.0" />
+		<PackageReference Include="Serilog.Sinks.Console" Version="6.0.0" />
+		<PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
 		<PackageReference Include="Volo.Abp.AspNetCore.MultiTenancy" Version="$(VoloAbpPackageVersion)" />
 		<PackageReference Include="Volo.Abp.Account.Web.OpenIddict" Version="$(VoloAbpPackageVersion)" />
 		<PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.LeptonXLite" Version="1.0.5" />
+		<PackageReference Include="Volo.Abp.AspNetCore.Serilog" Version="6.0.3" />
+		<PackageReference Include="Volo.Abp.Autofac" Version="6.0.3" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\..\..\shared\SusalemAbp.Shared.Hosting.AspNetCore\SusalemAbp.Shared.Hosting.AspNetCore.csproj" />
+		<ProjectReference Include="..\..\..\..\shared\SusalemSharedModule\SusalemSharedModule.csproj" />
 		<ProjectReference Include="..\Susalem.Application\Susalem.Application.csproj" />
 		<ProjectReference Include="..\Susalem.EntityFrameworkCore\Susalem.EntityFrameworkCore.csproj" />
 		<ProjectReference Include="..\Susalem.HttpApi\Susalem.HttpApi.csproj" />
