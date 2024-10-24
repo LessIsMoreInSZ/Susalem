@@ -5,17 +5,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-
 using OpenIddict.Validation.AspNetCore;
-
 using Susalem.EntityFrameworkCore;
-using Susalem.MultiTenancy;
 using Susalem.Settings;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using Volo.Abp;
 using Volo.Abp.Account;
 using Volo.Abp.Account.Web;
@@ -181,11 +176,6 @@ public class SusalemHttpApiHostModule : AbpModule
         app.UseCors();
         app.UseAuthentication();
         app.UseAbpOpenIddictValidation();
-
-        if (MultiTenancyConsts.IsEnabled)
-        {
-            app.UseMultiTenancy();
-        }
 
         app.UseUnitOfWork();
         app.UseAuthorization();
