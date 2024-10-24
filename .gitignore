@@ -366,3 +366,4 @@ FodyWeavers.xsd
 obj/
 .idea/
 bin/
+libs/
