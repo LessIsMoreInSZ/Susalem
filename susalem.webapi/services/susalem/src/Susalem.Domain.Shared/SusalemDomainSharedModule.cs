@@ -1,15 +1,11 @@
 ﻿using Susalem.Localization;
-
 using Volo.Abp.AuditLogging;
 using Volo.Abp.BackgroundJobs;
-using Volo.Abp.FeatureManagement;
 using Volo.Abp.Localization;
 using Volo.Abp.Localization.ExceptionHandling;
 using Volo.Abp.Modularity;
 using Volo.Abp.OpenIddict;
 using Volo.Abp.PermissionManagement;
-using Volo.Abp.SettingManagement;
-using Volo.Abp.TenantManagement;
 using Volo.Abp.Validation.Localization;
 using Volo.Abp.VirtualFileSystem;
 
@@ -18,11 +14,8 @@ namespace Susalem;
 [DependsOn(
     typeof(AbpAuditLoggingDomainSharedModule),
     typeof(AbpBackgroundJobsDomainSharedModule),
-    typeof(AbpFeatureManagementDomainSharedModule),
     typeof(AbpOpenIddictDomainSharedModule),
-    typeof(AbpPermissionManagementDomainSharedModule),
-    typeof(AbpSettingManagementDomainSharedModule),
-    typeof(AbpTenantManagementDomainSharedModule)
+    typeof(AbpPermissionManagementDomainSharedModule)
     )]
 public class SusalemDomainSharedModule : AbpModule
 {

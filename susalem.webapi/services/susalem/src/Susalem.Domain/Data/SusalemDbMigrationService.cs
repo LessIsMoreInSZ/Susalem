@@ -8,12 +8,10 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Susalem.Settings;
-
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Identity;
 using Volo.Abp.MultiTenancy;
-using Volo.Abp.TenantManagement;
 
 namespace Susalem.Data;
 
@@ -23,18 +21,15 @@ public class SusalemDbMigrationService : ITransientDependency
 
     private readonly IDataSeeder _dataSeeder;
     private readonly IEnumerable<ISusalemDbSchemaMigrator> _dbSchemaMigrators;
-    private readonly ITenantRepository _tenantRepository;
     private readonly ICurrentTenant _currentTenant;
 
     public SusalemDbMigrationService(
         IDataSeeder dataSeeder,
         IEnumerable<ISusalemDbSchemaMigrator> dbSchemaMigrators,
-        ITenantRepository tenantRepository,
         ICurrentTenant currentTenant)
     {
         _dataSeeder = dataSeeder;
         _dbSchemaMigrators = dbSchemaMigrators;
-        _tenantRepository = tenantRepository;
         _currentTenant = currentTenant;
 
         Logger = NullLogger<SusalemDbMigrationService>.Instance;
@@ -56,41 +51,19 @@ public class SusalemDbMigrationService : ITransientDependency
 
         Logger.LogInformation($"Successfully completed host database migrations.");
 
-        var tenants = await _tenantRepository.GetListAsync(includeDetails: true);
-
         var migratedDatabaseSchemas = new HashSet<string>();
-        foreach (var tenant in tenants)
-        {
-            using (_currentTenant.Change(tenant.Id))
-            {
-                if (tenant.ConnectionStrings.Any())
-                {
-                    var tenantConnectionStrings = tenant.ConnectionStrings
-                        .Select(x => x.Value)
-                        .ToList();
 
-                    if (!migratedDatabaseSchemas.IsSupersetOf(tenantConnectionStrings))
-                    {
-                        await MigrateDatabaseSchemaAsync(tenant);
+        await SeedDataAsync();
 
-                        migratedDatabaseSchemas.AddIfNotContains(tenantConnectionStrings);
-                    }
-                }
-
-                await SeedDataAsync(tenant);
-            }
-
-            Logger.LogInformation($"Successfully completed {tenant.Name} tenant database migrations.");
-        }
+        Logger.LogInformation($"Successfully completed database migrations.");
 
         Logger.LogInformation("Successfully completed all database migrations.");
         Logger.LogInformation("You can safely end this process...");
     }
 
-    private async Task MigrateDatabaseSchemaAsync(Tenant tenant = null)
+    private async Task MigrateDatabaseSchemaAsync()
     {
-        Logger.LogInformation(
-            $"Migrating schema for {(tenant == null ? "host" : tenant.Name + " tenant")} database...");
+        Logger.LogInformation($"Migrating schema database...");
 
         foreach (var migrator in _dbSchemaMigrators)
         {
@@ -98,11 +71,11 @@ public class SusalemDbMigrationService : ITransientDependency
         }
     }
 
-    private async Task SeedDataAsync(Tenant tenant = null)
+    private async Task SeedDataAsync()
     {
-        Logger.LogInformation($"Executing {(tenant == null ? "host" : tenant.Name + " tenant")} database seed...");
+        Logger.LogInformation($"Executing host database seed...");
 
-        await _dataSeeder.SeedAsync(new DataSeedContext(tenant?.Id)
+        await _dataSeeder.SeedAsync(new DataSeedContext()
             .WithProperty(IdentityDataSeedContributor.AdminEmailPropertyName, SusalemSettings.AdminEmailDefaultValue) // 邮箱
             .WithProperty(IdentityDataSeedContributor.AdminPasswordPropertyName, SusalemSettings.AdminPasswordDefaultValue) // 密码
         );

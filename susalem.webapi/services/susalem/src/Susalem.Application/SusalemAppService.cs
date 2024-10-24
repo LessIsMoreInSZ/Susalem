@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-using Susalem.Localization;
+﻿using Susalem.Localization;
 
 using Volo.Abp.Application.Services;
 

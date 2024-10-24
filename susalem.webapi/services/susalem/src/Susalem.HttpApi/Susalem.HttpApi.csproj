@@ -22,9 +22,6 @@
 	<ItemGroup>
 		<PackageReference Include="Volo.Abp.Account.HttpApi" Version="$(VoloAbpPackageVersion)" />
 		<PackageReference Include="Volo.Abp.PermissionManagement.HttpApi" Version="$(VoloAbpPackageVersion)" />
-		<PackageReference Include="Volo.Abp.TenantManagement.HttpApi" Version="$(VoloAbpPackageVersion)" />
-		<PackageReference Include="Volo.Abp.FeatureManagement.HttpApi" Version="$(VoloAbpPackageVersion)" />
-		<PackageReference Include="Volo.Abp.SettingManagement.HttpApi" Version="$(VoloAbpPackageVersion)" />
 	</ItemGroup>
 
 </Project>
