@@ -2,7 +2,7 @@
 using Microsoft.OpenApi.Models;
 using Volo.Abp.Modularity;
 
-namespace SusalemSharedModule;
+namespace SusalemShared;
 
 public static class SwaggerConfigurationHelper
 {

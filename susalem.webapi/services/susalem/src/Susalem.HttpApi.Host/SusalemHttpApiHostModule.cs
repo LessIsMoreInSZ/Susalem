@@ -12,6 +12,8 @@ using Susalem.EntityFrameworkCore;
 using Susalem.MultiTenancy;
 using Susalem.Settings;
 
+using SusalemShared;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,7 +44,7 @@ namespace Susalem;
     typeof(AbpAccountWebOpenIddictModule),
     typeof(AbpAspNetCoreSerilogModule),
       typeof(AbpAspNetCoreMvcUiLeptonXLiteThemeModule),
-    typeof(SusalemSharedModule.SusalemSharedModule)
+    typeof(SusalemSharedModule)
 )]
 public class SusalemHttpApiHostModule : AbpModule
 {
@@ -174,7 +176,6 @@ public class SusalemHttpApiHostModule : AbpModule
         {
             app.UseErrorPage();
         }
-
         app.UseCorrelationId();
         app.UseStaticFiles();
         app.UseRouting();
