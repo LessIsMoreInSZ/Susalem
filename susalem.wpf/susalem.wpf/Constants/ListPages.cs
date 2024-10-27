@@ -13,5 +13,6 @@ namespace susalem.wpf.Constants
         public const string Community = "Community";
         public const string Enterprise = "Enterprise";
         public const string Alarm = "Alarm";
+        public const string DigitalBoard = "DigitalBoard";
     }
 }
