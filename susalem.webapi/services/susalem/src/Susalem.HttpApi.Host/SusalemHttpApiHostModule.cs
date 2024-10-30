@@ -54,6 +54,8 @@ public class SusalemHttpApiHostModule : AbpModule
                 options.UseLocalServer();
                 options.UseAspNetCore();
             });
+
+            builder.AddServer(x => x.UseAspNetCore().DisableTransportSecurityRequirement());
         });
     }
 
@@ -61,7 +63,7 @@ public class SusalemHttpApiHostModule : AbpModule
     {
         var configuration = context.Services.GetConfiguration();
         var hostingEnvironment = context.Services.GetHostingEnvironment();
-     
+
         ConfigureAuthentication(context);
         ConfigureBundles();
         ConfigureUrls(configuration);
@@ -98,13 +100,10 @@ public class SusalemHttpApiHostModule : AbpModule
     {
         context.Services.ForwardIdentityAuthenticationForBearer(OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme);
     }
-    
+
     private void ConfigureConventionalControllers()
     {
-        Configure<AbpAspNetCoreMvcOptions>(options =>
-        {
-            options.ConventionalControllers.Create(typeof(SusalemApplicationModule).Assembly);
-        });
+        Configure<AbpAspNetCoreMvcOptions>(options => options.ConventionalControllers.Create(typeof(SusalemApplicationModule).Assembly));
     }
 
     private static void ConfigureSwaggerServices(ServiceConfigurationContext context, IConfiguration configuration)
