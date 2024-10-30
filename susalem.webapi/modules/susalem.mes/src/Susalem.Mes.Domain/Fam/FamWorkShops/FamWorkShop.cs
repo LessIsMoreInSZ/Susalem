@@ -11,7 +11,7 @@ namespace Susalem.Fam.FamWorkShops
     /// <summary>
     /// 【领域实体】车间管理
     /// </summary>
-    public class FamWorkShop : FullAuditedEntity<Guid>, IHasExtraProperties
+    public class Fam_WorkShop : FullAuditedEntity<Guid>, IHasExtraProperties
     {
         /// <summary>
         /// 编码
@@ -42,7 +42,7 @@ namespace Susalem.Fam.FamWorkShops
         /// <summary>
         /// 【领域实体】车间管理
         /// </summary>
-        protected FamWorkShop()
+        protected Fam_WorkShop()
         {
 
         }
@@ -56,7 +56,7 @@ namespace Susalem.Fam.FamWorkShops
         /// <param name="isEnable">是否启用</param>
         /// <param name="remark">备注</param>
         /// <param name="factoryId">【外键】工厂ID</param>
-        public FamWorkShop(
+        public Fam_WorkShop(
             Guid id,
             [NotNull] string code,
             [NotNull] string name,

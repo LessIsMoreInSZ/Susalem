@@ -25,7 +25,7 @@ public static class EqmDbContextModelCreatingExtensions
         Check.NotNull(builder, nameof(builder));
 
         // 【实体】 设备基础信息
-        builder.Entity<EqmEquipment>(b =>
+        builder.Entity<Eqm_Equipment>(b =>
         {
             //表名映射
             
@@ -46,7 +46,7 @@ public static class EqmDbContextModelCreatingExtensions
 
 
         // 【实体】 设备组件类型
-        builder.Entity<EqmModuleType>(b =>
+        builder.Entity<Eqm_ModuleType>(b =>
         {
             //表名映射
             
@@ -64,7 +64,7 @@ public static class EqmDbContextModelCreatingExtensions
 
         // 【实体】 设备档案
 
-        builder.Entity<EqmArchive>(b =>
+        builder.Entity<Eqm_Archive>(b =>
         {
             //表名映射
             
@@ -83,7 +83,7 @@ public static class EqmDbContextModelCreatingExtensions
         });
 
         // 【实体】 设备组件类型
-        builder.Entity<EqmFaultConfig>(b =>
+        builder.Entity<Eqm_FaultConfig>(b =>
         {
             //表名映射
             
@@ -99,7 +99,7 @@ public static class EqmDbContextModelCreatingExtensions
         });
 
         // 【实体】 事故录入
-        builder.Entity<EqmAccidentEntry>(b =>
+        builder.Entity<Eqm_AccidentEntry>(b =>
         {
             //表名映射
             
@@ -113,7 +113,7 @@ public static class EqmDbContextModelCreatingExtensions
 
         
         // 【实体】 预防性维护
-        builder.Entity<EqmMachLifeM>(b =>
+        builder.Entity<Eqm_MachLifeM>(b =>
         {
             //表名映射
             

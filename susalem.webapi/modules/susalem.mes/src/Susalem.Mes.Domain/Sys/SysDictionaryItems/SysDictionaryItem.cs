@@ -13,7 +13,7 @@ namespace Susalem.Sys.SysDictionaryItems
     /// <summary>
     ///【领域实体】 字典配置子表
     /// </summary>
-    public class SysDictionaryItem : Entity<Guid>, IHasCreationTime
+    public class Sys_DictionaryItem : Entity<Guid>, IHasCreationTime
     {
         /// <summary>
         /// 编码名
@@ -49,7 +49,7 @@ namespace Susalem.Sys.SysDictionaryItems
         /// <summary>
         ///  【领域实体】 空字典配置子表构造函数
         /// </summary>
-        public SysDictionaryItem() { }
+        public Sys_DictionaryItem() { }
 
         /// <summary>
         /// 【领域实体】字典配置子表
@@ -59,7 +59,7 @@ namespace Susalem.Sys.SysDictionaryItems
         /// <param name="index">排序</param>
         /// <param name="dictionaryId">字典表Id</param>
         /// <param name="creationTime">创建时间</param>
-        public SysDictionaryItem(
+        public Sys_DictionaryItem(
             Guid id,
             [NotNull] string name,
             [NotNull] int index,

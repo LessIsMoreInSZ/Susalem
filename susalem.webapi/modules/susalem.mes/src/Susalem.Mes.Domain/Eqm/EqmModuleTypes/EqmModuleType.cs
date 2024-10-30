@@ -11,7 +11,7 @@ namespace Susalem.Eqm.EqmModuleTypes
     /// <summary>
     /// 【实体】 设备组件类型 
     /// </summary>
-    public class EqmModuleType : FullAuditedEntity<Guid>, IHasExtraProperties
+    public class Eqm_ModuleType : FullAuditedEntity<Guid>, IHasExtraProperties
     {
         /// <summary>
         /// 编码
@@ -69,7 +69,7 @@ namespace Susalem.Eqm.EqmModuleTypes
 
         [Required, MaxLength]
         public string Remark { get; set; }
-        protected EqmModuleType() { }
+        protected Eqm_ModuleType() { }
 
         /// <summary>
         /// 有参构造
@@ -85,7 +85,7 @@ namespace Susalem.Eqm.EqmModuleTypes
         /// <param name="extraProperties">拓展字段</param>
         /// <param name="isEnable">是否启用</param>
         /// <param name="remark"></param>
-        public EqmModuleType(
+        public Eqm_ModuleType(
             [NotNull] string code,
             [NotNull] string name,
             [NotNull] int replaceCountLimit,

@@ -11,7 +11,7 @@ namespace Susalem.Tem.TemFlowEquipments
     /// <summary>
     /// 【实体】工艺设备
     /// </summary>
-    public class TemFlowEquipment : FullAuditedEntity<Guid>, IHasExtraProperties
+    public class Tem_FlowEquipment : FullAuditedEntity<Guid>, IHasExtraProperties
     {
         /// <summary>
         /// 【外键】产品工艺子表ID
@@ -41,7 +41,7 @@ namespace Susalem.Tem.TemFlowEquipments
         /// <param name="isEnable">是否启用</param>
         /// <param name="remark">备注</param>
         /// <param name="extraProperties">拓展字段</param>
-        public TemFlowEquipment(
+        public Tem_FlowEquipment(
             [NotNull] Guid productFlowProcessId,
             [NotNull] Guid equipmentId,
             bool isEnable = true,

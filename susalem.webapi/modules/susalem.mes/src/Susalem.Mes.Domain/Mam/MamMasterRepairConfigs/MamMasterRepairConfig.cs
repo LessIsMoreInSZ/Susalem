@@ -12,7 +12,7 @@ namespace Susalem.Mam.MamMasterRepairConfigs
     /// <summary>
     /// Master件维护-质量参数表
     /// </summary>
-    public class MamMasterRepairConfig : FullAuditedEntity<Guid>, IHasExtraProperties
+    public class Mam_MasterRepairConfig : FullAuditedEntity<Guid>, IHasExtraProperties
     {
         /// <summary>
         /// 主表ID
@@ -109,7 +109,7 @@ namespace Susalem.Mam.MamMasterRepairConfigs
         /// <summary>
         /// 【领域实体】工艺参数
         /// </summary>
-        protected MamMasterRepairConfig()
+        protected Mam_MasterRepairConfig()
         {
 
         }
@@ -133,7 +133,7 @@ namespace Susalem.Mam.MamMasterRepairConfigs
         /// <param name="isEnable">是否启用</param>
         /// <param name="remark">备注</param>
         /// <param name="extraProperties">拓展字段</param>
-        public MamMasterRepairConfig(
+        public Mam_MasterRepairConfig(
              Guid id,
             [NotNull] string code,
             [NotNull] string name,

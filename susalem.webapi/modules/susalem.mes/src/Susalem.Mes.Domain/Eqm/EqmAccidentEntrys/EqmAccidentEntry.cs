@@ -8,7 +8,7 @@ using Volo.Abp.Domain.Entities;
 
 namespace Susalem.Eqm.EqmAccidentEntrys
 {
-    public class EqmAccidentEntry : Entity<Guid>, IHasCreationTime
+    public class Eqm_AccidentEntry : Entity<Guid>, IHasCreationTime
     {
         /// <summary>
         /// 事故情况

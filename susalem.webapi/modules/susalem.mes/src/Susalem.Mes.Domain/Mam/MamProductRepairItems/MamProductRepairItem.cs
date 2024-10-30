@@ -16,7 +16,7 @@ namespace Susalem.Mam.MamProductRepairItems
     /// <summary>
     /// 【领域实体】返修管理-子表
     /// </summary>
-    public class MamProductRepairItem : Entity<Guid>, IHasExtraProperties, IHasCreationTime, ISoftDelete
+    public class Mam_ProductRepairItem : Entity<Guid>, IHasExtraProperties, IHasCreationTime, ISoftDelete
     {
         /// <summary>
         /// 主表ID

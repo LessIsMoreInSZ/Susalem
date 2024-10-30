@@ -14,7 +14,7 @@ namespace Susalem.Wms.WmsStockInOutItems
     /// <summary>
     /// 【领域实体】出入库记录-子表
     /// </summary>
-    public class WmsStockInOutItem : Entity<Guid>, IHasCreationTime, IHasExtraProperties
+    public class Wms_StockInOutItem : Entity<Guid>, IHasCreationTime, IHasExtraProperties
     {
         /// <summary>
         /// 【外键】出入库记录ID 
@@ -73,7 +73,7 @@ namespace Susalem.Wms.WmsStockInOutItems
         /// <summary>
         /// 【领域实体】出入库记录-子表
         /// </summary>
-        public WmsStockInOutItem()
+        public Wms_StockInOutItem()
         {
         }
 
@@ -89,7 +89,7 @@ namespace Susalem.Wms.WmsStockInOutItems
         /// <param name="batchNo">批次号</param>
         /// <param name="price">价格（未税）</param>
         /// <param name="creationTime"></param>
-        public WmsStockInOutItem(
+        public Wms_StockInOutItem(
             [NotNull] Guid id,
             [NotNull] Guid stockInOutId,
             [CanBeNull] Guid inLocationId,

@@ -11,7 +11,7 @@ namespace Susalem.Mam.MamMasterRepairItems
     /// <summary>
     /// 【领域实体】Master件维护-子表
     /// </summary>
-    public class MamMasterRepairItem : FullAuditedEntity<Guid>, IHasExtraProperties
+    public class Mam_MasterRepairItem : FullAuditedEntity<Guid>, IHasExtraProperties
     {
         /// <summary>
         /// 主表ID

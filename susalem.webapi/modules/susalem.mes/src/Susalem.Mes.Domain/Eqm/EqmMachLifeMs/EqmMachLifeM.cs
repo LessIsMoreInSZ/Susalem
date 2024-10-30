@@ -12,7 +12,7 @@ namespace Susalem.Eqm.Susalem.MachLifeMs
     /// <summary>
     /// 【实体】预防性维护
     /// </summary>
-    public class EqmMachLifeM : FullAuditedEntity<Guid>, IHasExtraProperties
+    public class Eqm_MachLifeM : FullAuditedEntity<Guid>, IHasExtraProperties
     {
         /// <summary>
         /// 【外键】设备Id
@@ -41,7 +41,7 @@ namespace Susalem.Eqm.Susalem.MachLifeMs
         /// </summary>
         public ExtraPropertyDictionary ExtraProperties { get; set; }
 
-        protected EqmMachLifeM() { }
+        protected Eqm_MachLifeM() { }
         /// <summary>
         /// 【实体】预防性维护
         /// </summary>
@@ -51,7 +51,7 @@ namespace Susalem.Eqm.Susalem.MachLifeMs
         /// <param name="frequency">频率</param>
         /// <param name="project">项目</param>
         /// <param name="extraProperties">拓展字段</param>
-        public EqmMachLifeM(
+        public Eqm_MachLifeM(
             Guid id,
             Guid eqmEquipmentId,
             [NotNull] string eqmEquipmentLabel,

@@ -16,7 +16,7 @@ namespace Susalem.Mam.MamProductionPlans
     /// <summary>
     /// 【领域实体】外部接收订单表
     /// </summary>
-    public class MamProductionPlan : FullAuditedEntity<Guid>, IHasExtraProperties
+    public class Mam_ProductionPlan : FullAuditedEntity<Guid>, IHasExtraProperties
     {
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace Susalem.Mam.MamProductionPlans
         /// </summary>
         public ExtraPropertyDictionary ExtraProperties { get; set; }
 
-        protected MamProductionPlan() { }
+        protected Mam_ProductionPlan() { }
 
         /// <summary>
         /// 构造
@@ -125,7 +125,7 @@ namespace Susalem.Mam.MamProductionPlans
         /// <param name="requestTime">请求时间</param>
         /// <param name="status">状态</param>
         /// <param name="actualFinishTime">实际完成时间</param>
-        public MamProductionPlan(
+        public Mam_ProductionPlan(
           Guid id,
           [NotNull] string orderNo,
           [NotNull] Guid productTypeId,

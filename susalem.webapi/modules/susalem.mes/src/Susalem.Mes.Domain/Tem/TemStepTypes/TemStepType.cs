@@ -12,7 +12,7 @@ namespace Susalem.Tem.TemStepTypes
     /// <summary>
     /// 【实体】工步类型
     /// </summary>
-    public class TemStepType : FullAuditedEntity<Guid>, IHasExtraProperties
+    public class Tem_StepType : FullAuditedEntity<Guid>, IHasExtraProperties
     {
         /// <summary>
         /// 编码
@@ -40,7 +40,7 @@ namespace Susalem.Tem.TemStepTypes
         /// <summary>
         /// 【实体】工步类型
         /// </summary>
-        protected TemStepType() { }
+        protected Tem_StepType() { }
         public bool IsEnable { get; set; }
 
         [Required, MaxLength]
@@ -55,7 +55,7 @@ namespace Susalem.Tem.TemStepTypes
         /// <param name="isEnable">是否启用</param>
         /// <param name="remark">备注</param>
         /// <param name="extraProperties">拓展字段</param>
-        public TemStepType(
+        public Tem_StepType(
             Guid id,
             [NotNull] string code,
             [NotNull] string name,

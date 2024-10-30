@@ -15,7 +15,7 @@ namespace Susalem.Eqm.EqmEquipments
     /// <summary>
     /// 【实体】 设备基础信息管理
     /// </summary>
-    public class EqmEquipment : FullAuditedEntity<Guid>, IHasExtraProperties
+    public class Eqm_Equipment : FullAuditedEntity<Guid>, IHasExtraProperties
     {
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace Susalem.Eqm.EqmEquipments
         /// <summary>
         /// 【实体】 设备基础信息管理
         /// </summary>
-        protected EqmEquipment() { }
+        protected Eqm_Equipment() { }
 
         /// <summary>
         /// 【实体】 设备基础信息管理
@@ -123,7 +123,7 @@ namespace Susalem.Eqm.EqmEquipments
         /// <param name="reworkStation">返修岔道工位</param>
         /// <param name="isSkipValidation">是否屏蔽校验</param>
         /// <param name="extraProperties">拓展字段</param>
-        public EqmEquipment(
+        public Eqm_Equipment(
             Guid id,
             [NotNull] string code,
             [NotNull] string name,

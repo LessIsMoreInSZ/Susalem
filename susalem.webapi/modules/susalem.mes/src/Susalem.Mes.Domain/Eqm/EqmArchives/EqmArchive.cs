@@ -13,7 +13,7 @@ namespace Susalem.Eqm.EqmArchives
     /// <summary>
     /// 【实体】设备档案
     /// </summary>
-    public class EqmArchive : FullAuditedEntity<Guid>, IHasExtraProperties
+    public class Eqm_Archive : FullAuditedEntity<Guid>, IHasExtraProperties
     {
         /// <summary>
         /// 设备ID
@@ -93,8 +93,8 @@ namespace Susalem.Eqm.EqmArchives
 
         [Required, MaxLength]
         public string Remark { get; set; }
-        protected EqmArchive() { }
-        public EqmArchive(
+        protected Eqm_Archive() { }
+        public Eqm_Archive(
             Guid id,
             Guid equipmentId,
             Guid moduleTypeId,

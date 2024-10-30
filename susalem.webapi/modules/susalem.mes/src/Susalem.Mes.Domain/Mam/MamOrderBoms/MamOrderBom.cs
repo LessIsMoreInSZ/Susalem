@@ -15,7 +15,7 @@ namespace Susalem.Mam.MamOrderBoms
     /// <summary>
     /// 【实体】订单Bom
     /// </summary>
-    public class MamOrderBom : Entity<Guid>, IHasCreationTime, IHasExtraProperties
+    public class Mam_OrderBom : Entity<Guid>, IHasCreationTime, IHasExtraProperties
     {
         /// <summary>
         /// 【外键】工位Id
@@ -96,7 +96,7 @@ namespace Susalem.Mam.MamOrderBoms
         /// </summary>
         public ExtraPropertyDictionary ExtraProperties { get; set; }
 
-        public MamOrderBom() { }
+        public Mam_OrderBom() { }
 
         /// <summary>
         /// 【实体】订单Bom构造函数
@@ -114,7 +114,7 @@ namespace Susalem.Mam.MamOrderBoms
         /// <param name="type">订单BOM状态枚举</param>
         /// <param name="materialTraceType">物料追溯类型</param>
         /// <param name="dataSourceType">数据来源</param>
-        public MamOrderBom(
+        public Mam_OrderBom(
             [NotNull] Guid id,
             [NotNull] Guid workStationId,
             [NotNull] Guid orderId,

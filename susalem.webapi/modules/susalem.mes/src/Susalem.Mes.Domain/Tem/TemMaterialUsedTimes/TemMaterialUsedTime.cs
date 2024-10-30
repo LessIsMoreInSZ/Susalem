@@ -11,7 +11,7 @@ namespace Susalem.Tem.TemMaterialUsedTimes
     /// <summary>
     /// 【实体】物料次数管控
     /// </summary>
-    public class TemMaterialUsedTime : FullAuditedEntity<Guid>, IHasExtraProperties
+    public class Tem_MaterialUsedTime : FullAuditedEntity<Guid>, IHasExtraProperties
     {
         /// <summary>
         /// 产品工艺工序Id
@@ -39,7 +39,7 @@ namespace Susalem.Tem.TemMaterialUsedTimes
         /// <summary>
         /// 【实体】物料管理
         /// </summary>
-        protected TemMaterialUsedTime() { }
+        protected Tem_MaterialUsedTime() { }
 
         /// <summary>
         /// 【实体】物料管理
@@ -50,7 +50,7 @@ namespace Susalem.Tem.TemMaterialUsedTimes
         /// <param name="isEnable">是否启用</param>
         /// <param name="remark">备注</param>
         /// <param name="extraProperties">拓展字段</param>
-        public TemMaterialUsedTime(
+        public Tem_MaterialUsedTime(
             Guid id,
             Guid materialId,
             int usedTime,

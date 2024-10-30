@@ -19,6 +19,6 @@ namespace Susalem.Tem.TemProductFlowChangeRecords
         [Description("工艺参数")]
         Para =5,
         [Description("工单工艺")]
-        MamPlan =6
+        Mam_Plan =6
     }
 }

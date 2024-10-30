@@ -20,7 +20,7 @@ public static class EcmDbContextModelCreatingExtensions
   
 
         //能耗分项管理
-        builder.Entity<EcmStruct>(b =>
+        builder.Entity<Ecm_Struct>(b =>
         {
 
             b.ConfigureByConvention();
@@ -30,7 +30,7 @@ public static class EcmDbContextModelCreatingExtensions
             b.HasIndex(z => z.CreationTime);
         });
         //能耗分项管理子项
-        builder.Entity<EcmStructItem>(b =>
+        builder.Entity<Ecm_StructItem>(b =>
         {
             
 
@@ -42,7 +42,7 @@ public static class EcmDbContextModelCreatingExtensions
         });
       
         //能耗实时记录
-        builder.Entity<EcmRecordWip>(b =>
+        builder.Entity<Ecm_RecordWip>(b =>
         {
             
 
@@ -57,7 +57,7 @@ public static class EcmDbContextModelCreatingExtensions
         });
 
         //能耗历史记录
-        builder.Entity<EcmRecordHistory>(b =>
+        builder.Entity<Ecm_RecordHistory>(b =>
         {
             
             b.ConfigureByConvention();

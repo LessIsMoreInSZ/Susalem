@@ -14,7 +14,7 @@ namespace Susalem.Tem.TemPfpsParaConfigs
     /// <summary>
     /// 【领域实体】工艺参数
     /// </summary>
-    public class TemPfpsParaConfig : FullAuditedEntity<Guid>, IHasExtraProperties
+    public class Tem_PfpsParaConfig : FullAuditedEntity<Guid>, IHasExtraProperties
     {
         /// <summary>
         /// 编码
@@ -117,7 +117,7 @@ namespace Susalem.Tem.TemPfpsParaConfigs
         /// <summary>
         /// 【领域实体】工艺参数
         /// </summary>
-        protected TemPfpsParaConfig()
+        protected Tem_PfpsParaConfig()
         {
 
         }
@@ -143,7 +143,7 @@ namespace Susalem.Tem.TemPfpsParaConfigs
         /// <param name="isEnable">是否启用</param>
         /// <param name="remark">备注</param>
         /// <param name="extraProperties">拓展字段</param>
-        public TemPfpsParaConfig(
+        public Tem_PfpsParaConfig(
              Guid id,
             [NotNull] string code,
             [NotNull] string name,

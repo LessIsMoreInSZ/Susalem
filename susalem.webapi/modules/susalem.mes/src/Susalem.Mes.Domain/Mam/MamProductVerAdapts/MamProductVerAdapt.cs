@@ -9,7 +9,7 @@ namespace Susalem.Mam.MamProductVerAdapts
     /// <summary>
     /// 【领域实体】产品版本适配表
     /// </summary>
-    public class MamProductVerAdapt : FullAuditedEntity<Guid>, IHasExtraProperties
+    public class Mam_ProductVerAdapt : FullAuditedEntity<Guid>, IHasExtraProperties
     {
         /// <summary>
         /// 物料id

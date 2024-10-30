@@ -13,7 +13,7 @@ namespace Susalem.Eqm.EqmFaultConfigs
     /// <summary>
     /// 故障配置
     /// </summary>
-    public class EqmFaultConfig : CreationAuditedEntity<Guid>, IHasExtraProperties
+    public class Eqm_FaultConfig : CreationAuditedEntity<Guid>, IHasExtraProperties
     {
         /// <summary>
         /// 【外键】 设备I
@@ -55,8 +55,8 @@ namespace Susalem.Eqm.EqmFaultConfigs
         /// </summary>
         public ExtraPropertyDictionary ExtraProperties { get; set; }
 
-        protected EqmFaultConfig() { }
-        public EqmFaultConfig(
+        protected Eqm_FaultConfig() { }
+        public Eqm_FaultConfig(
             Guid id,
            [NotNull] Guid equipmentId,
            [NotNull] string sequence,

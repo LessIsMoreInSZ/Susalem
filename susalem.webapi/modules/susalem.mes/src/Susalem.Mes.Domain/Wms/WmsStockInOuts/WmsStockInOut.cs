@@ -18,7 +18,7 @@ namespace Susalem.Wms.WmsStockInOuts
     /// <summary>
     /// 【领域实体】出入库记录-主表
     /// </summary>
-    public class WmsStockInOut : Entity<Guid>, IHasCreationTime, IHasExtraProperties
+    public class Wms_StockInOut : Entity<Guid>, IHasCreationTime, IHasExtraProperties
     {
         /// <summary>
         /// 【外键】入仓库ID 
@@ -72,7 +72,7 @@ namespace Susalem.Wms.WmsStockInOuts
         /// <summary>
         /// 空构造函数
         /// </summary>
-        public WmsStockInOut()
+        public Wms_StockInOut()
         {
         }
 
@@ -88,7 +88,7 @@ namespace Susalem.Wms.WmsStockInOuts
         /// <param name="billStatus">单据状态</param>
         /// <param name="bizType">业务类型</param>
         /// <param name="creationTime">创建时间</param>
-        public WmsStockInOut(
+        public Wms_StockInOut(
             [NotNull] Guid id,
             [CanBeNull] Guid inWarehouseId,
             [CanBeNull] Guid outWarehouseId,

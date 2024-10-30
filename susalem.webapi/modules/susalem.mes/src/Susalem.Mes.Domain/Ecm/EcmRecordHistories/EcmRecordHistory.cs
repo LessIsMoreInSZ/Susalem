@@ -14,7 +14,7 @@ namespace Susalem.Ecm.EcmRecordHistories
     /// <summary>
     /// 【实体】 能耗历史记录
     /// </summary>
-    public class EcmRecordHistory :  Entity<Guid>, IHasExtraProperties, IHasCreationTime
+    public class Ecm_RecordHistory :  Entity<Guid>, IHasExtraProperties, IHasCreationTime
     {
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace Susalem.Ecm.EcmRecordHistories
         /// <summary>
         /// 【实体】 能耗历史记录
         /// </summary>
-        protected EcmRecordHistory() { }
+        protected Ecm_RecordHistory() { }
 
         /// <summary>
         /// 【实体】 能耗历史记录
@@ -91,7 +91,7 @@ namespace Susalem.Ecm.EcmRecordHistories
         /// <param name="collectType">采集类型</param>
         /// <param name="extraProperties">拓展字段</param>
         /// <param name="creationTime">创建时间</param>
-        public EcmRecordHistory(
+        public Ecm_RecordHistory(
             Guid id,
             Guid structItemId,
             decimal value,

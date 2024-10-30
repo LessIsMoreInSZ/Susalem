@@ -11,7 +11,7 @@ namespace Susalem.Tem.TemBarcodeRules
     /// <summary>
     /// 【领域实体】产品条码
     /// </summary>
-    public class TemBarcodeRule : CreationAuditedEntity<Guid>, IHasExtraProperties
+    public class Tem_BarcodeRule : CreationAuditedEntity<Guid>, IHasExtraProperties
     {
         /// <summary>
         /// 【外键】物料Id
@@ -44,7 +44,7 @@ namespace Susalem.Tem.TemBarcodeRules
         /// <summary>
         /// 【领域实体】产品条码
         /// </summary>
-        protected TemBarcodeRule()
+        protected Tem_BarcodeRule()
         {
 
         }

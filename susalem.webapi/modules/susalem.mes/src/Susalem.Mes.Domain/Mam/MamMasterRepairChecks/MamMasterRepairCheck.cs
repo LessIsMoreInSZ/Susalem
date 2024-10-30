@@ -16,7 +16,7 @@ namespace Susalem.Mam.MamMasterRepairChecks
     /// <summary>
     /// 【领域实体】Master件维护-检测表
     /// </summary>
-    public class MamMasterRepairCheck : Entity<Guid>, IHasExtraProperties, IHasCreationTime, ISoftDelete
+    public class Mam_MasterRepairCheck : Entity<Guid>, IHasExtraProperties, IHasCreationTime, ISoftDelete
     {
         /// <summary>
         /// 主表ID

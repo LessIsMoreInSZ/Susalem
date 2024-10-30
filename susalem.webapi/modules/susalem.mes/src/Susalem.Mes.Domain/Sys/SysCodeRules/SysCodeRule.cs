@@ -13,7 +13,7 @@ namespace Susalem.Sys
     /// <summary>
     /// 编码规则
     /// </summary>
-    public class SysCodeRule : FullAuditedEntity<Guid>, IHasExtraProperties
+    public class Sys_CodeRule : FullAuditedEntity<Guid>, IHasExtraProperties
     {
         /// <summary>
         /// 模块编码
@@ -76,9 +76,9 @@ namespace Susalem.Sys
         /// <summary>
         /// 编码规则
         /// </summary>
-        protected SysCodeRule() { }
+        protected Sys_CodeRule() { }
 
-        public SysCodeRule(
+        public Sys_CodeRule(
             [NotNull] string moduleCode,
             [NotNull] string codeRuleType,
             [NotNull] string prefix,

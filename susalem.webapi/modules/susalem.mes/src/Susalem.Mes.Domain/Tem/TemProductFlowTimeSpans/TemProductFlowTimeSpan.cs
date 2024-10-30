@@ -11,7 +11,7 @@ namespace Susalem.Tem.TemProductFlowTimeSpans
     /// <summary>
     /// 【实体】工序时间管控
     /// </summary>
-    public class TemProductFlowTimeSpan : FullAuditedEntity<Guid>, IHasExtraProperties
+    public class Tem_ProductFlowTimeSpan : FullAuditedEntity<Guid>, IHasExtraProperties
     {
         /// <summary>
         /// 【外键】产品工艺工序
@@ -69,7 +69,7 @@ namespace Susalem.Tem.TemProductFlowTimeSpans
         /// <param name="remark">描述</param>
         /// <param name="description">描述</param>
         /// <param name="extraProperties">拓展字段</param>
-        public TemProductFlowTimeSpan(
+        public Tem_ProductFlowTimeSpan(
             [NotNull] Guid productFlowProcessId,
             [NotNull] Guid preProcessId,
             [NotNull] ControlTypeEnum controlType,

@@ -12,7 +12,7 @@ namespace Susalem.Tem.TemProductFlowProcesses
     /// <summary>
     /// 【实体】产品工艺工序
     /// </summary>
-    public class TemProductFlowProcess : FullAuditedEntity<Guid>, IHasExtraProperties
+    public class Tem_ProductFlowProcess : FullAuditedEntity<Guid>, IHasExtraProperties
     {
         /// <summary>
         /// 主表ID
@@ -83,8 +83,8 @@ namespace Susalem.Tem.TemProductFlowProcesses
         /// </summary>
         public ExtraPropertyDictionary ExtraProperties { get; set; }
 
-        protected TemProductFlowProcess() { }
-        public TemProductFlowProcess(
+        protected Tem_ProductFlowProcess() { }
+        public Tem_ProductFlowProcess(
             Guid productFlowId,
             Guid processId,
            [NotNull] int index,

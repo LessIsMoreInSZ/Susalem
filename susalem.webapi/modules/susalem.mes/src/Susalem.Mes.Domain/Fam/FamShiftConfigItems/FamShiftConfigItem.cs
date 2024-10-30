@@ -15,7 +15,7 @@ namespace Susalem.Fam.FamShiftConfigItems
     /// <summary>
     /// 【领域实体】班次管理-子表
     /// </summary>
-    public class FamShiftConfigItem : FullAuditedEntity<Guid>, IHasExtraProperties
+    public class Fam_ShiftConfigItem : FullAuditedEntity<Guid>, IHasExtraProperties
     {
         /// <summary>
         /// 班次主表ID
@@ -64,7 +64,7 @@ namespace Susalem.Fam.FamShiftConfigItems
         /// </summary>
         public ExtraPropertyDictionary ExtraProperties { get; set; }
 
-        public FamShiftConfigItem() { }
+        public Fam_ShiftConfigItem() { }
 
         /// <summary>
         /// 【领域实体】班次管理-主表
@@ -78,7 +78,7 @@ namespace Susalem.Fam.FamShiftConfigItems
         /// <param name="endTime">结束时间</param>
         /// <param name="isCrossDay">垮天标记</param>
         /// <param name="extraProperties">拓展字段</param>
-        public FamShiftConfigItem(
+        public Fam_ShiftConfigItem(
             Guid id,
             Guid shiftConfigId,
             [NotNull] string name,

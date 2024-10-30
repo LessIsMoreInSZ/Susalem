@@ -11,7 +11,7 @@ namespace Susalem.Fam
     /// <summary>
     /// 【实体】工厂管理
     /// </summary>
-    public class FamFactory : FullAuditedEntity<Guid>, IHasExtraProperties
+    public class Fam_Factory : FullAuditedEntity<Guid>, IHasExtraProperties
     {
         /// <summary>
         /// 编码
@@ -36,7 +36,7 @@ namespace Susalem.Fam
         /// <summary>
         /// 工厂实体
         /// </summary>
-        protected FamFactory() { }
+        protected Fam_Factory() { }
 
         /// <summary>
         /// 工厂实体
@@ -47,7 +47,7 @@ namespace Susalem.Fam
         /// <param name="isEnable">是否启用（默认：启用）</param>
         /// <param name="remark">备注</param>
         /// <param name="extraProperties">拓展字段</param>
-        public FamFactory(
+        public Fam_Factory(
             Guid id,
             [NotNull] string code,
             [NotNull] string name,

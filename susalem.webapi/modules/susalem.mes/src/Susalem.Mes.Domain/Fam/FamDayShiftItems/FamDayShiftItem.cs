@@ -16,7 +16,7 @@ namespace Susalem.Fam.FamDayShiftItems
     /// <summary>
     /// 【领域实体 排班管理-子表
     /// </summary>
-    public class FamDayShiftItem : FullAuditedEntity<Guid>, IHasExtraProperties
+    public class Fam_DayShiftItem : FullAuditedEntity<Guid>, IHasExtraProperties
     {
         /// <summary>
         /// 排版主表Id
@@ -77,7 +77,7 @@ namespace Susalem.Fam.FamDayShiftItems
         /// </summary>
         public ExtraPropertyDictionary ExtraProperties { get; set; }
 
-        public FamDayShiftItem() { }
+        public Fam_DayShiftItem() { }
 
         /// <summary>
         /// 【领域实体】排班管理-子表
@@ -93,7 +93,7 @@ namespace Susalem.Fam.FamDayShiftItems
         /// <param name="endTime">结束时间</param>
         /// <param name="duration">时长</param>
         /// <param name="extraProperties">拓展字段</param>
-        public FamDayShiftItem(
+        public Fam_DayShiftItem(
             Guid id,
             [NotNull] Guid dayShiftId,
             [NotNull] string name,

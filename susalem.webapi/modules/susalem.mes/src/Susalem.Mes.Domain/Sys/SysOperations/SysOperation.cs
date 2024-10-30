@@ -14,7 +14,7 @@ namespace Susalem.Sys.SysOperations
     /// 操作日志
     /// </summary>
     [DisableAuditing]
-    public class SysOperation : CreationAuditedEntity<Guid>, IHasCreationTime
+    public class Sys_Operation : CreationAuditedEntity<Guid>, IHasCreationTime
     {
         /// <summary>
         /// 所属平台
@@ -49,7 +49,7 @@ namespace Susalem.Sys.SysOperations
         /// <summary>
         /// 【实体】 操作日志
         /// </summary>
-        public SysOperation() { }
+        public Sys_Operation() { }
         
         /// <summary>
         /// 【实体】 操作日志
@@ -60,7 +60,7 @@ namespace Susalem.Sys.SysOperations
         /// <param name="methodName">方法名称</param>
         /// <param name="operateCategoryEnum">操作类型</param>
         /// <param name="content">详细内容</param>
-        public SysOperation(
+        public Sys_Operation(
             Guid id,
             [NotNull] OperatePlatformEnum platform,
             [NotNull] string moduleName,

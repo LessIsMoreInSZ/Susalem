@@ -12,7 +12,7 @@ namespace Susalem.Wms.WmsMaterialPositionRules
     /// <summary>
     /// 【领域实体】料位规则
     /// </summary>
-    public class WmsMaterialPositionRule : Entity<Guid>, IHasCreationTime, IHasExtraProperties
+    public class Wms_MaterialPositionRule : Entity<Guid>, IHasCreationTime, IHasExtraProperties
     {
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Susalem.Wms.WmsMaterialPositionRules
         /// <summary>
         /// 【领域实体】料位规则空构造函数
         /// </summary>
-        public WmsMaterialPositionRule()
+        public Wms_MaterialPositionRule()
         {
         }
 
@@ -73,7 +73,7 @@ namespace Susalem.Wms.WmsMaterialPositionRules
         /// <param name="materialId">物料ID</param>
         /// <param name="creationTime"></param>
         /// <param name="extraProperties">拓展字段</param>
-        public WmsMaterialPositionRule(
+        public Wms_MaterialPositionRule(
           [NotNull] Guid id,
           [NotNull] Guid warehouseId,
           [NotNull] Guid shelfId,

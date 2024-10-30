@@ -17,7 +17,7 @@ namespace Susalem.Wms.WmsCallMaterialTaskHistories
     /// <summary>
     /// 【实体】叫料任务历史
     /// </summary>
-    public class WmsCallMaterialTaskHistory : Entity<Guid>, IHasCreationTime, IHasExtraProperties
+    public class Wms_CallMaterialTaskHistory : Entity<Guid>, IHasCreationTime, IHasExtraProperties
     {
         /// <summary>
         /// 【外键】库位ID
@@ -81,7 +81,7 @@ namespace Susalem.Wms.WmsCallMaterialTaskHistories
         /// </summary>
         public DateTime CreationTime { get; set; }
 
-        public WmsCallMaterialTaskHistory() { }
+        public Wms_CallMaterialTaskHistory() { }
 
         /// <summary>
         /// 【实体】叫料任务历史
@@ -96,7 +96,7 @@ namespace Susalem.Wms.WmsCallMaterialTaskHistories
         /// <param name="locationCode">库位编码</param>
         /// <param name="creationTime">创建时间</param>
         /// <param name="extraProperties">拓展字段</param>
-        public WmsCallMaterialTaskHistory(
+        public Wms_CallMaterialTaskHistory(
              [NotNull] Guid id,
              [NotNull] Guid locationId,
              [NotNull] Guid materialId,

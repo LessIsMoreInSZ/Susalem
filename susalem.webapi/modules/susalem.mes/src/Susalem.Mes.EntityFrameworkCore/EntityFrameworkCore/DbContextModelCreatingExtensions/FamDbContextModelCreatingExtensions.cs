@@ -27,7 +27,7 @@ public static class FamDbContextModelCreatingExtensions
         Check.NotNull(builder, nameof(builder));
 
         //工厂管理
-        builder.Entity<FamFactory>(b =>
+        builder.Entity<Fam_Factory>(b =>
         {
             //表名映射
             
@@ -40,7 +40,7 @@ public static class FamDbContextModelCreatingExtensions
         });
 
         //车间管理
-        builder.Entity<FamWorkShop>(b =>
+        builder.Entity<Fam_WorkShop>(b =>
         {
             //表名映射
             
@@ -57,7 +57,7 @@ public static class FamDbContextModelCreatingExtensions
 
 
         //产线管理
-        builder.Entity<FamPdLine>(b =>
+        builder.Entity<Fam_PdLine>(b =>
         {
             //表名映射
             
@@ -79,7 +79,7 @@ public static class FamDbContextModelCreatingExtensions
         });
 
         //员工管理
-        builder.Entity<FamEmployee>(b =>
+        builder.Entity<Fam_Employee>(b =>
         {
             
 
@@ -94,7 +94,7 @@ public static class FamDbContextModelCreatingExtensions
 
         
         //班次主表
-        builder.Entity<FamShiftConfig>(b =>
+        builder.Entity<Fam_ShiftConfig>(b =>
         {
             
 
@@ -107,7 +107,7 @@ public static class FamDbContextModelCreatingExtensions
         });
 
         //班次子表
-        builder.Entity<FamShiftConfigItem>(b =>
+        builder.Entity<Fam_ShiftConfigItem>(b =>
         {
             
 
@@ -120,7 +120,7 @@ public static class FamDbContextModelCreatingExtensions
         });
 
         //排班主表
-        builder.Entity<FamDayShift>(b =>
+        builder.Entity<Fam_DayShift>(b =>
         {
             
 
@@ -133,7 +133,7 @@ public static class FamDbContextModelCreatingExtensions
         });
 
         //排班子表
-        builder.Entity<FamDayShiftItem>(b =>
+        builder.Entity<Fam_DayShiftItem>(b =>
         {
             
 

@@ -32,7 +32,7 @@ public static class TemDbContextModelCreatingExtensions
         Check.NotNull(builder, nameof(builder));
 
          //物料管理
-        builder.Entity<TemMaterial>(b =>
+        builder.Entity<Tem_Material>(b =>
         {
             //表名映射
             
@@ -54,7 +54,7 @@ public static class TemDbContextModelCreatingExtensions
         });
 
         //工序管理
-        builder.Entity<TemProcess>(b =>
+        builder.Entity<Tem_Process>(b =>
         {
             //表名映射
             
@@ -71,7 +71,7 @@ public static class TemDbContextModelCreatingExtensions
         });
 
         //工艺参数类型
-        builder.Entity<TemParaType>(b =>
+        builder.Entity<Tem_ParaType>(b =>
         {
             //表名映射
             
@@ -86,7 +86,7 @@ public static class TemDbContextModelCreatingExtensions
         });
 
         //工步类型
-        builder.Entity<TemStepType>(b =>
+        builder.Entity<Tem_StepType>(b =>
         {
             //表名映射
             
@@ -100,7 +100,7 @@ public static class TemDbContextModelCreatingExtensions
         });
 
         //产品工艺
-        builder.Entity<TemProductFlow>(b =>
+        builder.Entity<Tem_ProductFlow>(b =>
         {
             //表名映射
             
@@ -115,7 +115,7 @@ public static class TemDbContextModelCreatingExtensions
         });
 
         //产品工艺
-        builder.Entity<TemProductFlowProcess>(b =>
+        builder.Entity<Tem_ProductFlowProcess>(b =>
         {
             //表名映射
             
@@ -135,7 +135,7 @@ public static class TemDbContextModelCreatingExtensions
         });
 
         //工序时间管控
-        builder.Entity<TemProductFlowTimeSpan>(b =>
+        builder.Entity<Tem_ProductFlowTimeSpan>(b =>
         {
             //表名映射
             
@@ -151,7 +151,7 @@ public static class TemDbContextModelCreatingExtensions
         });
 
         //工艺设备
-        builder.Entity<TemFlowEquipment>(b =>
+        builder.Entity<Tem_FlowEquipment>(b =>
         {
             //表名映射
             
@@ -166,7 +166,7 @@ public static class TemDbContextModelCreatingExtensions
         });
 
         //产品工艺工序工步
-        builder.Entity<TemProductFlowProcessStep>(b =>
+        builder.Entity<Tem_ProductFlowProcessStep>(b =>
         {
             //表名映射
             
@@ -181,7 +181,7 @@ public static class TemDbContextModelCreatingExtensions
         });
 
         //工艺参数
-        builder.Entity<TemPfpsParaConfig>(b =>
+        builder.Entity<Tem_PfpsParaConfig>(b =>
         {
             //表名映射
             
@@ -197,7 +197,7 @@ public static class TemDbContextModelCreatingExtensions
         });
 
         //Bom
-        builder.Entity<TemPfpsProductBom>(b =>
+        builder.Entity<Tem_PfpsProductBom>(b =>
         {
             //表名映射
             
@@ -213,7 +213,7 @@ public static class TemDbContextModelCreatingExtensions
         });
 
         //产品条码规则
-        builder.Entity<TemBarcodeRule>(b =>
+        builder.Entity<Tem_BarcodeRule>(b =>
         {
             //表名映射
             
@@ -251,7 +251,7 @@ public static class TemDbContextModelCreatingExtensions
         });
 
         // 虚拟件关系对应表
-        builder.Entity<TemVirtualMaterialRelation>(b =>
+        builder.Entity<Tem_VirtualMaterialRelation>(b =>
         {
             //表名映射
             
@@ -281,7 +281,7 @@ public static class TemDbContextModelCreatingExtensions
 
 
         //物料次数管控
-        builder.Entity<TemMaterialUsedTime>(b =>
+        builder.Entity<Tem_MaterialUsedTime>(b =>
         {
             //表名映射
             

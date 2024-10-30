@@ -15,7 +15,7 @@ namespace Susalem.Fam.FamDayShifts
     /// <summary>
     /// 【领域实体 排班管理-主表
     /// </summary>
-    public class FamDayShift : FullAuditedEntity<Guid>, IHasExtraProperties
+    public class Fam_DayShift : FullAuditedEntity<Guid>, IHasExtraProperties
     {
         /// <summary>
         /// 产品线ID
@@ -46,7 +46,7 @@ namespace Susalem.Fam.FamDayShifts
         /// </summary>
         public ExtraPropertyDictionary ExtraProperties { get; set; }
 
-        public FamDayShift() { }
+        public Fam_DayShift() { }
 
         /// <summary>
         /// 【领域实体】排班管理-主表
@@ -57,7 +57,7 @@ namespace Susalem.Fam.FamDayShifts
         /// <param name="type">类型</param>
         /// <param name="dataSourceType">类型</param>
         /// <param name="extraProperties">拓展字段</param>
-        public FamDayShift(
+        public Fam_DayShift(
             Guid id,
             [NotNull] Guid pdLineId,
             [NotNull] DateTime date,

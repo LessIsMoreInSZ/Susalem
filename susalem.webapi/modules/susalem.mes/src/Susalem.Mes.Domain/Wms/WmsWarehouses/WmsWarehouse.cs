@@ -14,7 +14,7 @@ namespace Susalem.Wms.WmsWarehouses
     /// <summary>
     /// 【实体】仓库管理
     /// </summary>
-    public class WmsWarehouse : Entity<Guid>, IHasCreationTime, IHasExtraProperties
+    public class Wms_Warehouse : Entity<Guid>, IHasCreationTime, IHasExtraProperties
     {
         /// <summary>
         /// 【外键】设备基础信息
@@ -44,7 +44,7 @@ namespace Susalem.Wms.WmsWarehouses
         /// </summary>
         public ExtraPropertyDictionary ExtraProperties { get; set; }
 
-        public WmsWarehouse() { }
+        public Wms_Warehouse() { }
 
         /// <summary>
         /// 【实体】仓库管理
@@ -55,7 +55,7 @@ namespace Susalem.Wms.WmsWarehouses
         /// <param name="name">名称</param>
         /// <param name="creationTime">创建时间</param>
         /// <param name="extraProperties">拓展字段</param>
-        public WmsWarehouse(
+        public Wms_Warehouse(
              Guid id,
              [NotNull] Guid equipmentId,
              [NotNull] string code,

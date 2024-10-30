@@ -13,7 +13,7 @@ namespace Susalem.Tem.TemMaterials
     /// <summary>
     /// 【实体】物料管理
     /// </summary>
-    public class TemMaterial : FullAuditedEntity<Guid>, IHasExtraProperties
+    public class Tem_Material : FullAuditedEntity<Guid>, IHasExtraProperties
     {
 
         /// <summary>
@@ -117,7 +117,7 @@ namespace Susalem.Tem.TemMaterials
         /// <summary>
         /// 【实体】物料管理
         /// </summary>
-        protected TemMaterial() { }
+        protected Tem_Material() { }
 
         /// <summary>
         /// 【实体】物料管理
@@ -135,7 +135,7 @@ namespace Susalem.Tem.TemMaterials
         /// <param name="tryProcessCount">可装配次数</param>
         /// <param name="largeModel">大机型</param>
         /// <param name="extraProperties">拓展字段</param>
-        public TemMaterial(
+        public Tem_Material(
             Guid id,
             [NotNull] string code,
             [NotNull] string name,

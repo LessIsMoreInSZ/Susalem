@@ -14,7 +14,7 @@ namespace Susalem.Fam.FamEmployees
     /// <summary>
     /// 【领域实体】员工管理
     /// </summary>
-    public class FamEmployee : FullAuditedEntity<Guid>, IHasExtraProperties
+    public class Fam_Employee : FullAuditedEntity<Guid>, IHasExtraProperties
     {
         /// <summary>
         /// 员工号 (域账号)
@@ -82,7 +82,7 @@ namespace Susalem.Fam.FamEmployees
 
         [Required, MaxLength]
         public string Remark { get; set; }
-        public FamEmployee() { }
+        public Fam_Employee() { }
 
         /// <summary>
         /// 【领域实体】员工管理
@@ -101,7 +101,7 @@ namespace Susalem.Fam.FamEmployees
         /// <param name="extraProperties">拓展字段</param>
         /// <param name="remark">备注</param>
         /// <param name="isEnable">是否启用</param>
-        public FamEmployee(
+        public Fam_Employee(
                 Guid id,
                 string code,
                 string name,

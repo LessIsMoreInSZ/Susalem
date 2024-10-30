@@ -15,7 +15,7 @@ namespace Susalem.Ecm.EcmStructItems
     /// <summary>
     /// 【实体】 能耗分项管理子表
     /// </summary>
-    public class EcmStructItem : FullAuditedEntity<Guid>, IHasExtraProperties
+    public class Ecm_StructItem : FullAuditedEntity<Guid>, IHasExtraProperties
     {
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace Susalem.Ecm.EcmStructItems
         /// <summary>
         /// 【实体】 能耗分项管理子表
         /// </summary>
-        protected EcmStructItem() { }
+        protected Ecm_StructItem() { }
 
         /// <summary>
         /// 【实体】 能耗分项管理子表
@@ -81,7 +81,7 @@ namespace Susalem.Ecm.EcmStructItems
         /// <param name="unit">单位</param>
         /// <param name="calcType">计量单位</param>
         /// <param name="extraProperties">拓展字段</param>
-        public EcmStructItem(
+        public Ecm_StructItem(
             Guid structId,
             Guid equipmentId,
             Guid id,

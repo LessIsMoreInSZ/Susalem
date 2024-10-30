@@ -14,7 +14,7 @@ namespace Susalem.Ecm.EcmStructs
     /// <summary>
     /// 【实体】 能耗分项管理管理
     /// </summary>
-    public class EcmStruct :  Entity<Guid>, IHasExtraProperties, IHasCreationTime
+    public class Ecm_Struct :  Entity<Guid>, IHasExtraProperties, IHasCreationTime
     {
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Susalem.Ecm.EcmStructs
         /// <summary>
         /// 【实体】 能耗分项管理
         /// </summary>
-        protected EcmStruct() { }
+        protected Ecm_Struct() { }
 
         /// <summary>
         /// 【实体】 能耗分项管理
@@ -80,7 +80,7 @@ namespace Susalem.Ecm.EcmStructs
         /// <param name="syncTime">同步周期</param>
         /// <param name="extraProperties">拓展字段</param>
         /// <param name="creationTime">创建时间</param>
-        public EcmStruct(
+        public Ecm_Struct(
             Guid id,
             [NotNull] string code,
             [NotNull] string name,

@@ -12,7 +12,7 @@ namespace Susalem.Tem.TemProductFlowProcessSteps
     /// <summary>
     /// 【领域实体】产品工艺工序工步
     /// </summary>
-    public class TemProductFlowProcessStep : FullAuditedEntity<Guid>, IHasExtraProperties
+    public class Tem_ProductFlowProcessStep : FullAuditedEntity<Guid>, IHasExtraProperties
     {
         /// <summary>
         /// 【外键】产品工艺子表ID （产品工艺工序表
@@ -67,7 +67,7 @@ namespace Susalem.Tem.TemProductFlowProcessSteps
         /// <summary>
         /// 【领域实体】产品工艺工序工步
         /// </summary>
-        protected TemProductFlowProcessStep()
+        protected Tem_ProductFlowProcessStep()
         {
 
         }
@@ -86,7 +86,7 @@ namespace Susalem.Tem.TemProductFlowProcessSteps
         /// <param name="isEnable">是否启用</param>
         /// <param name="remark">备注</param>
         /// <param name="extraProperties">拓展字段</param>
-        protected TemProductFlowProcessStep(
+        protected Tem_ProductFlowProcessStep(
              Guid id,
             [NotNull] Guid productFlowProcessId,
             [NotNull] Guid stepTypeId,

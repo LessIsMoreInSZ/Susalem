@@ -16,7 +16,7 @@ namespace Susalem.Wms.WmsLocations
     /// <summary>
     /// 【实体】库位管理
     /// </summary>
-    public class WmsLocation : Entity<Guid>, IHasCreationTime, IHasExtraProperties
+    public class Wms_Location : Entity<Guid>, IHasCreationTime, IHasExtraProperties
     {
         /// <summary>
         /// 【外键】仓库Id
@@ -69,7 +69,7 @@ namespace Susalem.Wms.WmsLocations
         /// </summary>
         public string CurrentMaterialNo { get; set; }
 
-        public WmsLocation() { }
+        public Wms_Location() { }
 
         /// <summary>
         /// 【实体】库位管理
@@ -83,7 +83,7 @@ namespace Susalem.Wms.WmsLocations
         /// <param name="type">类型</param>
         /// <param name="creationTime">创建时间</param>
         /// <param name="extraProperties">拓展字段</param>
-        public WmsLocation(
+        public Wms_Location(
              Guid id,
              [NotNull] Guid warehouseId,
              [NotNull] Guid shelfId,

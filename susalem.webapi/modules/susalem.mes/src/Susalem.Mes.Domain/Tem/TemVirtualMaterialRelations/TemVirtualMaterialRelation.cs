@@ -9,7 +9,7 @@ namespace Susalem.Tem.TemVirtualMaterialRelations
     /// <summary>
     /// 【实体】虚拟件关系对应表
     /// </summary>
-    public class TemVirtualMaterialRelation : Entity<Guid>, IHasCreationTime, IHasExtraProperties
+    public class Tem_VirtualMaterialRelation : Entity<Guid>, IHasCreationTime, IHasExtraProperties
     {
         /// <summary>
         /// 虚拟件Id

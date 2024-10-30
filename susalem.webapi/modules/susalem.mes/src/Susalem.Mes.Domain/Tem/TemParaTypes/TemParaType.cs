@@ -12,7 +12,7 @@ namespace Susalem.Tem.TemParaTypes
     /// 【实体】工艺参数类型管理
     /// </summary>
     [Serializable]
-    public class TemParaType : FullAuditedEntity<Guid>, IHasExtraProperties
+    public class Tem_ParaType : FullAuditedEntity<Guid>, IHasExtraProperties
     {
         /// <summary>
         /// 编码
@@ -46,7 +46,7 @@ namespace Susalem.Tem.TemParaTypes
 
         [Required, MaxLength]
         public string Remark { get; set; }
-        public TemParaType() { }
+        public Tem_ParaType() { }
 
         /// <summary>
         /// 【实体】工艺参数类型管理
@@ -59,7 +59,7 @@ namespace Susalem.Tem.TemParaTypes
         /// <param name="isEnable">是否启用</param>
         /// <param name="remark">描述</param>
         /// <param name="extraProperties"></param>
-        public TemParaType(
+        public Tem_ParaType(
             Guid id,
             [NotNull] string code,
             [NotNull] string name,

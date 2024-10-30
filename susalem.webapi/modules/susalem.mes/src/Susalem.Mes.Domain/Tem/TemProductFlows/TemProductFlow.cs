@@ -12,7 +12,7 @@ namespace Susalem.Tem.TemProductFlows
     /// <summary>
     /// 【实体】产品工艺
     /// </summary>
-    public class TemProductFlow : FullAuditedEntity<Guid>, IHasExtraProperties
+    public class Tem_ProductFlow : FullAuditedEntity<Guid>, IHasExtraProperties
     {
         /// <summary>
         /// 编号
@@ -62,7 +62,7 @@ namespace Susalem.Tem.TemProductFlows
 
         [Required, MaxLength]
         public string Remark { get; set; }
-        protected TemProductFlow() { }
+        protected Tem_ProductFlow() { }
 
         /// <summary>
         /// 产品工艺
@@ -78,7 +78,7 @@ namespace Susalem.Tem.TemProductFlows
         /// <param name="isEnable">是否启用</param>
         /// <param name="remark">描述</param>
         /// <param name="isDefault">默认产品工艺</param>
-        public TemProductFlow(
+        public Tem_ProductFlow(
             Guid id,
            [NotNull] string code,
            [NotNull] string name, 

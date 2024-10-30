@@ -96,43 +96,43 @@ public interface IMesDbContext : IEfCoreDbContext
    DbSet<MamPlanProductDelete> MamPlanProductDeletes { get; set; }
    DbSet<QmsStationCycleTime> QmsStationCycleTimes { get; set; }
    DbSet<QmsBarcodeOperate> QmsBarcodeOperates { get; set; }
-   DbSet<FamFactory> FamFactories { get; set; }
-   DbSet<FamWorkShop> FamWorkShops { get; set; }
-   DbSet<FamPdLine> FamPdLines { get; set; }
-   DbSet<FamShiftConfig> FamShiftConfigs { get; set; }
-   DbSet<FamShiftConfigItem> FamShiftConfigItems { get; set; }
-   DbSet<FamDayShift> FamDayShifts { get; set; }
-   DbSet<FamDayShiftItem> FamDayShiftItems { get; set; }
-   DbSet<FamEmployee> FamEmployees { get; set; }
+   DbSet<Fam_Factory> FamFactories { get; set; }
+   DbSet<Fam_WorkShop> FamWorkShops { get; set; }
+   DbSet<Fam_PdLine> FamPdLines { get; set; }
+   DbSet<Fam_ShiftConfig> FamShiftConfigs { get; set; }
+   DbSet<Fam_ShiftConfigItem> FamShiftConfigItems { get; set; }
+   DbSet<Fam_DayShift> FamDayShifts { get; set; }
+   DbSet<Fam_DayShiftItem> FamDayShiftItems { get; set; }
+   DbSet<Fam_Employee> FamEmployees { get; set; }
    DbSet<MamPlanProductWip> MamPlanProductWips { get; set; }
    DbSet<MamPlanProductHistory> MamPlanProductHistories { get; set; }
    DbSet<MamPlanProductRecordWip> MamPlanProductRecordWips { get; set; }
-   DbSet<MamOrder> MamOrders { get; set; }
-   DbSet<MamProductionPlan> MamProductionPlans { get; set; }
-   DbSet<MamPlan> MamPlans { get; set; }
+   DbSet<Mam_Order> MamOrders { get; set; }
+   DbSet<Mam_ProductionPlan> MamProductionPlans { get; set; }
+   DbSet<Mam_Plan> MamPlans { get; set; }
    DbSet<MamPlanFlowWip> MamPlanFlowWips { get; set; }
    DbSet<MamPlanFlowHistory> MamPlanFlowHistories { get; set; }
    DbSet<MamEmployeeWorkEquipment> MamEmployeeWorkEquipments { get; set; }
    DbSet<MamPlanProductRecordHistory> MamPlanProductRecordHistories { get; set; }
-   DbSet<MamOrderBom> MamOrderBoms { get; set; }
+   DbSet<Mam_OrderBom> MamOrderBoms { get; set; }
    DbSet<MamEmployeeWork> MamEmployeeWorks { get; set; }
-   DbSet<MamProductRelation> MamProductRelations { get; set; }
+   DbSet<Mam_ProductRelation> MamProductRelations { get; set; }
 
-   DbSet<MamSpotCheckRecord> MamSpotCheckRecords { get; set; }
+   DbSet<Mam_SpotCheckRecord> MamSpotCheckRecords { get; set; }
 
-   DbSet<TemMaterialUsedTime> TemMaterialUsedTimes { get; set; }
-   DbSet<TemMaterial> TemMaterials { get; set; }
-   DbSet<TemParaType> TemParaTypes { get; set; }
-   DbSet<TemProcess> TemProcesses { get; set; }
-   DbSet<TemStepType> TemStepTypes { get; set; }
-   DbSet<TemProductFlow> TemProductFlows { get; set; }
-   DbSet<TemProductFlowProcess> TemProductFlowProcesses { get; set; }
-   DbSet<TemProductFlowTimeSpan> TemProductFlowTimeSpans { get; set; }
-   DbSet<TemFlowEquipment> TemFlowEquipments { get; set; }
-   DbSet<TemProductFlowProcessStep> TemProductFlowProcessSteps { get; set; }
-   DbSet<TemPfpsParaConfig> TemPfpsParaConfigs { get; set; }
-   DbSet<TemPfpsProductBom> TemPfpsProductBoms { get; set; }
-   DbSet<TemBarcodeRule> TemBarcodeRules { get; set; }
+   DbSet<Tem_MaterialUsedTime> TemMaterialUsedTimes { get; set; }
+   DbSet<Tem_Material> TemMaterials { get; set; }
+   DbSet<Tem_ParaType> TemParaTypes { get; set; }
+   DbSet<Tem_Process> TemProcesses { get; set; }
+   DbSet<Tem_StepType> TemStepTypes { get; set; }
+   DbSet<Tem_ProductFlow> TemProductFlows { get; set; }
+   DbSet<Tem_ProductFlowProcess> TemProductFlowProcesses { get; set; }
+   DbSet<Tem_ProductFlowTimeSpan> TemProductFlowTimeSpans { get; set; }
+   DbSet<Tem_FlowEquipment> TemFlowEquipments { get; set; }
+   DbSet<Tem_ProductFlowProcessStep> TemProductFlowProcessSteps { get; set; }
+   DbSet<Tem_PfpsParaConfig> TemPfpsParaConfigs { get; set; }
+   DbSet<Tem_PfpsProductBom> TemPfpsProductBoms { get; set; }
+   DbSet<Tem_BarcodeRule> TemBarcodeRules { get; set; }
    DbSet<TemBarcodeRuleItem> TemBarcodeRuleItems { get; set; }
    DbSet<QmsMaterialBarcode> QmsMaterialBarcodes { get; set; }
    DbSet<QmsProcessData> QmsProcessDatas { get; set; }
@@ -142,40 +142,40 @@ public interface IMesDbContext : IEfCoreDbContext
    DbSet<QmsFaultHistory> QmsFaultHistories { get; set; }
    DbSet<QmsEquipmentStatusWip> QmsEquipmentStatusWips { get; set; }
    DbSet<QmsEquipmentStatusHistory> QmsEquipmentStatusHistories { get; set; }
-   DbSet<EqmEquipment> EqmEquipments { get; set; }
-   DbSet<EqmModuleType> EqmModuleTypes { get; set; }
-   DbSet<EqmArchive> EqmArchives { get; set; }
-   DbSet<EqmFaultConfig> EqmFaultConfigs { get; set; }
-   DbSet<EqmAccidentEntry> EqmAccidentEntrys { get; set; }
-   DbSet<TemVirtualMaterialRelation> TemVirtualMaterialRelations { get; set; }
-   DbSet<WmsStockWip> WmsStockWips { get; set; }
-   DbSet<WmsStockInOut> WmsStockInOuts { get; set; }
-   DbSet<WmsStockInOutItem> WmsStockInOutItems { get; set; }
-   DbSet<WmsMaterialPositionRule> WmsMaterialPositionRules { get; set; }
-   DbSet<WmsWarehouse> WmsWarehouses { get; set; }
-   DbSet<WmsShelf> WmsShelfs { get; set; }
-   DbSet<WmsLocation> WmsLocations { get; set; }
-   DbSet<WmsCallMaterialTaskWip> WmsCallMaterialTaskWips { get; set; }
-   DbSet<WmsCallMaterialTaskHistory> WmsCallMaterialTaskHistories { get; set; }
-   DbSet<SysCodeRule> SysCodeRules { get; set; }
-   DbSet<SysOperation> SysOperations { get; set; }
-   DbSet<SysDictionary> SysDictionaries { get; set; }
-   DbSet<SysDictionaryItem> SysDictionaryItems { get; set; }
-   DbSet<EcmStruct> EcmStructs { get; set; }
-   DbSet<EcmStructItem> EcmStructItems { get; set; }
-   DbSet<EcmRecordWip> EcmRecordWips { get; set; }
-   DbSet<EcmRecordHistory> EcmRecordHistories { get; set; }
-   DbSet<MamRepairPolicy> MamRepairPolicies { get; set; }
-   DbSet<MamMasterRepair> MamMasterRepairs { get; set; }
-   DbSet<MamProductRepair> MamProductRepairs { get; set; }
-   DbSet<MamProductRepairItem> MamProductRepairItems { get; set; }
-   DbSet<MamMasterRepairItem> MamMasterRepairItems { get; set; }
-   DbSet<MamMasterRepairCheck> MamMasterRepairChecks { get; set; }
+   DbSet<Eqm_Equipment> EqmEquipments { get; set; }
+   DbSet<Eqm_ModuleType> EqmModuleTypes { get; set; }
+   DbSet<Eqm_Archive> EqmArchives { get; set; }
+   DbSet<Eqm_FaultConfig> EqmFaultConfigs { get; set; }
+   DbSet<Eqm_AccidentEntry> EqmAccidentEntrys { get; set; }
+   DbSet<Tem_VirtualMaterialRelation> TemVirtualMaterialRelations { get; set; }
+   DbSet<Wms_StockWip> WmsStockWips { get; set; }
+   DbSet<Wms_StockInOut> WmsStockInOuts { get; set; }
+   DbSet<Wms_StockInOutItem> WmsStockInOutItems { get; set; }
+   DbSet<Wms_MaterialPositionRule> WmsMaterialPositionRules { get; set; }
+   DbSet<Wms_Warehouse> WmsWarehouses { get; set; }
+   DbSet<Wms_Shelf> WmsShelfs { get; set; }
+   DbSet<Wms_Location> WmsLocations { get; set; }
+   DbSet<Wms_CallMaterialTaskWip> WmsCallMaterialTaskWips { get; set; }
+   DbSet<Wms_CallMaterialTaskHistory> WmsCallMaterialTaskHistories { get; set; }
+   DbSet<Sys_CodeRule> SysCodeRules { get; set; }
+   DbSet<Sys_Operation> SysOperations { get; set; }
+   DbSet<Sys_Dictionary> SysDictionaries { get; set; }
+   DbSet<Sys_DictionaryItem> SysDictionaryItems { get; set; }
+   DbSet<Ecm_Struct> EcmStructs { get; set; }
+   DbSet<Ecm_StructItem> EcmStructItems { get; set; }
+   DbSet<Ecm_RecordWip> EcmRecordWips { get; set; }
+   DbSet<Ecm_RecordHistory> EcmRecordHistories { get; set; }
+   DbSet<Mam_RepairPolicy> MamRepairPolicies { get; set; }
+   DbSet<Mam_MasterRepair> MamMasterRepairs { get; set; }
+   DbSet<Mam_ProductRepair> MamProductRepairs { get; set; }
+   DbSet<Mam_ProductRepairItem> MamProductRepairItems { get; set; }
+   DbSet<Mam_MasterRepairItem> MamMasterRepairItems { get; set; }
+   DbSet<Mam_MasterRepairCheck> MamMasterRepairChecks { get; set; }
    DbSet<MamBarcodeBlack> MamBarcodeBlacks { get; set; }
    DbSet<MamDisassembleOrder> MamDisassembleOrders { get; set; }
    DbSet<QmsCallAndonData> QmsCallAndonDatas { get; set; }
-   DbSet<MamProductVerAdapt> MamProductVerAdapts { get; set; }//产品版本适配-表
+   DbSet<Mam_ProductVerAdapt> MamProductVerAdapts { get; set; }//产品版本适配-表
 
    DbSet<TemProductFlowChangeRecord> TemProductFlowChangeRecords { get; set; }
-   DbSet<EqmMachLifeM> MachLifeMs { get; set; }
+   DbSet<Eqm_MachLifeM> MachLifeMs { get; set; }
 }

@@ -15,7 +15,7 @@ namespace Susalem.Fam.FamShiftConfigs
     /// <summary>
     /// 【领域实体】班次管理-主表
     /// </summary>
-    public class FamShiftConfig : FullAuditedEntity<Guid>, IHasExtraProperties
+    public class Fam_ShiftConfig : FullAuditedEntity<Guid>, IHasExtraProperties
     {
         /// <summary>
         /// 名称
@@ -46,7 +46,7 @@ namespace Susalem.Fam.FamShiftConfigs
         /// </summary>
         public ExtraPropertyDictionary ExtraProperties { get; set; }
 
-        public FamShiftConfig() { }
+        public Fam_ShiftConfig() { }
 
         /// <summary>
         /// 【领域实体】班次管理-主表
@@ -57,7 +57,7 @@ namespace Susalem.Fam.FamShiftConfigs
         /// <param name="tag">标识</param>
         /// <param name="pdLineId">产线ID</param>
         /// <param name="extraProperties">拓展字段</param>
-        public FamShiftConfig(
+        public Fam_ShiftConfig(
             Guid id,
             [NotNull] string name,
             [NotNull] int index,

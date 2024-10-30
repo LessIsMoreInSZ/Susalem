@@ -15,7 +15,7 @@ namespace Susalem.Mam.MamSpotCheckRecords
     /// <summary>
     /// 【领域实体】产品抽检记录
     /// </summary>
-    public class MamSpotCheckRecord : AuditedEntity<Guid>, IHasExtraProperties
+    public class Mam_SpotCheckRecord : AuditedEntity<Guid>, IHasExtraProperties
     {
         /// <summary>
         /// 【外键】产品清单Id
@@ -162,7 +162,7 @@ namespace Susalem.Mam.MamSpotCheckRecords
         /// <summary>
         /// 【领域实体】产品抽检记录
         /// </summary>
-        public MamSpotCheckRecord() { }
+        public Mam_SpotCheckRecord() { }
 
         /// <summary>
         /// 【领域实体】产品抽检记录
@@ -196,7 +196,7 @@ namespace Susalem.Mam.MamSpotCheckRecords
         /// <param name="lastModifierId">最后修改人</param>
         /// <param name="creatorId">创建人</param>
         /// <param name="extraProperties">拓展字段</param>
-        public MamSpotCheckRecord(
+        public Mam_SpotCheckRecord(
            Guid id,
            Guid productId,
            [NotNull] string snCode,

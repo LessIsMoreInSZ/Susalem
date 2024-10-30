@@ -13,7 +13,7 @@ namespace Susalem.Tem.TemProcesses
     /// <summary>
     /// 【实体】工序管理
     /// </summary>
-    public class TemProcess : FullAuditedEntity<Guid>, IHasExtraProperties
+    public class Tem_Process : FullAuditedEntity<Guid>, IHasExtraProperties
     {
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Susalem.Tem.TemProcesses
         [Required, MaxLength]
         public string Remark { get; set; }
 
-        protected TemProcess() { }
+        protected Tem_Process() { }
 
         /// <summary>
         /// 无参构造
@@ -54,7 +54,7 @@ namespace Susalem.Tem.TemProcesses
         /// <param name="isEnable">是否启用</param>
         /// <param name="remark">描述</param>
         /// <param name="extraProperties">拓展字段</param>
-        public TemProcess(
+        public Tem_Process(
             Guid id,
             [NotNull] string code,
             [NotNull] string name,

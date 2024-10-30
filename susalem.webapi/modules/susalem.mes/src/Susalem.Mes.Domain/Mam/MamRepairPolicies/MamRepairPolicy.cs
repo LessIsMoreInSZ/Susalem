@@ -12,7 +12,7 @@ namespace Susalem.Mam.MamRepairPolicies
     /// <summary>
     /// 【领域实体】返修策略
     /// </summary>
-    public class MamRepairPolicy : Entity<Guid>, IHasCreationTime, IHasExtraProperties
+    public class Mam_RepairPolicy : Entity<Guid>, IHasCreationTime, IHasExtraProperties
     {
         /// <summary>
         /// Guid 用于状态修改

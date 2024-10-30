@@ -22,7 +22,7 @@ public static class SysDbContextModelCreatingExtensions
         Check.NotNull(builder, nameof(builder));
 
         //编码规则
-        builder.Entity<SysCodeRule>(b =>
+        builder.Entity<Sys_CodeRule>(b =>
         {
             //配置表名和表架构名
             b.ConfigureByConvention();
@@ -32,7 +32,7 @@ public static class SysDbContextModelCreatingExtensions
         });
 
         //操作日志
-        builder.Entity<SysOperation>(b =>
+        builder.Entity<Sys_Operation>(b =>
         {
             //配置表名和表架构名
             b.ConfigureByConvention();
@@ -46,7 +46,7 @@ public static class SysDbContextModelCreatingExtensions
 
 
         //字典管理
-        builder.Entity<SysDictionary>(b =>
+        builder.Entity<Sys_Dictionary>(b =>
         {
             //配置表名和表架构名
             b.ConfigureByConvention();
@@ -56,7 +56,7 @@ public static class SysDbContextModelCreatingExtensions
         });
 
         //字典配置子表
-        builder.Entity<SysDictionaryItem>(b =>
+        builder.Entity<Sys_DictionaryItem>(b =>
         {
             //配置表名和表架构名
             b.ConfigureByConvention();

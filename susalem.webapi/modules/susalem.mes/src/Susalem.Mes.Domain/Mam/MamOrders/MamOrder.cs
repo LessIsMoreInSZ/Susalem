@@ -14,7 +14,7 @@ namespace Susalem.Mam.MamOrders
     /// <summary>
     /// 【领域实体】实时订单表
     /// </summary>
-    public class MamOrder : FullAuditedEntity<Guid>, IHasExtraProperties
+    public class Mam_Order : FullAuditedEntity<Guid>, IHasExtraProperties
     {
         /// <summary>
         /// 订单号（唯一）
@@ -154,7 +154,7 @@ namespace Susalem.Mam.MamOrders
         /// </summary>
         public ExtraPropertyDictionary ExtraProperties { get; set; }
 
-        protected MamOrder() { }
+        protected Mam_Order() { }
 
 
         /// <summary>
@@ -184,7 +184,7 @@ namespace Susalem.Mam.MamOrders
         /// <param name="actualFinishTime">实际完成时间</param>
         /// <param name="productTypeCodeWithVer">产品类型-版本</param>
         /// <param name="extraProperties">拓展字段</param>
-        public MamOrder(
+        public Mam_Order(
             Guid id,
            [NotNull] string orderNo,
            [NotNull] string erpOrderNo,

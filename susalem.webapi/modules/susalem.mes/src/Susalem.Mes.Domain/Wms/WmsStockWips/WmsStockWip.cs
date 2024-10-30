@@ -14,7 +14,7 @@ namespace Susalem.Wms.WmsStockWips
     /// <summary>
     /// 【领域实体】实时库存
     /// </summary>
-    public class WmsStockWip : Entity<Guid>, IHasCreationTime, IHasExtraProperties
+    public class Wms_StockWip : Entity<Guid>, IHasCreationTime, IHasExtraProperties
     {
         /// <summary>
         /// 【外键】仓库ID 
@@ -100,7 +100,7 @@ namespace Susalem.Wms.WmsStockWips
         /// <summary>
         /// 【领域实体】实时库存构造函数
         /// </summary>
-        public WmsStockWip()
+        public Wms_StockWip()
         {
 
         }
@@ -121,7 +121,7 @@ namespace Susalem.Wms.WmsStockWips
         /// <param name="qty">库存数量</param>
         /// <param name="batchNo">批次号</param>
         /// <param name="creationTime">创建时间</param>
-        public WmsStockWip(
+        public Wms_StockWip(
         [NotNull] Guid id,
         [NotNull] Guid warehouseId,
         [NotNull] string warehouseCode,

@@ -16,7 +16,7 @@ namespace Susalem.Mam.MamPlans
     /// <summary>
     /// 【实体】实时生产工单
     /// </summary>
-    public class MamPlan : Entity<Guid>, IHasExtraProperties, IHasCreationTime
+    public class Mam_Plan : Entity<Guid>, IHasExtraProperties, IHasCreationTime
     {
         /// <summary>
         /// 工单号（唯一）
@@ -167,7 +167,7 @@ namespace Susalem.Mam.MamPlans
         [Required]
         public DateTime CreationTime { get; set; }
 
-        protected MamPlan() { }
+        protected Mam_Plan() { }
 
         /// <summary>
         /// 【实体】实时生产工单
@@ -193,7 +193,7 @@ namespace Susalem.Mam.MamPlans
         /// <param name="planNo"></param>
         /// <param name="changeRecord"></param>
         /// <param name="extraProperties"></param>
-        public MamPlan(
+        public Mam_Plan(
             [NotNull] Guid orderId,
             [NotNull] Guid productTypeId,
             [NotNull] Guid productFlowId,

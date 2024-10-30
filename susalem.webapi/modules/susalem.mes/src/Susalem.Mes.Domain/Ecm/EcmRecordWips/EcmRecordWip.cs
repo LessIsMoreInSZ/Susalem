@@ -12,7 +12,7 @@ namespace Susalem.Ecm.EcmRecordWips
     /// <summary>
     /// 【实体】 能耗实时记录
     /// </summary>
-    public class EcmRecordWip :  Entity<Guid>, IHasExtraProperties, IHasCreationTime
+    public class Ecm_RecordWip :  Entity<Guid>, IHasExtraProperties, IHasCreationTime
     {
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Susalem.Ecm.EcmRecordWips
         /// <summary>
         /// 【实体】 能耗实时记录
         /// </summary>
-        protected EcmRecordWip() { }
+        protected Ecm_RecordWip() { }
 
         /// <summary>
         /// 【实体】 能耗实时记录
@@ -64,7 +64,7 @@ namespace Susalem.Ecm.EcmRecordWips
         /// <param name="dayShiftItemId">排班子表Id</param>
         /// <param name="extraProperties">拓展字段</param>
         /// <param name="creationTime">创建时间</param>
-        public EcmRecordWip(
+        public Ecm_RecordWip(
             Guid id,
             Guid structItemId,
             decimal value,

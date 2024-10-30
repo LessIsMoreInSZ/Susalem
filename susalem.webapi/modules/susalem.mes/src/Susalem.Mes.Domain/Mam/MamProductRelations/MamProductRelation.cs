@@ -16,7 +16,7 @@ namespace Susalem.Mam.MamProductRelations
     /// <summary>
     /// 【领域实体】产品关联关系
     /// </summary>
-    public class MamProductRelation : Entity<Guid>, IHasExtraProperties, IHasCreationTime
+    public class Mam_ProductRelation : Entity<Guid>, IHasExtraProperties, IHasCreationTime
     {
         /// <summary>
         /// 产品ID
@@ -87,7 +87,7 @@ namespace Susalem.Mam.MamProductRelations
         ///<inheritdoc/>
         public DateTime CreationTime { get; set; }
 
-        public MamProductRelation() { }
+        public Mam_ProductRelation() { }
         /// <summary>
         /// 【实体】产品关联关系
         /// </summary>
@@ -100,7 +100,7 @@ namespace Susalem.Mam.MamProductRelations
         /// <param name="extraProperties">工单号</param>
         /// <param name="isDownLine">是否下线</param>
         /// <param name="isMain">是否主工单</param>
-        public MamProductRelation(
+        public Mam_ProductRelation(
             [NotNull] Guid productId,
             [NotNull] Guid parentProductId,
             [NotNull] BarcodeStateEnum status,

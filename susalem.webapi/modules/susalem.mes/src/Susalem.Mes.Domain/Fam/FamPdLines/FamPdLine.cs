@@ -12,7 +12,7 @@ namespace Susalem.Fam.FamPdLines
     /// <summary>
     /// 【领域实体】产线管理
     /// </summary>
-    public class FamPdLine : FullAuditedEntity<Guid>, IHasExtraProperties
+    public class Fam_PdLine : FullAuditedEntity<Guid>, IHasExtraProperties
     {
         /// <summary>
         /// 编码
@@ -48,7 +48,7 @@ namespace Susalem.Fam.FamPdLines
         /// <summary>
         /// 【领域实体】产线管理
         /// </summary>
-        protected FamPdLine() { }
+        protected Fam_PdLine() { }
 
         /// <summary>
         /// 【领域实体】产线管理
@@ -60,7 +60,7 @@ namespace Susalem.Fam.FamPdLines
         /// <param name="workShopId">【外键】车间ID</param>
         /// <param name="isEnable">是否启用</param>
         /// <param name="remark">备注</param>
-        public FamPdLine(
+        public Fam_PdLine(
             Guid id,
             [NotNull] string code,
             [NotNull] string name,

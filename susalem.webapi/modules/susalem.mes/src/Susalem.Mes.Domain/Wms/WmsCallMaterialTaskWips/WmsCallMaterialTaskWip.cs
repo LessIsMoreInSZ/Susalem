@@ -17,7 +17,7 @@ namespace Susalem.Wms.WmsCallMaterialTaskWips
     /// <summary>
     /// 【实体】叫料任务实时
     /// </summary>
-    public class WmsCallMaterialTaskWip : Entity<Guid>, IHasCreationTime, IHasExtraProperties
+    public class Wms_CallMaterialTaskWip : Entity<Guid>, IHasCreationTime, IHasExtraProperties
     {
         /// <summary>
         /// 【外键】库位ID
@@ -71,7 +71,7 @@ namespace Susalem.Wms.WmsCallMaterialTaskWips
         /// </summary>
         public DateTime CreationTime { get; set; }
 
-        public WmsCallMaterialTaskWip() { }
+        public Wms_CallMaterialTaskWip() { }
 
         /// <summary>
         /// 【实体】叫料任务实时
@@ -86,7 +86,7 @@ namespace Susalem.Wms.WmsCallMaterialTaskWips
         /// <param name="locationCode">库位编码</param>
         /// <param name="creationTime">创建时间</param>
         /// <param name="extraProperties">拓展字段</param>
-        public WmsCallMaterialTaskWip(
+        public Wms_CallMaterialTaskWip(
              Guid id,
              [NotNull] Guid locationId,
              [NotNull] Guid materialId,

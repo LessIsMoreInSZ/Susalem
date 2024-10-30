@@ -14,7 +14,7 @@ namespace Susalem.Tem.TemPfpsProductBoms
     /// <summary>
     /// 【领域实体】Bom
     /// </summary>
-    public class TemPfpsProductBom : FullAuditedEntity<Guid>, IHasExtraProperties
+    public class Tem_PfpsProductBom : FullAuditedEntity<Guid>, IHasExtraProperties
     {
         /// <summary>
         /// 【外键】物料ID
@@ -63,7 +63,7 @@ namespace Susalem.Tem.TemPfpsProductBoms
         /// <summary>
         /// 【领域实体】Bom
         /// </summary>
-        protected TemPfpsProductBom()
+        protected Tem_PfpsProductBom()
         {
 
         }
@@ -79,7 +79,7 @@ namespace Susalem.Tem.TemPfpsProductBoms
         /// <param name="isEnable">是否启用</param>
         /// <param name="remark">备注</param>
         /// <param name="extraProperties">拓展字段</param>
-        protected TemPfpsProductBom(
+        protected Tem_PfpsProductBom(
              Guid id,
             [NotNull] Guid materialId,
             [NotNull] Guid stepId,

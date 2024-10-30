@@ -14,7 +14,7 @@ namespace Susalem.Wms.WmsShelfs
     /// <summary>
     /// 【实体】货架配置
     /// </summary>
-    public class WmsShelf : Entity<Guid>, IHasCreationTime, IHasExtraProperties
+    public class Wms_Shelf : Entity<Guid>, IHasCreationTime, IHasExtraProperties
     {
         /// <summary>
         /// 【外键】仓库管理Id
@@ -51,7 +51,7 @@ namespace Susalem.Wms.WmsShelfs
         /// </summary>
         public ExtraPropertyDictionary ExtraProperties { get; set; }
 
-        public WmsShelf() { }
+        public Wms_Shelf() { }
 
         /// <summary>
         /// 【实体】货架配置
@@ -63,7 +63,7 @@ namespace Susalem.Wms.WmsShelfs
         /// <param name="index">顺序号</param>
         /// <param name="creationTime">创建时间</param>
         /// <param name="extraProperties">拓展字段</param>
-        public WmsShelf(
+        public Wms_Shelf(
              Guid id,
              [NotNull] Guid warehouseId,
              [NotNull] string code,

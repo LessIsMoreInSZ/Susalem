@@ -42,7 +42,7 @@ public static class MamDbContextModelCreatingExtensions
 
         /* Configure all entities here. Example: */
 
-        builder.Entity<MamOrder>(b =>
+        builder.Entity<Mam_Order>(b =>
         {
             //Configure table & schema name
             
@@ -148,7 +148,7 @@ public static class MamDbContextModelCreatingExtensions
         });
 
         //产品抽检记录
-        builder.Entity<MamSpotCheckRecord>(b =>
+        builder.Entity<Mam_SpotCheckRecord>(b =>
         {
             //表名映射
             
@@ -172,7 +172,7 @@ public static class MamDbContextModelCreatingExtensions
         });
 
         //实时生产工单
-        builder.Entity<MamPlan>(b =>
+        builder.Entity<Mam_Plan>(b =>
         {
             //表名映射
             
@@ -256,7 +256,7 @@ public static class MamDbContextModelCreatingExtensions
         });
 
         //外部接收订单表
-        builder.Entity<MamProductionPlan>(b =>
+        builder.Entity<Mam_ProductionPlan>(b =>
         {
             //表名映射
             
@@ -300,7 +300,7 @@ public static class MamDbContextModelCreatingExtensions
 
 
         //产品关联关系
-        builder.Entity<MamProductRelation>(b =>
+        builder.Entity<Mam_ProductRelation>(b =>
         {
             //表名映射
             
@@ -354,7 +354,7 @@ public static class MamDbContextModelCreatingExtensions
         });
 
         //订单BOM
-        builder.Entity<MamOrderBom>(b =>
+        builder.Entity<Mam_OrderBom>(b =>
         {
             //表名映射
             
@@ -388,7 +388,7 @@ public static class MamDbContextModelCreatingExtensions
         });
 
         //返修策略
-        builder.Entity<MamRepairPolicy>(b =>
+        builder.Entity<Mam_RepairPolicy>(b =>
         {
             //表名映射
             
@@ -404,7 +404,7 @@ public static class MamDbContextModelCreatingExtensions
         });
 
         //Master件维护-质量参数表
-        builder.Entity<MamMasterRepairConfig>(b =>
+        builder.Entity<Mam_MasterRepairConfig>(b =>
         {
             //表名映射
             
@@ -423,7 +423,7 @@ public static class MamDbContextModelCreatingExtensions
 
 
         //Master件维护-主表
-        builder.Entity<MamMasterRepair>(b =>
+        builder.Entity<Mam_MasterRepair>(b =>
         {
             //表名映射
             
@@ -437,7 +437,7 @@ public static class MamDbContextModelCreatingExtensions
         });
 
         //Master件维护-子表
-        builder.Entity<MamMasterRepairItem>(b =>
+        builder.Entity<Mam_MasterRepairItem>(b =>
         {
             //表名映射
             
@@ -452,7 +452,7 @@ public static class MamDbContextModelCreatingExtensions
         });
 
         //Master件维护-检测表
-        builder.Entity<MamMasterRepairCheck>(b =>
+        builder.Entity<Mam_MasterRepairCheck>(b =>
         {
             //表名映射
             
@@ -473,7 +473,7 @@ public static class MamDbContextModelCreatingExtensions
         });
 
         //返修管理-主表
-        builder.Entity<MamProductRepair>(b =>
+        builder.Entity<Mam_ProductRepair>(b =>
         {
             //表名映射
             
@@ -488,7 +488,7 @@ public static class MamDbContextModelCreatingExtensions
         });
 
         //返修管理-子表
-        builder.Entity<MamProductRepairItem>(b =>
+        builder.Entity<Mam_ProductRepairItem>(b =>
         {
             //表名映射
             
@@ -538,7 +538,7 @@ public static class MamDbContextModelCreatingExtensions
 
    
         //产品类型适配
-        builder.Entity<MamProductVerAdapt>(b =>
+        builder.Entity<Mam_ProductVerAdapt>(b =>
         {
             //表名映射
             

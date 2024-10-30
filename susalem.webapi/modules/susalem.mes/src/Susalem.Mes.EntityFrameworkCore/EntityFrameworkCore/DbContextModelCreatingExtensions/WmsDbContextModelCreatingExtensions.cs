@@ -26,7 +26,7 @@ public static class WmsDbContextModelCreatingExtensions
     
 
         //仓库管理
-        builder.Entity<WmsWarehouse>(b =>
+        builder.Entity<Wms_Warehouse>(b =>
         {
             //Configure table & schema name
             
@@ -42,7 +42,7 @@ public static class WmsDbContextModelCreatingExtensions
         });
 
         //货架管理
-        builder.Entity<WmsShelf>(b =>
+        builder.Entity<Wms_Shelf>(b =>
         {
             //Configure table & schema name
             
@@ -58,7 +58,7 @@ public static class WmsDbContextModelCreatingExtensions
         });
 
         //库位管理
-        builder.Entity<WmsLocation>(b =>
+        builder.Entity<Wms_Location>(b =>
         {
             //Configure table & schema name
             
@@ -75,7 +75,7 @@ public static class WmsDbContextModelCreatingExtensions
 
 
         //料位规则
-        builder.Entity<WmsMaterialPositionRule>(b =>
+        builder.Entity<Wms_MaterialPositionRule>(b =>
         {
             //表名映射
             
@@ -94,7 +94,7 @@ public static class WmsDbContextModelCreatingExtensions
         });
 
         //实时库存
-        builder.Entity<WmsStockWip>(b =>
+        builder.Entity<Wms_StockWip>(b =>
         {
             //表名映射
             
@@ -115,7 +115,7 @@ public static class WmsDbContextModelCreatingExtensions
         });
 
         //出入库记录-主表
-        builder.Entity<WmsStockInOut>(b =>
+        builder.Entity<Wms_StockInOut>(b =>
         {
             //表名映射
             
@@ -134,7 +134,7 @@ public static class WmsDbContextModelCreatingExtensions
         });
 
         //出入库记录-子表
-        builder.Entity<WmsStockInOutItem>(b =>
+        builder.Entity<Wms_StockInOutItem>(b =>
         {
             //表名映射
             
@@ -151,7 +151,7 @@ public static class WmsDbContextModelCreatingExtensions
         });
 
         //叫料任务实时
-        builder.Entity<WmsCallMaterialTaskWip>(b =>
+        builder.Entity<Wms_CallMaterialTaskWip>(b =>
         {
             //表名映射
             
@@ -169,7 +169,7 @@ public static class WmsDbContextModelCreatingExtensions
         });
 
         //叫料任务历史
-        builder.Entity<WmsCallMaterialTaskHistory>(b =>
+        builder.Entity<Wms_CallMaterialTaskHistory>(b =>
         {
             //表名映射
             
