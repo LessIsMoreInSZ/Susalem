@@ -67,7 +67,7 @@ public class SusalemHttpApiHostModule : AbpModule
         ConfigureAuthentication(context);
         ConfigureBundles();
         ConfigureUrls(configuration);
-        ConfigureConventionalControllers();
+        ConfigureConventionalControllers(context);
         ConfigureLocalization();
         ConfigureCors(context, configuration);
         ConfigureSwaggerServices(context, configuration);
@@ -101,8 +101,9 @@ public class SusalemHttpApiHostModule : AbpModule
         context.Services.ForwardIdentityAuthenticationForBearer(OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme);
     }
 
-    private void ConfigureConventionalControllers()
+    private void ConfigureConventionalControllers(ServiceConfigurationContext context)
     {
+        context.Services.AddMvc(opt => opt.Filters.Add<ApiResponseAsyncFilter>());
         Configure<AbpAspNetCoreMvcOptions>(options => options.ConventionalControllers.Create(typeof(SusalemApplicationModule).Assembly));
     }
 
