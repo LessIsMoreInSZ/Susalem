@@ -48,7 +48,11 @@ namespace susalem.wpf.ViewModels
         {
             _dockingManager = dm;
         }
-
+        [RelayCommand]
+        void AddNewData()
+        {
+            UserDatas.Add(new() { Datetime = DateTime.Now, No = UserDatas.Count });
+        }
         public bool IsNavigationTarget(NavigationContext navigationContext) => true;
 
         public void OnNavigatedFrom(NavigationContext navigationContext)

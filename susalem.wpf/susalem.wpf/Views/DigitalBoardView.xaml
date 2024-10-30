@@ -3,7 +3,9 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:avalon="https://github.com/Dirkster99/AvalonDock"
+    xmlns:b="clr-namespace:susalem.wpf.Behaviors"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
     xmlns:lc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
     xmlns:local="clr-namespace:susalem.wpf.Views"
@@ -59,7 +61,7 @@
                 <DockingManager.Background>
                     <ImageBrush ImageSource="/Assets/space.jpg" />
                 </DockingManager.Background>
-                <LayoutRoot >
+                <LayoutRoot>
                     <LayoutPanel>
 
                         <LayoutAnchorablePaneGroup DockWidth="500" Orientation="Vertical">
@@ -84,52 +86,64 @@
                             <LayoutAnchorablePane DockHeight="3*">
                                 <!--  user data  -->
                                 <LayoutAnchorable Title="User Data">
-                                    <DataGrid
-                                        AlternatingRowBackground="#FF0A0D34"
-                                        AutoGenerateColumns="False"
-                                        CanUserResizeColumns="False"
-                                        Foreground="White" RowHeight="50"
-                                        ItemsSource="{Binding UserDatas}"
-                                        RowBackground="#FF0D1A52">
-                                        <DataGrid.ColumnHeaderStyle>
-                                            <Style BasedOn="{StaticResource MahApps.Styles.DataGridColumnHeader}" TargetType="DataGridColumnHeader">
-                                                <Setter Property="Background" Value="#FF4B45C9" />
-                                                <Setter Property="Foreground" Value="White" />
-                                                <Setter Property="BorderThickness" Value="0" />
-                                                <Setter Property="MinHeight" Value="40" />
-                                            </Style>
+                                    <DockPanel>
+                                        <Button Command="{Binding AddNewDataCommand}" Content="Add" DockPanel.Dock="Top" Margin="5"/>
+                                        <DataGrid
+                                            AlternatingRowBackground="#FF0A0D34"
+                                            AutoGenerateColumns="False"
+                                            CanUserAddRows="False"
+                                            CanUserResizeColumns="False"
+                                            DockPanel.Dock="Bottom"
+                                            Foreground="White"
+                                            ItemsSource="{Binding UserDatas}"
+                                            RowBackground="#FF0D1A52"
+                                            RowHeight="50"
+                                            VirtualizingPanel.IsVirtualizing="False"
+                                            VirtualizingPanel.ScrollUnit="Pixel">
+                                            <i:Interaction.Behaviors>
+                                                <b:DataGridAutoScrollBehavior />
+                                            </i:Interaction.Behaviors>
+                                            <DataGrid.ColumnHeaderStyle>
+                                                <Style BasedOn="{StaticResource MahApps.Styles.DataGridColumnHeader}" TargetType="DataGridColumnHeader">
+                                                    <Setter Property="Background" Value="#FF4B45C9" />
+                                                    <Setter Property="Foreground" Value="White" />
+                                                    <Setter Property="BorderThickness" Value="0" />
+                                                    <Setter Property="MinHeight" Value="40" />
+                                                </Style>
 
-                                        </DataGrid.ColumnHeaderStyle>
-                                        <DataGrid.Columns>
-                                            <DataGridTextColumn
-                                                MinWidth="40"
-                                                Binding="{Binding No}"
-                                                Header="No" />
-                                            <DataGridTextColumn
-                                                MinWidth="60"
-                                                Binding="{Binding Username}"
-                                                Header="User" />
-                                            <DataGridTextColumn
-                                                Width="*"
-                                                Binding="{Binding Datetime}"
-                                                Header="Datetime" />
-                                            <DataGridTextColumn
-                                                MinWidth="80"
-                                                Binding="{Binding State}"
-                                                Header="State" />
-                                        </DataGrid.Columns>
-                                    </DataGrid>
+                                            </DataGrid.ColumnHeaderStyle>
+                                            <DataGrid.Columns>
+                                                <DataGridTextColumn
+                                                    MinWidth="40"
+                                                    Binding="{Binding No}"
+                                                    Header="No" />
+                                                <DataGridTextColumn
+                                                    MinWidth="60"
+                                                    Binding="{Binding Username}"
+                                                    Header="User" />
+                                                <DataGridTextColumn
+                                                    Width="*"
+                                                    Binding="{Binding Datetime}"
+                                                    Header="Datetime" />
+                                                <DataGridTextColumn
+                                                    MinWidth="80"
+                                                    Binding="{Binding State}"
+                                                    Header="State" />
+                                            </DataGrid.Columns>
+                                        </DataGrid>
+                                    </DockPanel>
+
                                 </LayoutAnchorable>
                             </LayoutAnchorablePane>
                         </LayoutAnchorablePaneGroup>
-                        <LayoutDocumentPane DockWidth="*" ShowHeader="False" >
-                            <LayoutDocument CanClose="False" >
-                                <Grid >
+                        <LayoutDocumentPane DockWidth="*" ShowHeader="False">
+                            <LayoutDocument CanClose="False">
+                                <Grid>
                                     <Grid.Background>
-                                        <ImageBrush ImageSource="/Assets/map.png" Stretch="Uniform"/>
+                                        <ImageBrush ImageSource="/Assets/zone.webp" Stretch="Uniform" />
                                     </Grid.Background>
                                     <!--  CN map image  -->
-                                  
+
 
                                     <!--  add some paths  -->
                                     <!--<ListBox/>-->
