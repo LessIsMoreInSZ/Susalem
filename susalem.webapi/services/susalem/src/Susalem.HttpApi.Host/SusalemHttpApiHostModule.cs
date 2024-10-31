@@ -64,6 +64,8 @@ public class SusalemHttpApiHostModule : AbpModule
         var configuration = context.Services.GetConfiguration();
         var hostingEnvironment = context.Services.GetHostingEnvironment();
 
+        context.Services.AddHttpClient("Identity");
+
         ConfigureAuthentication(context);
         ConfigureBundles();
         ConfigureUrls(configuration);
@@ -96,7 +98,7 @@ public class SusalemHttpApiHostModule : AbpModule
             options.Applications["Angular"].Urls[AccountUrlNames.PasswordReset] = "account/reset-password";
         });
     }
-    private void ConfigureAuthentication(ServiceConfigurationContext context)
+    private static void ConfigureAuthentication(ServiceConfigurationContext context)
     {
         context.Services.ForwardIdentityAuthenticationForBearer(OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme);
     }
@@ -134,22 +136,27 @@ public class SusalemHttpApiHostModule : AbpModule
 
     private void ConfigureCors(ServiceConfigurationContext context, IConfiguration configuration)
     {
+        var corsOrigins = configuration["App:CorsOrigins"];
+
+        if (corsOrigins.IsNullOrEmpty())
+        {
+            throw new ArgumentException("Invalid cors origins, please check out");
+        }
+
         context.Services.AddCors(options =>
         {
             options.AddDefaultPolicy(builder =>
             {
-                builder
-                    .WithOrigins(
-                        configuration["App:CorsOrigins"]
-                            .Split(",", StringSplitOptions.RemoveEmptyEntries)
-                            .Select(o => o.RemovePostFix("/"))
-                            .ToArray()
-                    )
-                    .WithAbpExposedHeaders()
-                    .SetIsOriginAllowedToAllowWildcardSubdomains()
-                    .AllowAnyHeader()
-                    .AllowAnyMethod()
-                    .AllowCredentials();
+                builder.WithOrigins(corsOrigins!
+                                    .Split(",", StringSplitOptions.RemoveEmptyEntries)
+                                    .Select(o => o.RemovePostFix("/"))
+                                    .ToArray()
+                       )
+                       .WithAbpExposedHeaders()
+                       .SetIsOriginAllowedToAllowWildcardSubdomains()
+                       .AllowAnyHeader()
+                       .AllowAnyMethod()
+                       .AllowCredentials();
             });
         });
     }

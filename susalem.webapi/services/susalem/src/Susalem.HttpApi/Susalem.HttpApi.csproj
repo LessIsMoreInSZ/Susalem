@@ -20,6 +20,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="IdentityModel" Version="7.0.0" />
 		<PackageReference Include="Volo.Abp.Account.HttpApi" Version="$(VoloAbpPackageVersion)" />
 		<PackageReference Include="Volo.Abp.PermissionManagement.HttpApi" Version="$(VoloAbpPackageVersion)" />
 	</ItemGroup>
