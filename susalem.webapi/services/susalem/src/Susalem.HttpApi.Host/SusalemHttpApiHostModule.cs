@@ -5,19 +5,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-
 using OpenIddict.Validation.AspNetCore;
-
 using Susalem.EntityFrameworkCore;
-using Susalem.MultiTenancy;
 using Susalem.Settings;
-
 using SusalemShared;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using Volo.Abp;
 using Volo.Abp.Account;
 using Volo.Abp.Account.Web;
@@ -60,6 +54,8 @@ public class SusalemHttpApiHostModule : AbpModule
                 options.UseLocalServer();
                 options.UseAspNetCore();
             });
+
+            builder.AddServer(x => x.UseAspNetCore().DisableTransportSecurityRequirement());
         });
     }
 
@@ -67,11 +63,13 @@ public class SusalemHttpApiHostModule : AbpModule
     {
         var configuration = context.Services.GetConfiguration();
         var hostingEnvironment = context.Services.GetHostingEnvironment();
-     
+
+        context.Services.AddHttpClient("Identity");
+
         ConfigureAuthentication(context);
         ConfigureBundles();
         ConfigureUrls(configuration);
-        ConfigureConventionalControllers();
+        ConfigureConventionalControllers(context);
         ConfigureLocalization();
         ConfigureCors(context, configuration);
         ConfigureSwaggerServices(context, configuration);
@@ -100,17 +98,15 @@ public class SusalemHttpApiHostModule : AbpModule
             options.Applications["Angular"].Urls[AccountUrlNames.PasswordReset] = "account/reset-password";
         });
     }
-    private void ConfigureAuthentication(ServiceConfigurationContext context)
+    private static void ConfigureAuthentication(ServiceConfigurationContext context)
     {
         context.Services.ForwardIdentityAuthenticationForBearer(OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme);
     }
-    
-    private void ConfigureConventionalControllers()
+
+    private void ConfigureConventionalControllers(ServiceConfigurationContext context)
     {
-        Configure<AbpAspNetCoreMvcOptions>(options =>
-        {
-            options.ConventionalControllers.Create(typeof(SusalemApplicationModule).Assembly);
-        });
+        context.Services.AddMvc(opt => opt.Filters.Add<ApiResponseAsyncFilter>());
+        Configure<AbpAspNetCoreMvcOptions>(options => options.ConventionalControllers.Create(typeof(SusalemApplicationModule).Assembly));
     }
 
     private static void ConfigureSwaggerServices(ServiceConfigurationContext context, IConfiguration configuration)
@@ -140,22 +136,27 @@ public class SusalemHttpApiHostModule : AbpModule
 
     private void ConfigureCors(ServiceConfigurationContext context, IConfiguration configuration)
     {
+        var corsOrigins = configuration["App:CorsOrigins"];
+
+        if (corsOrigins.IsNullOrEmpty())
+        {
+            throw new ArgumentException("Invalid cors origins, please check out");
+        }
+
         context.Services.AddCors(options =>
         {
             options.AddDefaultPolicy(builder =>
             {
-                builder
-                    .WithOrigins(
-                        configuration["App:CorsOrigins"]
-                            .Split(",", StringSplitOptions.RemoveEmptyEntries)
-                            .Select(o => o.RemovePostFix("/"))
-                            .ToArray()
-                    )
-                    .WithAbpExposedHeaders()
-                    .SetIsOriginAllowedToAllowWildcardSubdomains()
-                    .AllowAnyHeader()
-                    .AllowAnyMethod()
-                    .AllowCredentials();
+                builder.WithOrigins(corsOrigins!
+                                    .Split(",", StringSplitOptions.RemoveEmptyEntries)
+                                    .Select(o => o.RemovePostFix("/"))
+                                    .ToArray()
+                       )
+                       .WithAbpExposedHeaders()
+                       .SetIsOriginAllowedToAllowWildcardSubdomains()
+                       .AllowAnyHeader()
+                       .AllowAnyMethod()
+                       .AllowCredentials();
             });
         });
     }
@@ -182,11 +183,6 @@ public class SusalemHttpApiHostModule : AbpModule
         app.UseCors();
         app.UseAuthentication();
         app.UseAbpOpenIddictValidation();
-
-        if (MultiTenancyConsts.IsEnabled)
-        {
-            app.UseMultiTenancy();
-        }
 
         app.UseUnitOfWork();
         app.UseAuthorization();
