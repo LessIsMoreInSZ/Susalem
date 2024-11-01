@@ -1,16 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-
-using Susalem.Tem.TemBarcodeRuleItems;
 using Susalem.Tem.TemBarcodeRules;
 using Susalem.Tem.TemFlowEquipments;
 using Susalem.Tem.TemMaterials;
-using Susalem.Tem.TemMaterialUsedTimeRecords;
 using Susalem.Tem.TemMaterialUsedTimes;
 using Susalem.Tem.TemParaTypes;
 using Susalem.Tem.TemPfpsParaConfigs;
 using Susalem.Tem.TemPfpsProductBoms;
 using Susalem.Tem.TemProcesses;
-using Susalem.Tem.TemProductFlowChangeRecords;
 using Susalem.Tem.TemProductFlowProcesses;
 using Susalem.Tem.TemProductFlowProcessSteps;
 using Susalem.Tem.TemProductFlows;
@@ -228,27 +224,6 @@ public static class TemDbContextModelCreatingExtensions
             b.HasIndex(z => z.CreationTime);
         });
 
-        //产品条码规则子表
-        builder.Entity<TemBarcodeRuleItem>(b =>
-        {
-            //表名映射
-            
-
-            //自动配置实体父类的属性
-            b.ConfigureByConvention();
-
-            //创建索引
-            b.HasIndex(z => z.ProductTypeId);
-
-            //创建索引
-            b.HasIndex(z => z.BarcodeRuleId);
-
-            //创建索引
-            b.HasIndex(z => z.Type);
-
-            //创建索引
-            b.HasIndex(z => z.CreationTime);
-        });
 
         // 虚拟件关系对应表
         builder.Entity<Tem_VirtualMaterialRelation>(b =>
@@ -264,20 +239,7 @@ public static class TemDbContextModelCreatingExtensions
             b.HasIndex(z => z.NonVirtualMaterialId);
         });
 
-        // 产品工艺变更记录
-        builder.Entity<TemProductFlowChangeRecord>(b =>
-        {
-            //表名映射
-            
 
-            //自动配置实体父类的属性
-            b.ConfigureByConvention();
-            //创建索引
-            b.HasIndex(z => z.CreationTime);
-            b.HasIndex(z => z.ChangeType);
-            b.HasIndex(z => z.OperateCategory);
-            b.HasIndex(z => z.ProductFlowId);
-        });
 
 
         //物料次数管控
@@ -296,22 +258,6 @@ public static class TemDbContextModelCreatingExtensions
 
         });
 
-        //物料次数管控
-        builder.Entity<TemMaterialUsedTimeRecord>(b =>
-        {
-            //表名映射
-            
 
-            //自动配置实体父类的属性
-            b.ConfigureByConvention();
-
-
-            //创建索引
-            b.HasIndex(z => z.MaterialId);
-            b.HasIndex(z => z.EquipmentId);
-            b.HasIndex(z => z.SnCode);
-            b.HasIndex(q => q.CreationTime);
-
-        });
     }
 }

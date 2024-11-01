@@ -9,6 +9,7 @@ using Susalem.Eqm.EqmEquipments;
 using Susalem.Eqm.EqmFaultConfigs;
 using Susalem.Eqm.EqmModuleTypes;
 using Susalem.Eqm.Susalem.MachLifeMs;
+using Susalem.Fam;
 using Susalem.Fam.FamDayShiftItems;
 using Susalem.Fam.FamDayShifts;
 using Susalem.Fam.FamEmployees;
@@ -16,22 +17,11 @@ using Susalem.Fam.FamPdLines;
 using Susalem.Fam.FamShiftConfigItems;
 using Susalem.Fam.FamShiftConfigs;
 using Susalem.Fam.FamWorkShops;
-using Susalem.Fam;
-using Susalem.Mam.MamBarcodeBlacks;
-using Susalem.Mam.MamDisassembleOrders;
-using Susalem.Mam.MamEmployeeWorkEquipments;
-using Susalem.Mam.MamEmployeeWorks;
 using Susalem.Mam.MamMasterRepairChecks;
 using Susalem.Mam.MamMasterRepairItems;
 using Susalem.Mam.MamMasterRepairs;
 using Susalem.Mam.MamOrderBoms;
-using Susalem.Mam.MamPlanFlowHistories;
-using Susalem.Mam.MamPlanFlowWips;
-using Susalem.Mam.MamPlanProductDeletes;
-using Susalem.Mam.MamPlanProductHistories;
-using Susalem.Mam.MamPlanProductRecordHistories;
-using Susalem.Mam.MamPlanProductRecordWips;
-using Susalem.Mam.MamPlanProductWips;
+using Susalem.Mam.MamOrders;
 using Susalem.Mam.MamPlans;
 using Susalem.Mam.MamProductionPlans;
 using Susalem.Mam.MamProductRelations;
@@ -40,21 +30,10 @@ using Susalem.Mam.MamProductRepairs;
 using Susalem.Mam.MamProductVerAdapts;
 using Susalem.Mam.MamRepairPolicies;
 using Susalem.Mam.MamSpotCheckRecords;
-using Susalem.Qms.QmsAbnormalRecords;
-using Susalem.Qms.QmsBarcodeOperates;
-using Susalem.Qms.QmsCallAndonDatas;
-using Susalem.Qms.QmsEquipmentStatusHistories;
-using Susalem.Qms.QmsEquipmentStatusWips;
-using Susalem.Qms.QmsFaultHistories;
-using Susalem.Qms.QmsFaultWips;
-using Susalem.Qms.QmsMaterialBarcodes;
-using Susalem.Qms.QmsProcessDatas;
-using Susalem.Qms.QmsStationCycleTimes;
+using Susalem.Sys;
 using Susalem.Sys.Dictionaries;
 using Susalem.Sys.SysDictionaryItems;
 using Susalem.Sys.SysOperations;
-using Susalem.Sys;
-using Susalem.Tem.TemBarcodeRuleItems;
 using Susalem.Tem.TemBarcodeRules;
 using Susalem.Tem.TemFlowEquipments;
 using Susalem.Tem.TemMaterials;
@@ -63,7 +42,6 @@ using Susalem.Tem.TemParaTypes;
 using Susalem.Tem.TemPfpsParaConfigs;
 using Susalem.Tem.TemPfpsProductBoms;
 using Susalem.Tem.TemProcesses;
-using Susalem.Tem.TemProductFlowChangeRecords;
 using Susalem.Tem.TemProductFlowProcesses;
 using Susalem.Tem.TemProductFlowProcessSteps;
 using Susalem.Tem.TemProductFlows;
@@ -79,11 +57,8 @@ using Susalem.Wms.WmsStockInOutItems;
 using Susalem.Wms.WmsStockInOuts;
 using Susalem.Wms.WmsStockWips;
 using Susalem.Wms.WmsWarehouses;
-using System;
-
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
-using Susalem.Mam.MamOrders;
 
 namespace Susalem.Mes.EntityFrameworkCore;
 
@@ -93,9 +68,7 @@ public interface IMesDbContext : IEfCoreDbContext
     /* Add DbSet for each Aggregate Root here. Example:
      * DbSet<Question> Questions { get; }
      */
-   DbSet<MamPlanProductDelete> MamPlanProductDeletes { get; set; }
-   DbSet<QmsStationCycleTime> QmsStationCycleTimes { get; set; }
-   DbSet<QmsBarcodeOperate> QmsBarcodeOperates { get; set; }
+
    DbSet<Fam_Factory> FamFactories { get; set; }
    DbSet<Fam_WorkShop> FamWorkShops { get; set; }
    DbSet<Fam_PdLine> FamPdLines { get; set; }
@@ -104,18 +77,13 @@ public interface IMesDbContext : IEfCoreDbContext
    DbSet<Fam_DayShift> FamDayShifts { get; set; }
    DbSet<Fam_DayShiftItem> FamDayShiftItems { get; set; }
    DbSet<Fam_Employee> FamEmployees { get; set; }
-   DbSet<MamPlanProductWip> MamPlanProductWips { get; set; }
-   DbSet<MamPlanProductHistory> MamPlanProductHistories { get; set; }
-   DbSet<MamPlanProductRecordWip> MamPlanProductRecordWips { get; set; }
+
    DbSet<Mam_Order> MamOrders { get; set; }
    DbSet<Mam_ProductionPlan> MamProductionPlans { get; set; }
    DbSet<Mam_Plan> MamPlans { get; set; }
-   DbSet<MamPlanFlowWip> MamPlanFlowWips { get; set; }
-   DbSet<MamPlanFlowHistory> MamPlanFlowHistories { get; set; }
-   DbSet<MamEmployeeWorkEquipment> MamEmployeeWorkEquipments { get; set; }
-   DbSet<MamPlanProductRecordHistory> MamPlanProductRecordHistories { get; set; }
+
    DbSet<Mam_OrderBom> MamOrderBoms { get; set; }
-   DbSet<MamEmployeeWork> MamEmployeeWorks { get; set; }
+ 
    DbSet<Mam_ProductRelation> MamProductRelations { get; set; }
 
    DbSet<Mam_SpotCheckRecord> MamSpotCheckRecords { get; set; }
@@ -133,15 +101,7 @@ public interface IMesDbContext : IEfCoreDbContext
    DbSet<Tem_PfpsParaConfig> TemPfpsParaConfigs { get; set; }
    DbSet<Tem_PfpsProductBom> TemPfpsProductBoms { get; set; }
    DbSet<Tem_BarcodeRule> TemBarcodeRules { get; set; }
-   DbSet<TemBarcodeRuleItem> TemBarcodeRuleItems { get; set; }
-   DbSet<QmsMaterialBarcode> QmsMaterialBarcodes { get; set; }
-   DbSet<QmsProcessData> QmsProcessDatas { get; set; }
-   DbSet<QmsFaultWip> QmsFaultWips { get; set; }
-
-   DbSet<QmsAbnormalRecord> QmsAbnormalRecords { get; set; }
-   DbSet<QmsFaultHistory> QmsFaultHistories { get; set; }
-   DbSet<QmsEquipmentStatusWip> QmsEquipmentStatusWips { get; set; }
-   DbSet<QmsEquipmentStatusHistory> QmsEquipmentStatusHistories { get; set; }
+ 
    DbSet<Eqm_Equipment> EqmEquipments { get; set; }
    DbSet<Eqm_ModuleType> EqmModuleTypes { get; set; }
    DbSet<Eqm_Archive> EqmArchives { get; set; }
@@ -171,11 +131,9 @@ public interface IMesDbContext : IEfCoreDbContext
    DbSet<Mam_ProductRepairItem> MamProductRepairItems { get; set; }
    DbSet<Mam_MasterRepairItem> MamMasterRepairItems { get; set; }
    DbSet<Mam_MasterRepairCheck> MamMasterRepairChecks { get; set; }
-   DbSet<MamBarcodeBlack> MamBarcodeBlacks { get; set; }
-   DbSet<MamDisassembleOrder> MamDisassembleOrders { get; set; }
-   DbSet<QmsCallAndonData> QmsCallAndonDatas { get; set; }
+  
    DbSet<Mam_ProductVerAdapt> MamProductVerAdapts { get; set; }//产品版本适配-表
 
-   DbSet<TemProductFlowChangeRecord> TemProductFlowChangeRecords { get; set; }
+
    DbSet<Eqm_MachLifeM> MachLifeMs { get; set; }
 }
