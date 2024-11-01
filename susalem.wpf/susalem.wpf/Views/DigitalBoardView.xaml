@@ -61,6 +61,10 @@
                 <DockingManager.Background>
                     <ImageBrush ImageSource="/Assets/space.jpg" />
                 </DockingManager.Background>
+                <DockingManager.Resources>
+            
+
+                </DockingManager.Resources>
                 <LayoutRoot>
                     <LayoutPanel>
 
@@ -87,7 +91,11 @@
                                 <!--  user data  -->
                                 <LayoutAnchorable Title="User Data">
                                     <DockPanel>
-                                        <Button Command="{Binding AddNewDataCommand}" Content="Add" DockPanel.Dock="Top" Margin="5"/>
+                                        <Button
+                                            Margin="5"
+                                            Command="{Binding AddNewDataCommand}"
+                                            Content="Add"
+                                            DockPanel.Dock="Top" />
                                         <DataGrid
                                             AlternatingRowBackground="#FF0A0D34"
                                             AutoGenerateColumns="False"
