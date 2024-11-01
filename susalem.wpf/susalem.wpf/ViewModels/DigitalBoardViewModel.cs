@@ -16,6 +16,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace susalem.wpf.ViewModels
 {
@@ -39,8 +40,13 @@ namespace susalem.wpf.ViewModels
         [ObservableProperty]
         ISeries[] todaySeries;
 
-        [ObservableProperty]
-        DateTime datetime=DateTime.Now;
+        private DateTime datetime = DateTime.Now;
+        public DateTime Datetime
+        {
+            get => datetime;
+            set => SetProperty(ref datetime, value);
+        }
+
         [ObservableProperty]
         string title = "Didital Board";
         [RelayCommand]
@@ -112,6 +118,15 @@ namespace susalem.wpf.ViewModels
                 point.Visual.Fill = point.Model!.Paint;
             });
             AverageSeries = [averageS];
+
+            Task.Run(async() =>
+            {
+                while (true)
+                {
+                    await Task.Delay(1000);
+                    Datetime = DateTime.Now;
+                }
+            });
         }
         public class TodayInfo: ObservableValue
         {
@@ -119,5 +134,7 @@ namespace susalem.wpf.ViewModels
             public SolidColorPaint Paint { get; set; }
 
         }
+
+
     }
 }

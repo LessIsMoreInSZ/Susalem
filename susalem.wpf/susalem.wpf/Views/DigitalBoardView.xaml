@@ -85,8 +85,8 @@
                                             Series="{Binding TrendSeries}" />
                                     </Grid>
                                 </LayoutAnchorable>
-
                             </LayoutAnchorablePane>
+                            
                             <LayoutAnchorablePane DockHeight="3*">
                                 <!--  user data  -->
                                 <LayoutAnchorable Title="User Data">
@@ -143,7 +143,9 @@
 
                                 </LayoutAnchorable>
                             </LayoutAnchorablePane>
+                            
                         </LayoutAnchorablePaneGroup>
+                        
                         <LayoutDocumentPane DockWidth="*" ShowHeader="False">
                             <LayoutDocument CanClose="False">
                                 <Grid>
@@ -160,6 +162,7 @@
                                 </Grid>
                             </LayoutDocument>
                         </LayoutDocumentPane>
+                        
                         <LayoutAnchorablePaneGroup DockWidth="500" Orientation="Vertical">
                             <LayoutAnchorablePane DockHeight="3*">
                                 <LayoutAnchorable Title="Relative">

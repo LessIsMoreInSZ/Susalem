@@ -307,12 +307,13 @@
                 <ControlTemplate TargetType="{x:Type avalonDockControls:LayoutAnchorablePaneControl}">
                     <Grid>
                         <mah:ClipBorder
+                            Padding="5"
                             Background="{TemplateBinding Background}"
                             BorderBrush="#FF9DD4D7"
                             BorderThickness="2"
-                            CornerRadius="5" Padding="5">
-                        
-                            
+                            CornerRadius="5">
+
+
                             <Grid
                                 ClipToBounds="true"
                                 KeyboardNavigation.TabNavigation="Local"
@@ -323,7 +324,7 @@
                                 </Grid.RowDefinitions>
                                 <!--  Following border is required to catch mouse events  -->
 
-                              
+
                                 <Border
                                     x:Name="ContentPanel"
                                     Grid.Row="0"
@@ -352,8 +353,14 @@
 
                             </Grid>
                         </mah:ClipBorder>
-                        <Border BorderThickness="2,0" BorderBrush="#FF425679" Margin="0,20"/>
-                        <Border BorderThickness="0,2" BorderBrush="#FF425679" Margin="20,0"/>
+                        <Border
+                            Margin="0,20"
+                            BorderBrush="#FF425679"
+                            BorderThickness="2,0" />
+                        <Border
+                            Margin="20,0"
+                            BorderBrush="#FF425679"
+                            BorderThickness="0,2" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="false">
@@ -470,8 +477,11 @@
     </Style>
 
     <Style TargetType="avalonDockControls:AnchorablePaneTitle">
-        <Setter Property="Background" Value="{DynamicResource {x:Static reskeys:ResourceKeys.ToolWindowCaptionInactiveBackground}}" />
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static reskeys:ResourceKeys.ToolWindowCaptionInactiveText}}" />
+        <!--<Setter Property="Background" Value="{DynamicResource {x:Static reskeys:ResourceKeys.ToolWindowCaptionInactiveBackground}}" />-->
+        <!--<Setter Property="Foreground" Value="{DynamicResource {x:Static reskeys:ResourceKeys.ToolWindowCaptionInactiveText}}" />-->
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="Black" />
+
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
