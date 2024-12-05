@@ -1,4 +1,5 @@
-﻿using Susalem.Mes;
+﻿using Susalem.Identity;
+using Susalem.Mes;
 
 using Volo.Abp.Account;
 using Volo.Abp.AutoMapper;
@@ -11,7 +12,7 @@ namespace Susalem;
     typeof(SusalemDomainModule),
     typeof(AbpAccountApplicationModule),
     typeof(SusalemApplicationContractsModule),
-    typeof(Susalem.Identity.AbpIdentityApplicationModule),
+    typeof(AbpIdentityApplicationModule),
     typeof(AbpPermissionManagementApplicationModule),
     typeof(MesApplicationModule)
 
